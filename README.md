@@ -1,6 +1,8 @@
 # blastingzone.github.com
 HomePage
 
+LINK : blastingzone.github.io
+
 ## Hello World!
 I am studying web-front.  
 I am NEWBIE.
