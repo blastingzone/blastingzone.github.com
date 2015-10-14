@@ -2,6 +2,7 @@
 <meta charset="utf-8">
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- jQuery -->
     <script src="./lib/jquery-1.11.3.min.js"></script>
     <!-- w3.css -->
@@ -10,7 +11,11 @@
 
     <title>N N N</title>
     <style>
-        
+        @media (max-width:800px){
+            .wide-scr-only{
+                display:none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -145,7 +150,7 @@
             </section>
         </div>
     </div>
-    <div class="w3-container">
+    <div class="w3-container wide-scr-only">
         <pre class="w3-padding-jumbo" style="font-size:0.4em; text-align:center;">
     .oooooo.                         o8o      .             oooo   o8o                                  ooooo   ooooo           .o. 
    d8P'  `Y8b                        `"'    .o8             `888   `"'                                  `888'   `888'           888 
