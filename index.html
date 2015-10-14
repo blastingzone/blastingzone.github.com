@@ -11,9 +11,9 @@
 
     <title>N N N</title>
     <style>
-        @media (max-width:800px){
-            .wide-scr-only{
-                display:none;
+        @media (max-width:800px) {
+            .wide-scr-only {
+                display: none;
             }
         }
     </style>
@@ -107,6 +107,7 @@
                 <div class="w3-card-2">
                     <nav class="w3-topnav w3-small w3-theme-l2">
                         <a href="https://www.codecademy.com/">Codecademy</a>
+                        <a href="http://www.microsoftvirtualacademy.com/">MVA</a>
                     </nav>
                     <nav class="w3-topnav w3-small w3-theme-l3">
                         <a href="https://github.com/open-source-society/computer-science">GithubOSS</a>
@@ -145,13 +146,44 @@
                 <div class="w3-card-2">
                     <nav class="w3-topnav w3-small w3-theme-l2">
                         <a href="https://www.cs.usfca.edu/~galles/visualization/Algorithms.html">DataStruct.Vis</a>
+                        <a href="http://visualgo.net/">VisualGo</a>
+                        <a href="https://leetcode.com/">LeetCode</a>
                     </nav>
                 </div>
             </section>
         </div>
     </div>
+
+    <div class="w3-container">
+        <div class="w3-half">
+            <header class="w3-container">
+                <h2>ETC</h2>
+            </header>
+            <section class="w3-container">
+                <div class="w3-card-2">
+                    <nav class="w3-topnav w3-small w3-theme-l2">
+
+                    </nav>
+                </div>
+            </section>
+        </div>
+        <div class="w3-half">
+            <header class="w3-container">
+                <h2>ETC</h2>
+            </header>
+            <section class="w3-container">
+                <div class="w3-card-2">
+                    <nav class="w3-topnav w3-small w3-theme-l2">
+                        <a href="http://www.joinc.co.kr/modules/moniwiki/wiki.php/FrontPage">Joinc</a>
+                    </nav>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Eye catch -->
     <div class="w3-container wide-scr-only">
-        <pre class="w3-padding-jumbo" style="font-size:0.4em; text-align:center;">
+        <pre class="w3-padding-jumbo" style="font-size:0.4em; text-align:center; overflow-x:hidden;">
     .oooooo.                         o8o      .             oooo   o8o                                  ooooo   ooooo           .o. 
    d8P'  `Y8b                        `"'    .o8             `888   `"'                                  `888'   `888'           888 
   888           .oooo.   oo.ooooo.  oooo  .o888oo  .oooo.    888  oooo   .oooo.o ooo. .oo.  .oo.         888     888   .ooooo.  888 
@@ -218,7 +250,7 @@
             <section class="w3-container">
                 <div class="w3-card-2">
                     <nav class="w3-topnav w3-small w3-theme-l2">
-                        
+                        <a href="http://slipp.net/">Javajigi</a>
                     </nav>
                 </div>
             </section>
@@ -251,15 +283,36 @@
 
     <script>
         $(document).ready(function () {
-            console.debug("CLOSE. Abstergo is watching you");
+            print_abstergo();
+            console.info('%c Be Ware. %c Abstergo Watching You.', 'color:red; font-size:4em;', 'color:blue');
 
             $('a').attr({ 'target': '_blank' });
 
             $('.theme-change-btn').click(function () {
                 var href = $(this).attr('data-href');
-                $('#theme_css').attr({'href': href});
+                $('#theme_css').attr({ 'href': href });
             });
         });
+
+        function print_abstergo() {
+            console.log('                    D                ');
+            console.log('                   DDD               ');
+            console.log('                  DDDDD              ');
+            console.log('                 DDDDDDD             ');
+            console.log('                DDDDDDD              ');
+            console.log('               DDDDDDD               ');
+            console.log('              DDDDDDD                ');
+            console.log('             DDDDDDD     D           ');
+            console.log('            DDDDDDD     DDD          ');
+            console.log('           DDDDDDD     DDDDD         ');
+            console.log('          DDDDDDD     DDDDDDD        ');
+            console.log('                       DDDDDDD       ');
+            console.log('    DDDDDDDDDDDDDDDD    DDDDDDD      ');
+            console.log('   DDDDDDDDDDDDDDDDDD    DDDDDDD     ');
+            console.log('  DDDDDDDDDDDDDDDDDDDD    DDDDDDD    ');
+            console.log('                            DDDDDDD  ');
+            console.log('                             DDDDDDD ');
+        }
     </script>
 </body>
 </html>
