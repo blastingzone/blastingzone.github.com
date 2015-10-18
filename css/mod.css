@@ -1,0 +1,10 @@
+﻿@media (max-width:800px) {
+    .wide-scr-only {
+        display: none;
+    }
+}
+
+.jump-eyecatch {
+    text-align: center;
+    overflow-x: hidden;
+}
