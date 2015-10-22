@@ -4,7 +4,7 @@
       "title": "W3C",
       "url": "http://www.w3.org/",
       "desc": "",
-      "tag": [ "Web", "Standard", "HTML", "Reference" ],
+      "tag": [ "Web", "Standard", "HTML", "CSS", "Reference" ],
       "rank": 0
     },
     {
@@ -16,19 +16,27 @@
     },
     {
       "title": "CSSTricks",
-      "url": "https://css-tricks.com/"
+      "url": "https://css-tricks.com/",
+      "tag": [ "Web", "CSS", "Study" ],
+      "rank": 2
     },
     {
       "title": "LearnLayout",
-      "url": "http://ko.learnlayout.com/position.html"
+      "url": "http://ko.learnlayout.com/position.html",
+      "tag": [ "Web", "HTML", "CSS", "Study" ],
+      "rank": 2
     },
     {
       "title": "MDN",
-      "url": "https://developer.mozilla.org/ko/"
+      "url": "https://developer.mozilla.org/ko/",
+      "tag": [ "Web", "HTML", "CSS", "Javascript","Reference", "SVG", "WebGL", "Study" ],
+      "rank": 1
     },
     {
       "title": "NaverBlog",
-      "url": "http://d2.naver.com/helloworld"
+      "url": "http://d2.naver.com/helloworld",
+      "tag": [ "Web", "HTML", "CSS", "Javascript", "ComputerScience", "Database", "KnowHow"],
+      "rank": 1
     },
     {
       "title": "SKPlanetBlog",
