@@ -369,6 +369,10 @@
     {
       "title": "NamuWiki",
       "url": "https://namu.wiki"
+    },
+    {
+      "title": "AwesomeSeries",
+      "url": "https://github.com/sindresorhus/awesome"
     }
   ]
 } 
