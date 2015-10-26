@@ -15,14 +15,58 @@
 
     <script type="text/javascript" language="javascript" src="./data/pages.json"></script> 
 
-    <title>D N N N</title>
+    <title>Jump Site MK II</title>
 </head>
 <body>
+    <header class="w3-container w3-theme-d2">
+        <h1>:: Dynamic Jump Site ::</h1>
+    </header>
+    <div id="contents" class="w3-container">
 
+    </div>
+    <!-- Footer -->
+    <div class="w3-container w3-theme-d4" style="margin-top:4em;">
+        <header>
+            <h4>Jump Site :: My Favorite Web Pages</h4>
+            <span>2015. 10. 26. updated</span>
+        </header>
+        <!-- color changer -->
+        <div class="w3-container">
+            <div class="w3-row">
+                <div class="w3-col m1 w3-center w3-grey theme-change-btn" data-href="./lib/w3-theme-dark-grey.css">-</div>
+                <div class="w3-col m1 w3-center w3-blue-grey theme-change-btn" data-href="./lib/w3-theme-blue-grey.css">-</div>
+                <div class="w3-col m1 w3-center w3-light-blue theme-change-btn" data-href="./lib/w3-theme-light-blue.css">-</div>
+                <div class="w3-col m1 w3-center w3-blue theme-change-btn" data-href="./lib/w3-theme-blue.css">-</div>
+                <div class="w3-col m1 w3-center w3-indigo theme-change-btn" data-href="./lib/w3-theme-indigo.css">-</div>
+                <div class="w3-col m1 w3-center w3-teal theme-change-btn" data-href="./lib/w3-theme-teal.css">-</div>
+                <div class="w3-col m1 w3-center w3-green theme-change-btn" data-href="./lib/w3-theme-green.css">-</div>
+                <div class="w3-col m1 w3-center w3-yellow theme-change-btn" data-href="./lib/w3-theme-yellow.css">-</div>
+                <div class="w3-col m1 w3-center w3-amber theme-change-btn" data-href="./lib/w3-theme-amber.css">-</div>
+                <div class="w3-col m1 w3-center w3-deep-orange theme-change-btn" data-href="./lib/w3-theme-deep-orange.css">-</div>
+                <div class="w3-col m1 w3-center w3-red theme-change-btn" data-href="./lib/w3-theme-red.css">-</div>
+                <div class="w3-col m1 w3-center w3-brown theme-change-btn" data-href="./lib/w3-theme-brown.css">-</div>
+            </div>
+        </div>
+    </div>
     <script>
         $(document).ready(function () {
             console.debug(jsonData);
+            createList();
         });
+
+        function createList() {
+            html = "";
+            for (idx in jsonData.pages) {
+                var elem = jsonData.pages[idx];
+                html += "<div class='w3-card-2 w3-theme-l2'>";
+                html += "<a href='"+ elem.url +"'>";
+                html += elem.title
+                html += "</a>";
+                html += "</div>";
+            }
+            $('#contents').empty();
+            $('#contents').append(html);
+        }
     </script>
 </body>
 </html>
