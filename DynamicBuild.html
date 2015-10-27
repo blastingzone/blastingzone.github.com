@@ -21,7 +21,7 @@
     <header class="w3-container w3-theme-d2">
         <h1>:: Dynamic Jump Site ::</h1>
     </header>
-    <div id="contents" class="w3-container">
+    <div id="contents" class="w3-theme-l4">
         
     </div>
     <!-- Footer -->
@@ -62,10 +62,19 @@
                 if (count % 3 == 0) {
                     html += "<div class='w3-row'>";
                 }
-                html += "<div class='w3-third w3-container w3-theme-l2'>";
-                html += "<a href='"+ elem.url +"'><h2>";
+                html += "<div class='w3-third w3-container w3-theme-l4'>";
+                html += "<header><a href='" + elem.url + "'><h2>";
                 html += elem.title
-                html += "</h2></a>";
+                html += "</h2></a></header>";
+                html += "<div>";
+                html += elem.url;
+                html += "</div>";
+                if (elem.desc)
+                {
+                    html += "<div>";
+                    html += elem.desc;
+                    html += "</div>";
+                }
                 html += "</div>";
                 if (count % 3 == 2) {
                     html += "</div>";
