@@ -3,38 +3,42 @@
     {
       "title": "W3C",
       "url": "http://www.w3.org/",
-      "desc": "웹 기초부터 배울 때",
+      "desc": "웹에 관한 자세한 레퍼런스를 확인하고 싶을 때",
       "tag": [ "Web", "Standard", "HTML", "CSS", "Reference" ],
       "rank": 0
     },
     {
       "title": "W3Schools",
       "url": "http://www.w3schools.com/",
-      "desc": "",
+      "desc": "프론트에서 서버까지 웹 기초부터 배울 때",
       "tag": [ "Web", "Standard", "HTML", "PHP", "jQuery", "CSS", "Reference", "Study" ],
       "rank": 0
     },
     {
       "title": "CSSTricks",
       "url": "https://css-tricks.com/",
+      "desc":  "CSS 특성을 이용해 기발한 해법을 제시함",
       "tag": [ "Web", "CSS", "Study" ],
       "rank": 2
     },
     {
       "title": "LearnLayout",
       "url": "http://ko.learnlayout.com/position.html",
+      "desc": "HTML 레이아웃 기초를 배울 때",
       "tag": [ "Web", "HTML", "CSS", "Study" ],
       "rank": 2
     },
     {
       "title": "MDN",
       "url": "https://developer.mozilla.org/ko/",
+      "desc": "웹 전반에 걸친 강좌와 개발툴",
       "tag": [ "Web", "HTML", "CSS", "Javascript","Reference", "SVG", "WebGL", "Study" ],
       "rank": 1
     },
     {
       "title": "NaverBlog",
       "url": "http://d2.naver.com/helloworld",
+      "desc": "컴퓨터 전반에 대한 심도있는 설명",
       "tag": [ "Web", "HTML", "CSS", "Javascript", "ComputerScience", "Database", "KnowHow"],
       "rank": 1
     },
