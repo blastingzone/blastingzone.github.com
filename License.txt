@@ -1,0 +1,12 @@
+/*
+ *
+ * "THE MEAT-WARE LICENSE"
+ * <blastingzone@naver.com> wrote this file.  As long as you retain this notice you
+ * can do whatever you want with this stuff. If we meet some day, and you think
+ * this stuff is worth it, you can buy me a meat in return.
+ *
+ */
+
+// P.S. 3rd party library (ex: jQuery.js, W3C.css) has their own copyright.
+// If you want to use or modify include libraries, you must follow THEIR rule.
+// And Press X to pay respects.
