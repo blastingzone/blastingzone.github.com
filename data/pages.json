@@ -51,7 +51,10 @@
     },
     {
       "title": "DaumDev",
-      "url": "http://developers.daum.net/"
+      "url": "http://developers.daum.net/",
+      "desc": "다음에서 제공하는 API와 SDK 설명",
+      "tag": [ "Web", "API" ,"Support" ,"KnowHow"],
+      "rank": 1
     },
     {
       "title": "RegExr",
