@@ -17,7 +17,7 @@
     {
       "title": "CSSTricks",
       "url": "https://css-tricks.com/",
-      "desc":  "CSS 특성을 이용해 기발한 해법을 제시함",
+      "desc": "CSS 특성을 이용해 기발한 해법을 제시함",
       "tag": [ "Web", "CSS", "Study" ],
       "rank": 2
     },
@@ -32,19 +32,22 @@
       "title": "MDN",
       "url": "https://developer.mozilla.org/ko/",
       "desc": "웹 전반에 걸친 강좌와 개발툴",
-      "tag": [ "Web", "HTML", "CSS", "Javascript","Reference", "SVG", "WebGL", "Study" ],
+      "tag": [ "Web", "HTML", "CSS", "Javascript", "Reference", "SVG", "WebGL", "Study" ],
       "rank": 1
     },
     {
       "title": "NaverBlog",
       "url": "http://d2.naver.com/helloworld",
-      "desc": "컴퓨터 전반에 대한 심도있는 설명",
-      "tag": [ "Web", "HTML", "CSS", "Javascript", "ComputerScience", "Database", "KnowHow"],
+      "desc": "컴퓨터 사이언스의 주요 토픽에 대한 심도있는 설명",
+      "tag": [ "Web", "HTML", "CSS", "Javascript", "ComputerScience", "Database", "KnowHow" ],
       "rank": 1
     },
     {
       "title": "SKPlanetBlog",
-      "url": "http://readme.skplanet.com/"
+      "url": "http://readme.skplanet.com/",
+      "desc": "최신 기술 동향에 대해 깊이 다룬다",
+      "tag": [ "Web", "BigData", "MachineLearning", "NaturalLanguage","Linux" ,"KnowHow"],
+      "rank": 1
     },
     {
       "title": "DaumDev",
@@ -384,7 +387,7 @@
     },
     {
       "title": "WebberStudy",
-      "url":  "http://webberstudy.com/"
+      "url": "http://webberstudy.com/"
     }
   ]
 } 
