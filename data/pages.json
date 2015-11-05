@@ -58,15 +58,24 @@
     },
     {
       "title": "RegExr",
-      "url": "http://www.regexr.com/"
+      "url": "http://www.regexr.com/",
+      "desc": "자바스크립트에서 지원하는 정규표현식 연습",
+      "tag": [ "Web", "RegularExpression", "Tool", "Study" ],
+      "rank":  4
     },
     {
       "title": "JSONViewer",
-      "url": "http://jsonviewer.stack.hu/"
+      "url": "http://jsonviewer.stack.hu/",
+      "desc": "온라인 JSON 뷰어",
+      "tag": [ "Web", "Json", "Tool","Utility" ],
+      "rank":  4
     },
     {
       "title": "DataConverter",
-      "url": "https://shancarter.github.io/mr-data-converter/"
+      "url": "https://shancarter.github.io/mr-data-converter/",
+      "desc": "Excel 데이터를 웹 친화적인 데이터로 바꿔줌",
+      "tag": [ "Web", "CSV", "Json", "Converter" ],
+      "rank":  4
     },
     {
       "title": "PHPTester",
