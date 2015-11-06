@@ -74,20 +74,29 @@
       "title": "DataConverter",
       "url": "https://shancarter.github.io/mr-data-converter/",
       "desc": "Excel 데이터를 웹 친화적인 데이터로 바꿔줌",
-      "tag": [ "Web", "CSV", "Json", "Converter" ],
+      "tag": [ "Web", "CSV", "Json", "Utility" ],
       "rank":  4
     },
     {
       "title": "PHPTester",
-      "url": "http://phptester.net/"
+      "url": "http://phptester.net/",
+      "desc": "PHP 테스트용 툴. 시스템 건드리는 함수는 막혀있다.",
+      "tag": [ "Web", "PHP", "Test", "Utility" ],
+      "rank":  4
     },
     {
       "title": "Appetizer",
-      "url": "https://appetize.io/"
+      "url": "https://appetize.io/",
+      "desc": "iOS / Android 시뮬레이터",
+      "tag": [ "Web", "App", "iOS", "Android", "Utility", "Simulator", "Mobile" ],
+      "rank":  4
     },
     {
       "title": "JaguarJS",
-      "url": "https://davidshimjs.github.io/jaguarjs/"
+      "url": "https://davidshimjs.github.io/jaguarjs/",
+      "desc": "모바일에 최적화된 Javascript library 애니메이션",
+      "tag": [ "Web", "Mobile", "Javascript", "Library", "Animation" ],
+      "rank":  4
     },
     {
       "title": "Nuno",
