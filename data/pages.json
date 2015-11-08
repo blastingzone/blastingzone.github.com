@@ -121,7 +121,10 @@
     },
     {
       "title": "DevMag",
-      "url": "http://devmag.org.za/"
+      "url": "http://devmag.org.za/",
+      "desc": "게임 개발 잡지",
+      "tag": [ "Game", "Magazine", "Graphics", "Study"],
+      "rank":  2
     },
     {
       "title": "GameCodingSchool",
