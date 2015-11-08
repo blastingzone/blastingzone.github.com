@@ -417,6 +417,10 @@
     {
       "title": "WebberStudy",
       "url": "http://webberstudy.com/"
+    },
+    {
+      "title": "Eloquent Javascript",
+      "url": "http://eloquentjavascript.net/"
     }
   ]
 } 
