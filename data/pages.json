@@ -46,14 +46,14 @@
       "title": "SKPlanetBlog",
       "url": "http://readme.skplanet.com/",
       "desc": "최신 기술 동향에 대해 깊이 다룬다",
-      "tag": [ "Web", "BigData", "MachineLearning", "NaturalLanguage","Linux" ,"KnowHow"],
+      "tag": [ "Web", "BigData", "MachineLearning", "NaturalLanguage", "Linux", "KnowHow" ],
       "rank": 1
     },
     {
       "title": "DaumDev",
       "url": "http://developers.daum.net/",
       "desc": "다음에서 제공하는 API와 SDK 설명",
-      "tag": [ "Web", "API" ,"Support" ,"KnowHow"],
+      "tag": [ "Web", "API", "Support", "KnowHow" ],
       "rank": 1
     },
     {
@@ -61,74 +61,77 @@
       "url": "http://www.regexr.com/",
       "desc": "자바스크립트에서 지원하는 정규표현식 연습",
       "tag": [ "Web", "RegularExpression", "Tool", "Study" ],
-      "rank":  4
+      "rank": 4
     },
     {
       "title": "JSONViewer",
       "url": "http://jsonviewer.stack.hu/",
       "desc": "온라인 JSON 뷰어",
-      "tag": [ "Web", "Json", "Tool","Utility" ],
-      "rank":  4
+      "tag": [ "Web", "Json", "Tool", "Utility" ],
+      "rank": 4
     },
     {
       "title": "DataConverter",
       "url": "https://shancarter.github.io/mr-data-converter/",
       "desc": "Excel 데이터를 웹 친화적인 데이터로 바꿔줌",
       "tag": [ "Web", "CSV", "Json", "Utility" ],
-      "rank":  4
+      "rank": 4
     },
     {
       "title": "PHPTester",
       "url": "http://phptester.net/",
       "desc": "PHP 테스트용 툴. 시스템 건드리는 함수는 막혀있다.",
       "tag": [ "Web", "PHP", "Test", "Utility" ],
-      "rank":  4
+      "rank": 4
     },
     {
       "title": "Appetizer",
       "url": "https://appetize.io/",
       "desc": "iOS / Android 시뮬레이터",
       "tag": [ "Web", "App", "iOS", "Android", "Utility", "Simulator", "Mobile" ],
-      "rank":  4
+      "rank": 4
     },
     {
       "title": "JaguarJS",
       "url": "https://davidshimjs.github.io/jaguarjs/",
       "desc": "모바일에 최적화된 Javascript library 애니메이션",
       "tag": [ "Web", "Mobile", "Javascript", "Library", "Animation" ],
-      "rank":  4
+      "rank": 4
     },
     {
       "title": "Unity3D",
       "url": "http://unity3d.com/kr/unity",
       "desc": "Unity 엔진 공식 사이트",
       "tag": [ "Game", "C#", "Javascript", "Engine", "Graphics", "Mono", "Unity", "Tutorial", "Study", "Reference" ],
-      "rank":  0
+      "rank": 0
     },
     {
       "title": "UnrealEngine",
       "url": "https://www.unrealengine.com/ko/what-is-unreal-engine-4",
       "desc": "언리얼 엔진 공식 사이트",
-      "tag": [ "Game", "C#", "Blueprint", "Engine","Graphics", "Tutorial", "Study", "Reference" ],
-      "rank":  0
+      "tag": [ "Game", "C#", "Blueprint", "Engine", "Graphics", "Tutorial", "Study", "Reference" ],
+      "rank": 0
     },
     {
       "title": "RealTimeRendering",
       "url": "http://advances.realtimerendering.com/",
       "desc": "리얼타임 렌더링 공식 사이트",
-      "tag": [ "Graphics", "Conference"],
-      "rank":  1
+      "tag": [ "Graphics", "Conference" ],
+      "rank": 1
     },
     {
       "title": "DevMag",
       "url": "http://devmag.org.za/",
       "desc": "게임 개발 잡지",
-      "tag": [ "Game", "Magazine", "Graphics", "Study"],
-      "rank":  2
+      "tag": [ "Game", "Magazine", "Graphics", "Study" ],
+      "rank": 2
     },
     {
       "title": "GameCodingSchool",
-      "url": "http://gamecodingschool.org/"
+      "url": "http://gamecodingschool.org/",
+      "desc": "개발자들이 읽을만한 양질의 글이 많음",
+      "tag": [ "Game", "Programming", "Article" ],
+      "rank": 2
     },
     {
       "title": "OpenGameArt",
