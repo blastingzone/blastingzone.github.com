@@ -129,13 +129,16 @@
     {
       "title": "GameCodingSchool",
       "url": "http://gamecodingschool.org/",
-      "desc": "개발자들이 읽을만한 양질의 글이 많음",
+      "desc": "프로그래밍에 관한 양질의 글이 많음",
       "tag": [ "Game", "Programming", "Article" ],
       "rank": 2
     },
     {
       "title": "OpenGameArt",
-      "url": "http://opengameart.org/"
+      "url": "http://opengameart.org/",
+      "desc": "무료 게임 아트 리소스",
+      "tag": [ "Game", "Asset", "Art", "Free" ],
+      "rank": 3
     },
     {
       "title": "Galexandria",
