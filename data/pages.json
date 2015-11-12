@@ -142,7 +142,10 @@
     },
     {
       "title": "Galexandria",
-      "url": "http://www.galexandria.com/main/denoils-intro-to-gamedev"
+      "url": "http://www.galexandria.com/main/denoils-intro-to-gamedev",
+      "desc": "게임개발 강좌",
+      "tag": [ "Game", "Study", "Graphics", "Tutorial", "OpenGL"],
+      "rank": 3
     },
     {
       "title": "GameSync",
