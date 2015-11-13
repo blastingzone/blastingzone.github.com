@@ -430,6 +430,18 @@
     {
       "title": "Eloquent Javascript",
       "url": "http://eloquentjavascript.net/"
+    },
+    {
+      "title": "HTML5 GameEngine",
+      "url": "https://html5gameengine.com/"
+    },
+    {
+      "title": "Canvas Engine",
+      "url": "http://canvasengine.net/"
+    },
+    {
+      "title": "HTML5 Canvas Game Programming",
+      "url": "http://www.iguanademos.com/Jare/docs/html5/Lessons/"
     }
   ]
 } 
