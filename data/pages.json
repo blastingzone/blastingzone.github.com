@@ -144,20 +144,29 @@
       "title": "Galexandria",
       "url": "http://www.galexandria.com/main/denoils-intro-to-gamedev",
       "desc": "게임개발 강좌",
-      "tag": [ "Game", "Study", "Graphics", "Tutorial", "OpenGL"],
+      "tag": [ "Game", "Study", "Graphics", "Tutorial", "OpenGL" ],
       "rank": 3
     },
     {
       "title": "GameSync",
-      "url": "http://www.gamesync.com.ne.kr/"
+      "url": "http://www.gamesync.com.ne.kr/",
+      "desc": "FPS 게임 에디터 (학습용)",
+      "tag": [ "Game", "Study", "Graphics", "Tutorial", "Editor" ],
+      "rank": 3
     },
     {
       "title": "3DAPI",
-      "url": "http://3dapi.com/"
+      "url": "http://3dapi.com/",
+      "desc": "갈릭 게임 엔진 (학습용)",
+      "tag": [ "Game", "Study", "Graphics", "Tutorial", "Engine" ],
+      "rank": 3
     },
     {
       "title": "BoxNWhisker",
-      "url": "http://boxnwhis.kr/"
+      "url": "http://boxnwhis.kr/",
+      "desc": "데이터 분석 서비스 및 강좌",
+      "tag": [ "Game", "Statics", "Study", "Lecture","Data","Analysis", "Tutorial" ],
+      "rank": 2
     },
     {
       "title": "Calcu",
