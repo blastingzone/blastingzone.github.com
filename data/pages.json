@@ -165,16 +165,22 @@
       "title": "BoxNWhisker",
       "url": "http://boxnwhis.kr/",
       "desc": "데이터 분석 서비스 및 강좌",
-      "tag": [ "Game", "Statics", "Study", "Lecture","Data","Analysis", "Tutorial" ],
+      "tag": [ "Game", "Statics", "Study", "Lecture", "Data", "Analysis", "Tutorial" ],
       "rank": 2
     },
     {
       "title": "Calcu",
-      "url": "http://calcu.kr/%EB%AA%A9%EC%B0%A8.aspx"
+      "url": "http://calcu.kr/%EB%AA%A9%EC%B0%A8.aspx",
+      "desc": "온갖 수학계산을 도와주는 유틸 모음",
+      "tag": [ "Utility, Calculator" ],
+      "rank":  4
     },
     {
       "title": "LudumDare",
-      "url": "http://ludumdare.com/compo/about-ludum-dare/"
+      "url": "http://ludumdare.com/compo/about-ludum-dare/",
+      "desc": "전세계 개발자들과 함께하는 주말 게임 해카톤",
+      "tag": [ "Game, Hackerton" ],
+      "rank":  4
     },
     {
       "title": "OutOfIndex",
