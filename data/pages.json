@@ -173,42 +173,63 @@
       "url": "http://calcu.kr/%EB%AA%A9%EC%B0%A8.aspx",
       "desc": "온갖 수학계산을 도와주는 유틸 모음",
       "tag": [ "Utility, Calculator" ],
-      "rank":  4
+      "rank": 4
     },
     {
       "title": "LudumDare",
       "url": "http://ludumdare.com/compo/about-ludum-dare/",
       "desc": "전세계 개발자들과 함께하는 주말 게임 해카톤",
       "tag": [ "Game, Hackerton" ],
-      "rank":  4
+      "rank": 4
     },
     {
       "title": "OutOfIndex",
-      "url": "http://www.outofindex.org/?"
+      "url": "http://www.outofindex.org/?",
+      "desc": "실험 게임 발표 페스티벌",
+      "tag": [ "Game", "Experiment", "Session" ],
+      "rank":  2
     },
     {
       "title": "HardCoreGaming",
-      "url": "http://www.hardcoregaming101.net/korea/korea.htm"
+      "url": "http://www.hardcoregaming101.net/korea/korea.htm",
+      "desc": "한국 게임의 역사",
+      "tag": [ "Game", "History", "Information" ],
+      "rank":  3
     },
     {
       "title": "JKGS",
-      "url": "http://www.jkgs.or.kr/"
+      "url": "http://www.jkgs.or.kr/",
+      "desc": "게임 학회 저널",
+      "tag": [ "Game", "Journal", "Study" ],
+      "rank":  2
     },
     {
       "title": "AppleDev",
-      "url": "https://developer.apple.com/programs/kr/"
+      "url": "https://developer.apple.com/programs/kr/",
+      "desc": "애플 개발자 블로그",
+      "tag": [ "Apple", "iOS", "OSX", "MAC", "Swift", "ObjectiveC", "Mobile", "PC", "Study", "Tutorial" ],
+      "rank":  0
     },
     {
       "title": "GoogleDev",
-      "url": "http://developer.android.com/index.html"
+      "url": "http://developer.android.com/index.html",
+      "desc": "안드로이드 개발자 블로그",
+      "tag": [ "Google", "Android", "Java", "Mobile", "Study", "Tutorial" ],
+      "rank":  0
     },
     {
       "title": "Codecademy",
-      "url": "https://www.codecademy.com/"
+      "url": "https://www.codecademy.com/",
+      "desc": "온라인 코딩교육 코드 아카데미",
+      "tag": [ "PHP", "AngularJS", "SQL", "Ruby", "Java", "Git", "Rails", "Web", "Study", "Tutorial", "HTML" ],
+      "rank":  2
     },
     {
       "title": "MVA",
-      "url": "http://www.microsoftvirtualacademy.com/"
+      "url": "http://www.microsoftvirtualacademy.com/",
+      "desc": "마이크로소프트 버추어 아카데미",
+      "tag": [ "Microsoft", "Certification", "Windows", "Network", "C#", "C++", "HTML", "Javascript", ".NET", "Tutorial", "Session", "Study", "Lecture" ],
+      "rank":  1
     },
     {
       "title": "GithubOSS",
