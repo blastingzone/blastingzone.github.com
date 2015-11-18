@@ -233,11 +233,17 @@
     },
     {
       "title": "GithubOSS",
-      "url": "https://github.com/open-source-society/computer-science"
+      "url": "https://github.com/open-source-society/computer-science",
+      "desc": "온라인 무료 컴퓨터 사이언스 강의",
+      "tag": [ "ComputerScience", "Study", "Lecture", "Mooc" ],
+      "rank":  2
     },
     {
       "title": "PXD",
-      "url": "http://story.pxd.co.kr/"
+      "url": "http://story.pxd.co.kr/",
+      "desc": "UX에 관한 지식 공유",
+      "tag": [ "UX", "Study" ],
+      "rank":  2
     },
     {
       "title": "AListApart",
