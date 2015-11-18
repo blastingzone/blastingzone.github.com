@@ -492,6 +492,10 @@
     {
       "title": "CreateJS",
       "url": "http://www.createjs.com/"
+    },
+    {
+      "title": "TheArtOfCommandLine",
+      "url": "https://github.com/jlevy/the-art-of-command-line/blob/master/README-ko.md"
     }
   ]
 } 
