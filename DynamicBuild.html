@@ -61,15 +61,34 @@
             html = "";
             var count = 0;
             for (idx in jsonData.pages) {
+                // get page info
                 var elem = jsonData.pages[idx];
+                // get page rank
+                var rank = elem['rank'];
+                // get page tag
+                var tag = elem['tag'];
+                var tag_html = "";
+                // set tag icons
+                for (tag_idx in tag) {
+                    var page_cur_tag = tag[tag_idx];
+                    
+                    if (jsonData.tags[page_cur_tag]) {
+                        tag_html += "<i class='material-icons'>" + jsonData.tags[page_cur_tag] + "</i>";
+                    } else {
+                        tag_html += "[" + page_cur_tag + "]";
+                    }
+                    
+                }
+
                 if (count % 3 == 0) {
                     html += "<div class='w3-row'>";
                 }
                 html += "<div class='w3-third w3-container w3-theme-l4'>";
                 html += "<header><a href='" + elem.url + "' target='_blank;'><h2>";
-                html += "<i class='material-icons'>account_balance</i>";
+                html += "<i class='material-icons'>open_in_new</i>";
                 html += elem.title
                 html += "</h2></a></header>";
+                html += tag_html;
                 html += "<div>";
                 html += elem.url;
                 html += "</div>";
