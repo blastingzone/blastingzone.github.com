@@ -8,3 +8,13 @@
     text-align: center;
     overflow-x: hidden;
 }
+
+.tag_description{
+    display:none;
+    font-size:0.1em;
+    letter-spacing:-0.05em;
+}
+
+.font_size_24{
+    font-size:24pt;
+}

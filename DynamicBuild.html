@@ -12,11 +12,14 @@
     <!-- Google Material Icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+
     <!-- Custom css -->
     <link rel="stylesheet" href="./css/mod.css" />
 
 
-    <script type="text/javascript" language="javascript" src="./data/pages.json"></script> 
+    <script type="text/javascript" language="javascript" src="./data/pages.json"></script>
 
     <title>Jump Site MK II</title>
 </head>
@@ -25,7 +28,7 @@
         <h1>:: Dynamic Jump Site ::</h1>
     </header>
     <div id="contents" class="w3-theme-l4">
-        
+
     </div>
     <!-- Footer -->
     <div class="w3-container w3-theme-d4" style="margin-top:4em;">
@@ -54,10 +57,10 @@
     <script>
         $(document).ready(function () {
             console.debug(jsonData);
-            createList();
+            createList(jsonData);
         });
 
-        function createList() {
+        function createList(jsonData) {
             html = "";
             var count = 0;
             for (idx in jsonData.pages) {
@@ -71,13 +74,13 @@
                 // set tag icons
                 for (tag_idx in tag) {
                     var page_cur_tag = tag[tag_idx];
-                    
+
                     if (jsonData.tags[page_cur_tag]) {
-                        tag_html += "<i class='material-icons'>" + jsonData.tags[page_cur_tag] + "</i>";
+                        tag_html += "<i class='" + jsonData.tags[page_cur_tag] + " font_size_24'></i>";
+                        tag_html += "<span class='tag_description'>" + page_cur_tag + "</span>";
                     } else {
                         tag_html += "[" + page_cur_tag + "]";
                     }
-                    
                 }
 
                 if (count % 3 == 0) {
@@ -85,15 +88,13 @@
                 }
                 html += "<div class='w3-third w3-container w3-theme-l4'>";
                 html += "<header><a href='" + elem.url + "' target='_blank;'><h2>";
-                html += "<i class='material-icons'>open_in_new</i>";
                 html += elem.title
                 html += "</h2></a></header>";
                 html += tag_html;
                 html += "<div>";
                 html += elem.url;
                 html += "</div>";
-                if (elem.desc)
-                {
+                if (elem.desc) {
                     html += "<div>";
                     html += elem.desc;
                     html += "</div>";

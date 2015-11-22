@@ -1,8 +1,11 @@
 ﻿var jsonData = {
   "tags":
     {
-      "Web": "public",
-      "Standard": "verified_user"
+      "Web": "fa fa-home",
+      "Standard": "fa fa-certificate",
+      "HTML": "fa fa-html5",
+      "CSS": "fa fa-css3",
+      "Reference": "fa fa-balance-scale"
     },
   "pages": [
     {
