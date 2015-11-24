@@ -262,11 +262,17 @@
     },
     {
       "title": "UXBooth",
-      "url": "http://www.uxbooth.com/"
+      "url": "http://www.uxbooth.com/",
+      "desc": "유용한 UX 토막글 모음",
+      "tag": [ "Web", "Design", "Article", "UX" ],
+      "rank": 2
     },
     {
       "title": "LukeW",
-      "url": "http://www.lukew.com/"
+      "url": "http://www.lukew.com/",
+      "desc": "각종 디자인 토막글 모음",
+      "tag": [ "Design", "Article", "UX", "UI" ],
+      "rank": 3
     },
     {
       "title": "UXMatters",
