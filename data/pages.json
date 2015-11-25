@@ -272,15 +272,21 @@
       "url": "http://www.lukew.com/",
       "desc": "각종 디자인 토막글 모음",
       "tag": [ "Design", "Article", "UX", "UI" ],
-      "rank": 3
+      "rank": 2
     },
     {
       "title": "UXMatters",
-      "url": "http://www.uxmatters.com/"
+      "url": "http://www.uxmatters.com/",
+      "desc": "유용한 UX 토막글 모음",
+      "tag": [ "Design", "Article", "UX", "UI" ],
+      "rank": 2
     },
     {
       "title": "DesignModo",
-      "url": "http://designmodo.com/"
+      "url": "http://designmodo.com/",
+      "desc": "웹 디자인 가이드 및 테마 판매",
+      "tag": [ "Web", "Design", "Article", "UX", "UI" ],
+      "rank": 2
     },
     {
       "title": "UsabilityPost",
