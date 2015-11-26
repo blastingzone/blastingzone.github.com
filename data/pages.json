@@ -290,15 +290,24 @@
     },
     {
       "title": "UsabilityPost",
-      "url": "http://usabilitypost.com/"
+      "url": "http://usabilitypost.com/",
+      "desc": "디자인 토막글 모음",
+      "tag": [ "Design", "Article", "UX", "UI" ],
+      "rank": 2
     },
     {
       "title": "UXMovement",
-      "url": "http://uxmovement.com/"
+      "url": "http://uxmovement.com/",
+      "desc": "디자인 팁 모음",
+      "tag": [ "Design", "Article", "UX", "UI" ],
+      "rank": 2
     },
     {
       "title": "Wireframes",
-      "url": "http://wireframes.linowski.ca/"
+      "url": "http://wireframes.linowski.ca/",
+      "desc": "디자인 툴 및 유틸리티 모음",
+      "tag": [ "Design", "UX", "UI", "Utility" ],
+      "rank": 2
     },
     {
       "title": "52WeeksOfUX",
