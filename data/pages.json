@@ -311,19 +311,31 @@
     },
     {
       "title": "52WeeksOfUX",
-      "url": "http://52weeksofux.com/"
+      "url": "http://52weeksofux.com/",
+      "desc": "UX 토막글 모음",
+      "tag": [ "Design", "UX", "UI"],
+      "rank": 2
     },
     {
       "title": "DataStruct.Vis",
-      "url": "https://www.cs.usfca.edu/~galles/visualization/Algorithms.html"
+      "url": "https://www.cs.usfca.edu/~galles/visualization/Algorithms.html",
+      "desc": "알고리즘 시각화",
+      "tag": [ "ComputerScience","Algorithm"],
+      "rank": 2
     },
     {
       "title": "VisualGo",
-      "url": "http://visualgo.net/"
+      "url": "http://visualgo.net/",
+      "desc": "알고리즘 시각화",
+      "tag": [ "ComputerScience","Algorithm"],
+      "rank": 2
     },
     {
       "title": "LeetCode",
-      "url": "https://leetcode.com/"
+      "url": "https://leetcode.com/",
+      "desc": "알고리즘 문제풀이",
+      "tag": [ "ComputerScience","Algorithm", "Quiz"],
+      "rank": 2
     },
     {
       "title": "Pathfinding",
