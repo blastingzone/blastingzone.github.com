@@ -339,23 +339,38 @@
     },
     {
       "title": "Pathfinding",
-      "url": "http://qiao.github.io/PathFinding.js/visual/"
+      "url": "http://qiao.github.io/PathFinding.js/visual/",
+      "desc": "길찾기 알고리즘 시각화",
+      "tag": [ "ComputerScience","Algorithm", "Pathfinding"],
+      "rank": 3
     },
     {
       "title": "PlayRust",
-      "url": "https://play.rust-lang.org/"
+      "url": "https://play.rust-lang.org/",
+      "desc": "RUST 코드 테스트",
+      "tag": [ "RUST","Utility"],
+      "rank": 4
     },
     {
       "title": "RustExample",
-      "url": "http://rustbyexample.com/"
+      "url": "http://rustbyexample.com/",
+      "desc": "RUST 코드 예제 모음",
+      "tag": [ "RUST","Example"],
+      "rank": 2
     },
     {
       "title": "Joinc",
-      "url": "http://www.joinc.co.kr/modules/moniwiki/wiki.php/FrontPage"
+      "url": "http://www.joinc.co.kr/modules/moniwiki/wiki.php/FrontPage",
+      "desc": "유용한 IT 정보글 위키",
+      "tag": [ "Wiki", "ComputerScience", "Article"],
+      "rank": 3
     },
     {
       "title": "GongdolK",
-      "url": "http://littles.egloos.com/"
+      "url": "http://littles.egloos.com/",
+      "desc": "게임 개발 체험담 및 토막글",
+      "tag": [ "Game","Blog", "Article"],
+      "rank": 3
     },
     {
       "title": "GamsungProgramming",
