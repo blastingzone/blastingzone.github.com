@@ -374,15 +374,24 @@
     },
     {
       "title": "GamsungProgramming",
-      "url": "http://programmingsummaries.tistory.com/"
+      "url": "http://programmingsummaries.tistory.com/",
+      "desc": "프로그래밍 관련 팁 및 토막글",
+      "tag": ["Blog", "Article"],
+      "rank": 3
     },
     {
       "title": "3DMP",
-      "url": "http://3dmpengines.tistory.com/"
+      "url": "http://3dmpengines.tistory.com/",
+      "desc": "3D 프로그래밍 관련 정보",
+      "tag": ["Blog", "Article", "Physics", "Graphics"],
+      "rank": 3
     },
     {
       "title": "Pyrasis",
-      "url": "http://pyrasis.com/"
+      "url": "http://pyrasis.com/",
+      "desc": "Go 언어, Docker등의 자료",
+      "tag": ["Blog", "Article", "Go", "Docker", "Linux", "Book"],
+      "rank": 3
     },
     {
       "title": "Renderman",
