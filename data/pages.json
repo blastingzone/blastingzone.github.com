@@ -396,37 +396,58 @@
     {
       "title": "Renderman",
       "url": "http://www.renderman.or.kr/?",
-      "desc": "후디니, 렌더맨 등을 개인적으로 정리한 블로그",
+      "desc": "후디니, 렌더맨 등을 정리한 블로그",
       "tag": ["Graphics"],
       "rank": 3
     },
     {
       "title": "Rapapa",
-      "url": "http://rapapa.net/"
+      "url": "http://rapapa.net/",
+      "desc": "게임 개발 관련 팁과 토막글이 올라오는 블로그",
+      "tag": ["Game", "Blog","Article"],
+      "rank": 3
     },
     {
       "title": "JohnPapa",
-      "url": "http://www.johnpapa.net/"
+      "url": "http://www.johnpapa.net/",
+      "desc": "AngularJS 등을 정리하는 개인 블로그",
+      "tag": ["AngularJS", "Blog","Article"],
+      "rank": 3
     },
     {
       "title": "Atom",
-      "url": "http://elijahmanor.com/github-atom-packages/"
+      "url": "http://elijahmanor.com/github-atom-packages/",
+      "desc": "Atom Editor",
+      "tag": ["Editor"],
+      "rank": 4
     },
     {
       "title": "SendAnywhere",
-      "url": "https://send-anywhere.com/"
+      "url": "https://send-anywhere.com/",
+      "desc": "간단한 파일공유 서비스",
+      "tag": ["Service","File"],
+      "rank": 4
     },
     {
       "title": "SaveFrom",
-      "url": "http://en.savefrom.net/"
+      "url": "http://en.savefrom.net/",
+      "desc": "온라인 동영상 다운로드 서비스",
+      "tag": ["Utility"],
+      "rank": 4
     },
     {
       "title": "ClipConverter",
-      "url": "http://www.clipconverter.cc/"
+      "url": "http://www.clipconverter.cc/",
+      "desc": "온라인 동영상 다운로드 서비스",
+      "tag": ["Utility"],
+      "rank": 4
     },
     {
       "title": "InfiniteLoop",
-      "url": "http://www.infinitelooper.com/"
+      "url": "http://www.infinitelooper.com/",
+      "desc": "온라인 동영상 반복 재생 지원",
+      "tag": ["Utility"],
+      "rank": 4
     },
     {
       "title": "WebGLStudio",
