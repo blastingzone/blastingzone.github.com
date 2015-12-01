@@ -395,7 +395,10 @@
     },
     {
       "title": "Renderman",
-      "url": "http://www.renderman.or.kr/?"
+      "url": "http://www.renderman.or.kr/?",
+      "desc": "후디니, 렌더맨 등을 개인적으로 정리한 블로그",
+      "tag": ["Graphics"],
+      "rank": 3
     },
     {
       "title": "Rapapa",
