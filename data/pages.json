@@ -451,15 +451,24 @@
     },
     {
       "title": "WebGLStudio",
-      "url": "http://webglstudio.org/"
+      "url": "http://webglstudio.org/",
+      "desc": "WebGL을 이용한 3D 개발 환경",
+      "tag": ["Utility","WebGL"],
+      "rank": 4
     },
     {
-      "title": "makingPrettyConsoleInWindows",
-      "url": "https://scotch.io/tutorials/get-a-functional-and-sleek-console-in-windows/"
+      "title": "ScotchDigital",
+      "url": "https://scotch.io/",
+      "desc": "소규모 팀으로 각종 튜토리얼, 팁, 유틸리티 등을 소개",
+      "tag": ["Utility","Study"],
+      "rank": 2
     },
     {
       "title": "Steam",
-      "url": "http://store.steampowered.com/"
+      "url": "http://store.steampowered.com/",
+      "desc": "강도 소굴",
+      "tag": ["Game"],
+      "rank": 0
     },
     {
       "title": "GOG",
