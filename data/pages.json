@@ -472,15 +472,24 @@
     },
     {
       "title": "GOG",
-      "url": "http://www.gog.com/"
+      "url": "http://www.gog.com/",
+      "desc": "강도 소굴 2",
+      "tag": ["Game"],
+      "rank": 0
     },
     {
       "title": "Origin",
-      "url": "https://www.origin.com/ko-kr/store/"
+      "url": "https://www.origin.com/ko-kr/store/",
+      "desc": "배틀필드, 심즈, 심시티 등등",
+      "tag": ["Game"],
+      "rank": 0
     },
     {
       "title": "TheCodingLove",
-      "url": "http://thecodinglove.com/"
+      "url": "http://thecodinglove.com/",
+      "desc": "프로그래머를 위한 개그",
+      "tag": ["Gag"],
+      "rank": 1
     },
     {
       "title": "TheUselessWeb",
