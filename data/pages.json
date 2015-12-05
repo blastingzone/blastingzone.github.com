@@ -493,11 +493,17 @@
     },
     {
       "title": "TheUselessWeb",
-      "url": "http://www.theuselessweb.com/"
+      "url": "http://www.theuselessweb.com/",
+      "desc": "쓸데없는 웹 사이트를 모아놓은 사이트",
+      "tag": ["Gag", "Web"],
+      "rank": 2
     },
     {
       "title": "ILikeToWasteMyTime",
-      "url": "http://iliketowastemytime.com/"
+      "url": "http://iliketowastemytime.com/",
+      "desc": "흥미로운 컨텐츠를 공유하는 사이트",
+      "tag": ["Web"],
+      "rank": 2
     },
     {
       "title": "Superhakgoman",
