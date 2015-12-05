@@ -507,83 +507,136 @@
     },
     {
       "title": "Superhakgoman",
-      "url": "https://superhakgoman.wordpress.com/"
+      "url": "https://superhakgoman.wordpress.com/",
+      "desc": "슈퍼학고맨 블로그",
+      "tag": ["Web","Study","Article"],
+      "rank": 3
     },
     {
       "title": "SadangHobbits",
-      "url": "http://sadang-hobbits.github.io/"
+      "url": "http://sadang-hobbits.github.io/",
+      "desc": "RUST 스터디 모임",
+      "tag": ["Rust","Study","Article"],
+      "rank": 3
     },
     {
       "title": "Javajigi",
-      "url": "http://slipp.net/"
+      "url": "http://slipp.net/",
+      "desc": "Java 관련 검색을 하다보면 어차피 여기로 오게 된다",
+      "tag": ["Web","Java","Article","Study"],
+      "rank": 3
     },
     {
       "title": "NigayoBlog",
-      "url": "http://nigayo.github.io/"
+      "url": "http://nigayo.github.io/",
+      "desc": "웹 프론트엔디 개발 팁",
+      "tag": ["Web","HTML","Javascript","Article","Study"],
+      "rank": 3
     },
     {
       "title": "Next Post",
-      "url": "http://www.nextpost.co.kr/"
+      "url": "http://www.nextpost.co.kr/",
+      "desc": "손글씨 대필 편지를 보내주는 서비스",
+      "tag": ["Service","Next"],
+      "rank": 4
     },
     {
       "title": "PensionList",
-      "url": "http://pensionlist.co.kr/"
-    },
-    {
-      "title": "NextCafe",
-      "url": "http://cafe.nhnnext.org/"
+      "url": "http://pensionlist.co.kr/",
+      "desc": "강릉 펜션 서비스",
+      "tag": ["Service","Next"],
+      "rank": 4
     },
     {
       "title": "Coursera",
-      "url": "https://www.coursera.org/"
+      "url": "https://www.coursera.org/",
+      "desc": "세계 유명 대학의 온라인 강의",
+      "tag": ["Study","Tutorial"],
+      "rank": 1
     },
     {
       "title": "KhanAcademy",
-      "url": "https://www.khanacademy.org/"
+      "url": "https://www.khanacademy.org/",
+      "desc": "무료 온라인 강의. 정말 온갖 것을 배울 수 있다",
+      "tag": ["Study","Tutorial"],
+      "rank": 1
     },
     {
       "title": "LearnersTV",
-      "url": "http://www.learnerstv.com/"
+      "url": "http://www.learnerstv.com/",
+      "desc": "전문지식 온라인 강의",
+      "tag": ["Study","Tutorial"],
+      "rank": 1
     },
     {
       "title": "KOCW",
-      "url": "http://www.kocw.net/"
+      "url": "http://www.kocw.net/",
+      "desc": "온라인 강의 포탈. 국내 자료도 많이 있다",
+      "tag": ["Study","Tutorial"],
+      "rank": 1
     },
     {
       "title": "TED",
-      "url": "https://www.ted.com/"
+      "url": "https://www.ted.com/",
+      "desc": "다양한 주제에 걸쳐 영감을 주는 강연들",
+      "tag": ["Study","Speech"],
+      "rank": 1
     },
     {
       "title": "SlideShare",
-      "url": "http://www.slideshare.net/"
+      "url": "http://www.slideshare.net/",
+      "desc": "슬라이드를 공유할 수 있는 사이트",
+      "tag": ["Study"],
+      "rank": 1
     },
     {
       "title": "Thuum",
-      "url": "https://www.thuum.org/"
+      "url": "https://www.thuum.org/",
+      "desc": "스카이림 용언을 배워보자",
+      "tag": ["Study"],
+      "rank": 1
     },
     {
       "title": "Eldarin",
-      "url": "http://cafe.naver.com/eldarin"
+      "url": "http://cafe.naver.com/eldarin",
+      "desc": "해외에서도 주목하는 톨킨 요정어 카페",
+      "tag": ["Study"],
+      "rank": 1
     },
     {
       "title": "Wikipedia",
-      "url": "https://ko.wikipedia.org"
+      "url": "https://ko.wikipedia.org",
+      "desc": "위키피디아. 고카페인 음료와 함께 즐겨보자",
+      "tag": ["Study","Wiki"],
+      "rank": 0
     },
     {
       "title": "NamuWiki",
-      "url": "https://namu.wiki"
+      "url": "https://namu.wiki",
+      "desc": "나무위키. 마이너한 주제도 깊게 다룬다",
+      "tag": ["Study","Wiki"],
+      "rank": 1
     },
     {
       "title": "AwesomeSeries",
-      "url": "https://github.com/sindresorhus/awesome"
+      "url": "https://github.com/sindresorhus/awesome",
+      "desc": "컴퓨터 전반에 걸쳐 awesome한 정보를 모아보자는 리스트",
+      "tag": ["Study"],
+      "rank": 3
     },
     {
-      "title": "Kurzgesagt",
-      "url": "https://www.youtube.com/channel/UCsXVk37bltHxD1rDPwtNM8Q"
+      "title": "In a nutshell",
+      "url": "https://www.youtube.com/channel/UCsXVk37bltHxD1rDPwtNM8Q",
+      "desc": "예전 이름은 Kurzgesagt. 애니메이션으로 된 고퀄리티 다큐멘터리",
+      "tag": ["Study"],
+      "rank": 1
     },
     {
       "title": "WebberStudy",
-      "url": "http://webberstudy.com/"
+      "url": "http://webberstudy.com/",
+      "desc": "기초부터 따라하는 웹 제작 튜토리얼",
+      "tag": ["Study","Web","Tutorial"],
+      "rank": 3
     },
     {
       "title": "Eloquent Javascript",
