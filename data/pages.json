@@ -675,19 +675,38 @@
     },
     {
       "title": "CreateJS",
-      "url": "http://www.createjs.com/"
+      "url": "http://www.createjs.com/",
+      "desc": "상호작용성 높은 웹용 JS 라이브러리",
+      "tag": ["Web","Javascript"],
+      "rank": 2
     },
     {
       "title": "TheArtOfCommandLine",
-      "url": "https://github.com/jlevy/the-art-of-command-line/blob/master/README-ko.md"
+      "url": "https://github.com/jlevy/the-art-of-command-line/blob/master/README-ko.md",
+      "desc": "커맨드 라인을 배워봅시다",
+      "tag": ["Study","Tutorial"],
+      "rank": 3
     },
     {
       "title": "Microsoft Github",
-      "url": "https://github.com/Microsoft"
+      "url": "https://github.com/Microsoft",
+      "desc": "마이크로소프트 깃허브",
+      "tag": ["Github","Microsoft"],
+      "rank": 0
     },
     {
       "title": "Beautiful CSS",
-      "url": "http://beautifulcss.com/"
+      "url": "http://beautifulcss.com/",
+      "desc": "CSS 배우기",
+      "tag": ["Web","CSS"],
+      "rank": 2
+    },
+    {
+      "title": "IBM Swift Sandbox",
+      "url": "http://swiftlang.ng.bluemix.net/",
+      "desc": "IBM의 온라인 스위프트 코드 실행기",
+      "tag": ["Web","Swift"],
+      "rank": 4
     }
   ]
 }
