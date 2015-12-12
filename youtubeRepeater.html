@@ -28,13 +28,29 @@
     </header>
     <div class="w3-container">
         <div class="video_container w3-card-4">
-            <iframe class="video_player" src="https://www.youtube.com/embed/4GZUQFcht78?loop=1" frameborder="0" allowfullscreen></iframe>
+            <iframe class="video_player" src="https://www.youtube.com/embed/4GZUQFcht78?" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
 </body>
 </html>
 <script type="text/javascript">
-    function getEmbedYoutubeUrl( url ) {
+    function getEmbedYoutubeUrl(url) {
+        var embedKeyword = 'embed/';
+        var originalKeyword = '/watch?v=';
         
+        if (url.search(embedKeyword) !== -1) {
+            // 1. embed url일 경우
+            return url.slice(url.lastIndexOf(embedKeyword) + embedKeyword.length);
+        } else {
+            // 2. 생짜 url일 경우
+            if (url.search('&list') !== -1) {
+                // 2-1. 생짜 url인데 플레이리스트가 같이 있을 경우
+                return url.slice(url.lastIndexOf('/watch?v=') + '/watch?v='.length).replace('&', '?');
+            } else {
+                // 2-2. 생짜 url이고 플레이리스트가 없는 경우
+                return url.slice(url.lastIndexOf(originalKeyword) + originalKeyword.length);
+            }
+            
+        }
     }
 </script>
