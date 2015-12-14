@@ -12,20 +12,45 @@
 
     <title>Youtube Repeater</title>
     <style>
-        .video_container{
-            width:36vw;
-            height:36vw;
+        .video_container {
+            width: 36vw;
+            height: 36vw;
         }
-        .video_player{
-            width:100%;
-            height:100%;
+
+        .video_player {
+            width: 100%;
+            height: 100%;
         }
-        .play_list_mov{
-            width:18vw;
-            height:18vw;
-            display:inline-block;
-            background-color:brown;
+
+        .play_list_container {
+            margin-top: 5vw;
+            padding: 1vw;
         }
+
+        .play_list_mov {
+            width: 10vw;
+            height: 10vw;
+            display: inline-block;
+            margin-right: -2vw;
+            background-color: brown;
+            -moz-transform: skewY(30deg);
+            -ms-transform: skewY(30deg);
+            -o-transform: skewY(30deg);
+            -webkit-transform: skewY(30deg);
+            transform: skewY(30deg);
+            -moz-transition: transform ease-in 0.2s;
+            -o-transition: transform ease-in 0.2s;
+            -webkit-transition: transform ease-in 0.2s;
+            transition: transform ease-in 0.2s;
+        }
+
+            .play_list_mov:hover {
+                -moz-transform: skewY(10deg);
+                -ms-transform: skewY(10deg);
+                -o-transform: skewY(10deg);
+                -webkit-transform: skewY(10deg);
+                transform: skewY(10deg);
+            }
     </style>
 </head>
 <body>
@@ -39,7 +64,7 @@
         </div>
     </div>
     <!-- Mov List -->
-    <div class="w3-container w3-card-4">
+    <div class="w3-container w3-card-4 play_list_container">
         <div class="play_list_mov" data-mov-id="4GZUQFcht78">
             <img />
         </div>
@@ -56,7 +81,7 @@
     function getEmbedYoutubeUrl(url) {
         var embedKeyword = 'embed/';
         var originalKeyword = '/watch?v=';
-        
+
         if (url.search(embedKeyword) !== -1) {
             // 1. embed url일 경우
             return url.slice(url.lastIndexOf(embedKeyword) + embedKeyword.length);
@@ -69,7 +94,7 @@
                 // 2-2. 생짜 url이고 플레이리스트가 없는 경우
                 return url.slice(url.lastIndexOf(originalKeyword) + originalKeyword.length);
             }
-            
+
         }
     }
 </script>
