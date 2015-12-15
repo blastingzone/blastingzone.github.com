@@ -714,6 +714,13 @@
       "desc": "PHP 커뮤니티의 권위자들이 남긴 좋은 글들",
       "tag": [ "Web", "PHP" ],
       "rank": 3
+    },
+    {
+      "title": "기술면접에 나오는 Top 100 알고리즘",
+      "url": "http://www.geeksforgeeks.org/top-10-algorithms-in-interview-questions/",
+      "desc": "제목은 탑 10 이지만 각각 10개씩 총 100개다",
+      "tag": [ "Algorithm" ],
+      "rank": 3
     }
   ]
 }
