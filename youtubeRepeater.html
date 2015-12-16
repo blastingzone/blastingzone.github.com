@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- jQuery -->
     <script src="./lib/jquery-1.11.3.min.js"></script>
+    <!-- jQuery UI -->
+    <script src="./lib/jquery-ui.js"></script>
     <!-- w3.css -->
     <link rel="stylesheet" href="./lib/w3.css">
     <link rel="stylesheet" id="theme_css" href="./lib/w3-theme-dark-grey.css">
@@ -96,5 +98,14 @@
             }
 
         }
+    }
+
+    function initialVideoListSortable() {
+        $('.play_list_container').sortable();
+        $('.play_list_container').disableSelection();
+    }
+
+    function initialVideoListDraggable() {
+        
     }
 </script>
