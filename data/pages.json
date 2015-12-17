@@ -721,6 +721,13 @@
       "desc": "제목은 탑 10 이지만 각각 10개씩 총 100개다",
       "tag": [ "Algorithm" ],
       "rank": 3
+    },
+    {
+      "title": "iOS Architecture Pattern",
+      "url": "https://medium.com/ios-os-x-development/ios-architecture-patterns-ecba4c38de52#.yras1vv87",
+      "desc": "iOS 아키텍쳐 패턴 소개",
+      "tag": [ "iOS","Pattern" ],
+      "rank": 3
     }
   ]
 }
