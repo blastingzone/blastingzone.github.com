@@ -69,56 +69,64 @@
       "url": "http://developers.daum.net/",
       "desc": "다음에서 제공하는 API와 SDK 설명",
       "tag": [ "Web", "API", "Support", "KnowHow" ],
-      "rank": 1
+      "rank": 1,
+      "category": "web"
     },
     {
       "title": "RegExr",
       "url": "http://www.regexr.com/",
       "desc": "자바스크립트에서 지원하는 정규표현식 연습",
       "tag": [ "Web", "RegularExpression", "Tool", "Study" ],
-      "rank": 4
+      "rank": 4,
+      "category": "util"
     },
     {
       "title": "JSONViewer",
       "url": "http://jsonviewer.stack.hu/",
       "desc": "온라인 JSON 뷰어",
       "tag": [ "Web", "Json", "Tool", "Utility" ],
-      "rank": 4
+      "rank": 4,
+      "category": "util"
     },
     {
       "title": "DataConverter",
       "url": "https://shancarter.github.io/mr-data-converter/",
       "desc": "Excel 데이터를 웹 친화적인 데이터로 바꿔줌",
       "tag": [ "Web", "CSV", "Json", "Utility" ],
-      "rank": 4
+      "rank": 4,
+      "category": "util"
     },
     {
       "title": "PHPTester",
       "url": "http://phptester.net/",
       "desc": "PHP 테스트용 툴. 시스템 건드리는 함수는 막혀있다.",
       "tag": [ "Web", "PHP", "Test", "Utility" ],
-      "rank": 4
+      "rank": 4,
+      "category": "programming language"
     },
     {
       "title": "Appetizer",
       "url": "https://appetize.io/",
       "desc": "iOS / Android 시뮬레이터",
       "tag": [ "Web", "App", "iOS", "Android", "Utility", "Simulator", "Mobile" ],
-      "rank": 4
+      "rank": 4,
+      "category": "mobile"
     },
     {
       "title": "JaguarJS",
       "url": "https://davidshimjs.github.io/jaguarjs/",
       "desc": "모바일에 최적화된 Javascript library 애니메이션",
       "tag": [ "Web", "Mobile", "Javascript", "Library", "Animation" ],
-      "rank": 4
+      "rank": 4,
+      "category": "programming language"
     },
     {
       "title": "Unity3D",
       "url": "http://unity3d.com/kr/unity",
       "desc": "Unity 엔진 공식 사이트",
       "tag": [ "Game", "C#", "Javascript", "Engine", "Graphics", "Mono", "Unity", "Tutorial", "Study", "Reference" ],
-      "rank": 0
+      "rank": 0,
+       "category": "game"
     },
     {
       "title": "UnrealEngine",
