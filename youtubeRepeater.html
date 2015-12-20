@@ -62,7 +62,10 @@
     <!-- Player -->
     <div class="w3-container">
         <div class="video_container w3-card-4">
-            <iframe class="video_player" src="https://www.youtube.com/embed/4GZUQFcht78?" frameborder="0" allowfullscreen></iframe>
+            <div id="main_video_player" class="video_player"></div>
+            <!--
+            <iframe class="video_player" src="https://www.youtube.com/embed/4GZUQFcht78" frameborder="0" allowfullscreen></iframe>
+                -->
         </div>
     </div>
     <!-- Mov List -->
@@ -80,6 +83,13 @@
 </body>
 </html>
 <script type="text/javascript">
+    // Ref :: https://developers.google.com/youtube/player_parameters?hl=ko
+
+    // Main
+    $(document).ready(function () {
+        initialLoadYoutubeAPI();
+    });
+
     function getEmbedYoutubeUrl(url) {
         var embedKeyword = 'embed/';
         var originalKeyword = '/watch?v=';
@@ -107,5 +117,25 @@
 
     function initialVideoListDraggable() {
         
+    }
+
+    function initialLoadYoutubeAPI() {
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/player_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        // Replace the 'ytplayer' element with an <iframe> and
+        // YouTube player after the API code downloads.
+        var player;
+        function onYouTubePlayerAPIReady() {
+
+        }
+    }
+
+    function testCreateIframeFunc() {
+        player = new YT.Player('main_video_player', {
+            videoId: '4GZUQFcht78'
+        });
     }
 </script>
