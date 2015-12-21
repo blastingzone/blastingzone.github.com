@@ -126,63 +126,71 @@
       "desc": "Unity 엔진 공식 사이트",
       "tag": [ "Game", "C#", "Javascript", "Engine", "Graphics", "Mono", "Unity", "Tutorial", "Study", "Reference" ],
       "rank": 0,
-       "category": "game"
+      "category": "game"
     },
     {
       "title": "UnrealEngine",
       "url": "https://www.unrealengine.com/ko/what-is-unreal-engine-4",
       "desc": "언리얼 엔진 공식 사이트",
       "tag": [ "Game", "C#", "Blueprint", "Engine", "Graphics", "Tutorial", "Study", "Reference" ],
-      "rank": 0
+      "rank": 0,
+      "category": "game"
     },
     {
       "title": "RealTimeRendering",
       "url": "http://advances.realtimerendering.com/",
       "desc": "리얼타임 렌더링 공식 사이트",
       "tag": [ "Graphics", "Conference" ],
-      "rank": 1
+      "rank": 1,
+      "category": "graphics"
     },
     {
       "title": "DevMag",
       "url": "http://devmag.org.za/",
       "desc": "게임 개발 잡지",
       "tag": [ "Game", "Magazine", "Graphics", "Study" ],
-      "rank": 2
+      "rank": 2,
+      "category": "game"
     },
     {
       "title": "GameCodingSchool",
       "url": "http://gamecodingschool.org/",
       "desc": "프로그래밍에 관한 양질의 글이 많음",
       "tag": [ "Game", "Programming", "Article" ],
-      "rank": 2
+      "rank": 2,
+      "category": "game"
     },
     {
       "title": "OpenGameArt",
       "url": "http://opengameart.org/",
       "desc": "무료 게임 아트 리소스",
       "tag": [ "Game", "Asset", "Art", "Free" ],
-      "rank": 3
+      "rank": 3,
+      "category": "game"
     },
     {
       "title": "Galexandria",
       "url": "http://www.galexandria.com/main/denoils-intro-to-gamedev",
       "desc": "게임개발 강좌",
       "tag": [ "Game", "Study", "Graphics", "Tutorial", "OpenGL" ],
-      "rank": 3
+      "rank": 3,
+      "category": "game"
     },
     {
       "title": "GameSync",
       "url": "http://www.gamesync.com.ne.kr/",
       "desc": "FPS 게임 에디터 (학습용)",
       "tag": [ "Game", "Study", "Graphics", "Tutorial", "Editor" ],
-      "rank": 3
+      "rank": 3,
+      "category": "game"
     },
     {
       "title": "3DAPI",
       "url": "http://3dapi.com/",
       "desc": "갈릭 게임 엔진 (학습용)",
       "tag": [ "Game", "Study", "Graphics", "Tutorial", "Engine" ],
-      "rank": 3
+      "rank": 3,
+      "category": "game"
     },
     {
       "title": "BoxNWhisker",
