@@ -197,28 +197,32 @@
       "url": "http://boxnwhis.kr/",
       "desc": "데이터 분석 서비스 및 강좌",
       "tag": [ "Game", "Statics", "Study", "Lecture", "Data", "Analysis", "Tutorial" ],
-      "rank": 2
+      "rank": 2,
+      "category": "game"
     },
     {
       "title": "Calcu",
       "url": "http://calcu.kr/%EB%AA%A9%EC%B0%A8.aspx",
       "desc": "온갖 수학계산을 도와주는 유틸 모음",
       "tag": [ "Utility, Calculator" ],
-      "rank": 4
+      "rank": 4,
+      "category": "game"
     },
     {
       "title": "LudumDare",
       "url": "http://ludumdare.com/compo/about-ludum-dare/",
       "desc": "전세계 개발자들과 함께하는 주말 게임 해카톤",
       "tag": [ "Game, Hackerton" ],
-      "rank": 4
+      "rank": 4,
+      "category": "game"
     },
     {
       "title": "OutOfIndex",
       "url": "http://www.outofindex.org/?",
       "desc": "실험 게임 발표 페스티벌",
       "tag": [ "Game", "Experiment", "Session" ],
-      "rank": 2
+      "rank": 2,
+      "category": "game"
     },
     {
       "title": "HardCoreGaming",

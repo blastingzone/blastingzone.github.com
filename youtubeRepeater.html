@@ -61,7 +61,7 @@
     </header>
     <!-- Player -->
     <div class="w3-container">
-        <div class="video_container w3-card-4">
+        <div class="video_container w3-card-4 video_droppable">
             <div id="main_video_player" class="video_player"></div>
             <!--
             <iframe class="video_player" src="https://www.youtube.com/embed/4GZUQFcht78" frameborder="0" allowfullscreen></iframe>
@@ -88,6 +88,8 @@
     // Main
     $(document).ready(function () {
         initialLoadYoutubeAPI();
+        initialVideoListSortable();
+        initialVideoListDraggable();
     });
 
     function getEmbedYoutubeUrl(url) {
@@ -116,7 +118,22 @@
     }
 
     function initialVideoListDraggable() {
-        
+        $('.video_droppable').droppable({
+            accept: ".play_list_mov",
+            drop: function (event, ui) {
+                console.debug(ui);
+                var curVideoObject = ui.helper[0];
+                // drop video object
+                if ($(curVideoObject).hasClass('play_list_mov')) {
+                    var video_url = $(curVideoObject).attr('data-mov-id');
+                    player = new YT.Player('main_video_player', {
+                        videoId: video_url
+                    });
+                    console.log(video_url);
+                   
+                }
+            }
+        });
     }
 
     function initialLoadYoutubeAPI() {
