@@ -89,6 +89,18 @@
 <script type="text/javascript">
     // Ref :: https://developers.google.com/youtube/player_parameters?hl=ko
 
+    function VideoController() {
+        console.log("Create Video Controller");
+    }
+    VideoController.prototype.setPlayer = function (player) {
+        this.player = player;
+    }
+    VideoController.prototype.getPlayer = function () {
+        return this.player;
+    }
+
+    var g_videoController = new VideoController();
+
     // Main
     $(document).ready(function () {
         initialLoadYoutubeAPI();
@@ -130,11 +142,11 @@
                 // drop video object
                 if ($(curVideoObject).hasClass('play_list_mov')) {
                     var video_url = $(curVideoObject).attr('data-mov-id');
-                    player = new YT.Player('main_video_player', {
+                    var player = new YT.Player('main_video_player', {
                         videoId: video_url
                     });
                     console.log(video_url);
-                   
+                    g_videoController.setPlayer(player);
                 }
             }
         });
@@ -146,17 +158,10 @@
         var firstScriptTag = document.getElementsByTagName('script')[0];
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-        // Replace the 'ytplayer' element with an <iframe> and
         // YouTube player after the API code downloads.
-        var player;
         function onYouTubePlayerAPIReady() {
 
         }
     }
 
-    function testCreateIframeFunc() {
-        player = new YT.Player('main_video_player', {
-            videoId: '4GZUQFcht78'
-        });
-    }
 </script>
