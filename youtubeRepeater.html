@@ -98,6 +98,13 @@
     VideoController.prototype.getPlayer = function () {
         return this.player;
     }
+    VideoController.prototype.destroyPlayer = function () {
+        if (this.player !== undefined && this.player !== null) {
+            this.player.destroy();
+        } else {
+            this.player = null;
+        }
+    }
 
     var g_videoController = new VideoController();
 
@@ -141,6 +148,7 @@
                 var curVideoObject = ui.helper[0];
                 // drop video object
                 if ($(curVideoObject).hasClass('play_list_mov')) {
+                    g_videoController.destroyPlayer();
                     var video_url = $(curVideoObject).attr('data-mov-id');
                     var player = new YT.Player('main_video_player', {
                         videoId: video_url
@@ -163,5 +171,6 @@
 
         }
     }
+
 
 </script>
