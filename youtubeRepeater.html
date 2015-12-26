@@ -89,6 +89,9 @@
 <script type="text/javascript">
     // Ref :: https://developers.google.com/youtube/player_parameters?hl=ko
 
+    ////////////////////////////////////////////////////////////////
+    // VIdeoController Class
+    ////////////////////////////////////////////////////////////////
     function VideoController() {
         console.log("Create Video Controller");
     }
@@ -105,6 +108,22 @@
             this.player = null;
         }
     }
+    VideoController.prototype.playVideo = function() {
+        if (this.player !== undefined && this.player !== null) {
+            this.player.playVideo();
+        }
+    }
+    VideoController.prototype.stopVideo = function () {
+        if (this.player !== undefined && this.player !== null) {
+            this.player.stopVideo();
+        }
+    }
+    VideoController.prototype.pauseVideo = function () {
+        if (this.player !== undefined && this.player !== null) {
+            this.player.pauseVideo();
+        }
+    }
+    ////////////////////////////////////////////////////////////////
 
     var g_videoController = new VideoController();
 
