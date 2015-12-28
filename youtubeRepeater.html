@@ -11,19 +11,27 @@
     <!-- w3.css -->
     <link rel="stylesheet" href="./lib/w3.css">
     <link rel="stylesheet" id="theme_css" href="./lib/w3-theme-dark-grey.css">
+    <!-- Google material Icon -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!-- custom style sheet -->
     <link rel="stylesheet" media="all and (min-width : 960px)" href="./css/ytp/desktop.css" />
     <link rel="stylesheet" media="all and (min-width : 600px) and (max-width : 960px)" href="./css/ytp/tablet.css" />
 
     <title>Youtube Repeater</title>
     <style>
-        
+        .main_video_controller i{
+            cursor:pointer;
+        }
     </style>
 </head>
 <body>
     <header class="w3-container w3-theme-d2">
         <span class="w3-xxlarge">Y O U T U B E R E P E A T E R</span>
     </header>
+    <!-- Title -->
+    <div>
+
+    </div>
     <!-- Player -->
     <div class="w3-container">
         <div class="video_container w3-card-4 video_droppable">
@@ -31,6 +39,14 @@
             <!--
             <iframe class="video_player" src="https://www.youtube.com/embed/4GZUQFcht78" frameborder="0" allowfullscreen></iframe>
                 -->
+        </div>
+        <!-- Video Controller -->
+        <div class="main_video_controller">
+            <i class="material-icons w3-xxxlarge" >skip_previous</i>
+            <i class="material-icons w3-xxxlarge" >skip_next</i>
+            <i class="material-icons w3-xxxlarge" onclick="g_videoController.pauseVideo()">pause</i>
+            <i class="material-icons w3-xxxlarge" onclick="g_videoController.playVideo()">play_arrow</i>
+            <i class="material-icons w3-xxxlarge" onclick="g_videoController.stopVideo()">stop</i>
         </div>
     </div>
     <!-- Mov List -->
@@ -151,6 +167,5 @@
 
         }
     }
-
 
 </script>
