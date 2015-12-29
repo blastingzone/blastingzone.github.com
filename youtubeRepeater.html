@@ -19,9 +19,13 @@
 
     <title>Youtube Repeater</title>
     <style>
-        .main_video_controller i{
-            cursor:pointer;
+        .main_video_controller i {
+            cursor: pointer;
+            color: #808080;
         }
+            .main_video_controller i:active {
+                color: #000000;
+            }
     </style>
 </head>
 <body>
@@ -42,17 +46,22 @@
         </div>
         <!-- Video Controller -->
         <div class="main_video_controller">
-            <i class="material-icons w3-xxxlarge" >skip_previous</i>
-            <i class="material-icons w3-xxxlarge" >skip_next</i>
+            <i class="material-icons w3-xxxlarge">skip_previous</i>
+            <i class="material-icons w3-xxxlarge">skip_next</i>
             <i class="material-icons w3-xxxlarge" onclick="g_videoController.pauseVideo()">pause</i>
             <i class="material-icons w3-xxxlarge" onclick="g_videoController.playVideo()">play_arrow</i>
             <i class="material-icons w3-xxxlarge" onclick="g_videoController.stopVideo()">stop</i>
         </div>
     </div>
+    <!-- Mov Add -->
+    <div class="w3-container">
+        <label for="youtube_url">Youtube URL</label>
+        <input name="youtube_url" class="w3-input" type="text" value="" placeholder="Add Youtube URL" />
+    </div>
     <!-- Mov List -->
     <div class="w3-container w3-card-4 play_list_container">
         <div class="play_list_mov" data-mov-id="4GZUQFcht78">
-            <img class="w3-circle" src="http://img.youtube.com/vi/4GZUQFcht78/1.jpg"/>
+            <img class="w3-circle" src="http://img.youtube.com/vi/4GZUQFcht78/1.jpg" />
         </div>
         <div class="play_list_mov" data-mov-id="sXD2eWLqzU0">
             <img src="http://img.youtube.com/vi/sXD2eWLqzU0/1.jpg" />
@@ -85,7 +94,7 @@
             this.player = null;
         }
     }
-    VideoController.prototype.playVideo = function() {
+    VideoController.prototype.playVideo = function () {
         if (this.player !== undefined && this.player !== null) {
             this.player.playVideo();
         }
