@@ -109,6 +109,9 @@
             this.player.pauseVideo();
         }
     }
+    VideoController.prototype.onPlayerStateChange = function (event) {
+        console.debug(event);
+    }
     ////////////////////////////////////////////////////////////////
 
     var g_videoController = new VideoController();
@@ -154,16 +157,25 @@
                 // drop video object
                 if ($(curVideoObject).hasClass('play_list_mov')) {
                     g_videoController.destroyPlayer();
-                    var video_url = $(curVideoObject).attr('data-mov-id');
-                    var player = new YT.Player('main_video_player', {
-                        videoId: video_url
-                    });
-                    console.log(video_url);
-                    g_videoController.setPlayer(player);
+                    var videoID = $(curVideoObject).attr('data-mov-id');
+                    
+                    setVideoPlayer(videoID);
                 }
             }
         });
     }
+
+    function setVideoPlayer(videoID) {
+        var player = new YT.Player('main_video_player', {
+            videoId: videoID,
+            events: {
+                'onStateChange': g_videoController.onPlayerStateChange
+            }
+        });
+        console.log(videoID);
+        g_videoController.setPlayer(player);
+    }
+
 
     function initialLoadYoutubeAPI() {
         var tag = document.createElement('script');
