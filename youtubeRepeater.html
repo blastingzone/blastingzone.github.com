@@ -111,6 +111,17 @@
     }
     VideoController.prototype.onPlayerStateChange = function (event) {
         console.debug(event);
+        switch (event.data) {
+            case 0:
+                console.debug("catch");
+                
+                setTimeout(function () {
+                    event.target.playVideo();
+                }, 500);
+                break;
+            default:
+                break;
+        }
     }
     ////////////////////////////////////////////////////////////////
 
