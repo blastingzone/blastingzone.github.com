@@ -53,10 +53,11 @@
             <i class="material-icons w3-xxxlarge" onclick="g_videoController.stopVideo()">stop</i>
         </div>
     </div>
-    <!-- Mov Add -->
+    <!-- Mov Adder -->
     <div class="w3-container">
         <label for="youtube_url">Youtube URL</label>
-        <input name="youtube_url" class="w3-input" type="text" value="" placeholder="Add Youtube URL" />
+        <input id="youtube_url" name="youtube_url" class="w3-input" type="text" value="" placeholder="Add Youtube URL" />
+        <button class="w3-btn w3-slim" onclick="addNewVideo()">Add New Video</button>
     </div>
     <!-- Mov List -->
     <div class="w3-container w3-card-4 play_list_container">
@@ -113,11 +114,7 @@
         console.debug(event);
         switch (event.data) {
             case 0:
-                console.debug("catch");
-                
-                setTimeout(function () {
-                    event.target.playVideo();
-                }, 500);
+                event.target.playVideo();
                 break;
             default:
                 break;
@@ -200,4 +197,20 @@
         }
     }
 
+    function addNewVideo() {
+        var url = $('#youtube_url').val();
+
+        if (url == null || url == undefined || url == "") {
+            return;
+        }
+
+        video_id = getEmbedYoutubeUrl(url);
+
+        var videoObj = createVideoObject(video_id);
+        $('.play_list_container').append(videoObj);
+    }
+
+    function createVideoObject(video_id) {
+        return '<div class="play_list_mov" data-mov-id=' + video_id + '><img src="http://img.youtube.com/vi/' + video_id + '/1.jpg" /></div>';
+    }
 </script>
