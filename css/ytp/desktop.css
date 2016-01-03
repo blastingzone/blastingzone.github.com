@@ -1,13 +1,18 @@
-﻿#main_player_container{
+﻿#main_player_container {
     background: url("../../img/ytrpt/water-815271_1920.jpg");
 }
 
-#main_video_player{
-    opacity:0.5;
+#main_video_player {
+    opacity: 0.5;
 }
 
-.main_video_controller{
-    text-align:center;
+.main_video_controller {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.25);
+    background: -webkit-linear-gradient(left,rgba(255,0,0,0),rgba(255,255,255,0.8),rgba(255,0,0,0)); /*Safari 5.1-6*/
+    background: -o-linear-gradient(right,rgba(255,0,0,0),rgba(255,255,255,0.8),rgba(255,0,0,0)); /*Opera 11.1-12*/
+    background: -moz-linear-gradient(right,rgba(255,0,0,0),rgba(255,255,255,0.8),rgba(255,0,0,0)); /*Fx 3.6-15*/
+    background: linear-gradient(to right, rgba(255,0,0,0), rgba(255,255,255,0.8),rgba(255,0,0,0)); /*Standard*/
 }
 
 .video_container {
@@ -34,15 +39,15 @@
     -moz-transition: border-radius 0.5s ease;
     -o-transition: border-radius 0.5s ease;
     transition: border-radius 0.5s ease;
-    border:0.1vw solid black;
+    border: 0.1vw solid black;
 }
 
     .play_list_mov:hover {
-        border-radius:50%;
+        border-radius: 50%;
     }
 
     .play_list_mov img {
         width: 100%;
         height: 100%;
-        border:0.1vw solid black;
+        border: 0.1vw solid black;
     }

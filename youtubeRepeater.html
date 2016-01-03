@@ -134,20 +134,23 @@
     function getEmbedYoutubeUrl(url) {
         var embedKeyword = 'embed/';
         var originalKeyword = '/watch?v=';
+        var listKeyword = '&list';
 
         if (url.search(embedKeyword) !== -1) {
             // 1. embed url일 경우
             return url.slice(url.lastIndexOf(embedKeyword) + embedKeyword.length);
         } else {
             // 2. 생짜 url일 경우
-            if (url.search('&list') !== -1) {
+            if (url.search(listKeyword) !== -1) {
                 // 2-1. 생짜 url인데 플레이리스트가 같이 있을 경우
-                return url.slice(url.lastIndexOf('/watch?v=') + '/watch?v='.length).replace('&', '?');
+                // 플레이 리스트를 살리는 케이스 (YT Player에서는 사용 불가)
+                //return url.slice(url.lastIndexOf(originalKeyword) + originalKeyword.length).replace('&', '?');
+                // 플레이 리스트를 제거하는 케이스
+                return url.slice(url.lastIndexOf(originalKeyword) + originalKeyword.length, url.indexOf(listKeyword));
             } else {
                 // 2-2. 생짜 url이고 플레이리스트가 없는 경우
                 return url.slice(url.lastIndexOf(originalKeyword) + originalKeyword.length);
             }
-
         }
     }
 
@@ -211,6 +214,6 @@
     }
 
     function createVideoObject(video_id) {
-        return '<div class="play_list_mov" data-mov-id=' + video_id + '><img src="http://img.youtube.com/vi/' + video_id + '/1.jpg" /></div>';
+        return '<div class="play_list_mov" data-mov-id=' + video_id + '><img class="w3-circle" src="http://img.youtube.com/vi/' + video_id + '/0.jpg" /></div>';
     }
 </script>
