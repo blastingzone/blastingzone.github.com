@@ -9,10 +9,10 @@
 .main_video_controller {
     text-align: center;
     background: rgba(255, 255, 255, 0.25);
-    background: -webkit-linear-gradient(left,rgba(255,0,0,0),rgba(255,255,255,0.8),rgba(255,0,0,0)); /*Safari 5.1-6*/
-    background: -o-linear-gradient(right,rgba(255,0,0,0),rgba(255,255,255,0.8),rgba(255,0,0,0)); /*Opera 11.1-12*/
-    background: -moz-linear-gradient(right,rgba(255,0,0,0),rgba(255,255,255,0.8),rgba(255,0,0,0)); /*Fx 3.6-15*/
-    background: linear-gradient(to right, rgba(255,0,0,0), rgba(255,255,255,0.8),rgba(255,0,0,0)); /*Standard*/
+    background: -webkit-linear-gradient(left,rgba(255,0,0,0),rgba(255,255,255,0.6),rgba(255,0,0,0)); /*Safari 5.1-6*/
+    background: -o-linear-gradient(right,rgba(255,0,0,0),rgba(255,255,255,0.6),rgba(255,0,0,0)); /*Opera 11.1-12*/
+    background: -moz-linear-gradient(right,rgba(255,0,0,0),rgba(255,255,255,0.6),rgba(255,0,0,0)); /*Fx 3.6-15*/
+    background: linear-gradient(to right, rgba(255,0,0,0), rgba(255,255,255,0.6),rgba(255,0,0,0)); /*Standard*/
 }
 
 .video_container {

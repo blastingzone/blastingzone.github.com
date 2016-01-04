@@ -146,7 +146,7 @@
                 // 플레이 리스트를 살리는 케이스 (YT Player에서는 사용 불가)
                 //return url.slice(url.lastIndexOf(originalKeyword) + originalKeyword.length).replace('&', '?');
                 // 플레이 리스트를 제거하는 케이스
-                return url.slice(url.lastIndexOf(originalKeyword) + originalKeyword.length, url.indexOf(listKeyword));
+                return url.slice(url.lastIndexOf(originalKeyword) + originalKeyword.length, url.indexOf('&'));
             } else {
                 // 2-2. 생짜 url이고 플레이리스트가 없는 경우
                 return url.slice(url.lastIndexOf(originalKeyword) + originalKeyword.length);
@@ -187,7 +187,6 @@
         g_videoController.setPlayer(player);
     }
 
-
     function initialLoadYoutubeAPI() {
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/player_api";
@@ -201,7 +200,8 @@
     }
 
     function addNewVideo() {
-        var url = $('#youtube_url').val();
+        var url_input = $('#youtube_url');
+        var url = url_input.val();
 
         if (url == null || url == undefined || url == "") {
             return;
@@ -211,6 +211,8 @@
 
         var videoObj = createVideoObject(video_id);
         $('.play_list_container').append(videoObj);
+
+        url_input.val(""); // empty input
     }
 
     function createVideoObject(video_id) {
