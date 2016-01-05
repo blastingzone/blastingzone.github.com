@@ -38,7 +38,7 @@
     </div>
     <!-- Main Player -->
     <div id="main_player_container" class="w3-container">
-        <div class="video_container w3-card-4 video_droppable">
+        <div class="video_container w3-card-4 video_droppable" data-player-code="1">
             <div id="main_video_player" class="video_player"></div>
             <!--
             <iframe class="video_player" src="https://www.youtube.com/embed/4GZUQFcht78" frameborder="0" allowfullscreen></iframe>
@@ -48,9 +48,9 @@
         <div class="main_video_controller">
             <i class="material-icons w3-xxxlarge">skip_previous</i>
             <i class="material-icons w3-xxxlarge">skip_next</i>
-            <i class="material-icons w3-xxxlarge" onclick="g_videoController.pauseVideo()">pause</i>
-            <i class="material-icons w3-xxxlarge" onclick="g_videoController.playVideo()">play_arrow</i>
-            <i class="material-icons w3-xxxlarge" onclick="g_videoController.stopVideo()">stop</i>
+            <i class="material-icons w3-xxxlarge" onclick="g_videoController.pauseVideo(1)">pause</i>
+            <i class="material-icons w3-xxxlarge" onclick="g_videoController.playVideo(1)">play_arrow</i>
+            <i class="material-icons w3-xxxlarge" onclick="g_videoController.stopVideo(1)">stop</i>
         </div>
     </div>
     <!-- Mov Adder -->
@@ -81,39 +81,51 @@
     ////////////////////////////////////////////////////////////////
     function VideoController() {
         console.log("Create Video Controller");
+        this.playerList = {};
     }
-    VideoController.prototype.setPlayer = function (player) {
-        this.player = player;
+    VideoController.prototype.setPlayer = function (player, playerCode) {
+        this.playerList[playerCode] = player;
     }
-    VideoController.prototype.getPlayer = function () {
-        return this.player;
+    VideoController.prototype.getPlayer = function (playerCode) {
+        return this.playerList[playerCode];
     }
-    VideoController.prototype.destroyPlayer = function () {
-        if (this.player !== undefined && this.player !== null) {
-            this.player.destroy();
+    VideoController.prototype.destroyPlayer = function (playerCode) {
+        var targetPlayer = this.playerList[playerCode];
+        if (targetPlayer !== undefined && targetPlayer !== null) {
+            targetPlayer.destroy();
+        }
+    }
+    VideoController.prototype.destroyPlayerAll = function () {
+        if (this.playerList !== undefined && this.playerList !== null) {
+            for (var idx in this.playerList) {
+                playerList[idx].destroy();
+            }
         } else {
-            this.player = null;
+            this.playerList = null;
         }
     }
-    VideoController.prototype.playVideo = function () {
-        if (this.player !== undefined && this.player !== null) {
-            this.player.playVideo();
+    VideoController.prototype.playVideo = function (playerCode) {
+        var targetPlayer = this.playerList[playerCode];
+        if (targetPlayer !== undefined && targetPlayer !== null) {
+            targetPlayer.playVideo();
         }
     }
-    VideoController.prototype.stopVideo = function () {
-        if (this.player !== undefined && this.player !== null) {
-            this.player.stopVideo();
+    VideoController.prototype.stopVideo = function (playerCode) {
+        var targetPlayer = this.playerList[playerCode];
+        if (targetPlayer !== undefined && targetPlayer !== null) {
+            targetPlayer.stopVideo();
         }
     }
-    VideoController.prototype.pauseVideo = function () {
-        if (this.player !== undefined && this.player !== null) {
-            this.player.pauseVideo();
+    VideoController.prototype.pauseVideo = function (playerCode) {
+        var targetPlayer = this.playerList[playerCode];
+        if (targetPlayer !== undefined && targetPlayer !== null) {
+            targetPlayer.pauseVideo();
         }
     }
     VideoController.prototype.onPlayerStateChange = function (event) {
         console.debug(event);
         switch (event.data) {
-            case 0: // End Play -> Auto Replay
+            case YT.PlayerState.ENDED: // End Play -> Auto Replay
                 event.target.playVideo();
                 break;
             default:
@@ -167,16 +179,17 @@
                 var curVideoObject = ui.helper[0];
                 // drop video object
                 if ($(curVideoObject).hasClass('play_list_mov')) {
-                    g_videoController.destroyPlayer();
+                    var playerCode = $(this).attr('data-player-code');
+                    g_videoController.destroyPlayer(playerCode);
                     var videoID = $(curVideoObject).attr('data-mov-id');
                     
-                    setVideoPlayer(videoID);
+                    setVideoPlayer(videoID, playerCode);
                 }
             }
         });
     }
 
-    function setVideoPlayer(videoID) {
+    function setVideoPlayer(videoID, playerCode) {
         var player = new YT.Player('main_video_player', {
             videoId: videoID,
             events: {
@@ -184,7 +197,7 @@
             }
         });
         console.log(videoID);
-        g_videoController.setPlayer(player);
+        g_videoController.setPlayer(player, playerCode);
     }
 
     function initialLoadYoutubeAPI() {
