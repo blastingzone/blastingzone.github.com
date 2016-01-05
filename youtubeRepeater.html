@@ -113,7 +113,7 @@
     VideoController.prototype.onPlayerStateChange = function (event) {
         console.debug(event);
         switch (event.data) {
-            case 0:
+            case 0: // End Play -> Auto Replay
                 event.target.playVideo();
                 break;
             default:
