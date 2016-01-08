@@ -40,9 +40,6 @@
     <div id="main_player_container" class="w3-container">
         <div class="video_container w3-card-4 video_droppable" data-player-code="1">
             <div id="main_video_player" class="video_player"></div>
-            <!--
-            <iframe class="video_player" src="https://www.youtube.com/embed/4GZUQFcht78" frameborder="0" allowfullscreen></iframe>
-                -->
         </div>
         <!-- Video Controller -->
         <div class="main_video_controller">
@@ -51,6 +48,20 @@
             <i class="material-icons w3-xxxlarge" onclick="g_videoController.pauseVideo(1)">pause</i>
             <i class="material-icons w3-xxxlarge" onclick="g_videoController.playVideo(1)">play_arrow</i>
             <i class="material-icons w3-xxxlarge" onclick="g_videoController.stopVideo(1)">stop</i>
+        </div>
+    </div>
+    <!-- Main Player 2 -->
+    <div id="main_player_container" class="w3-container">
+        <div class="video_container w3-card-4 video_droppable" data-player-code="2">
+            <div id="main_video_player_2" class="video_player"></div>
+        </div>
+        <!-- Video Controller -->
+        <div class="main_video_controller">
+            <i class="material-icons w3-xxxlarge">skip_previous</i>
+            <i class="material-icons w3-xxxlarge">skip_next</i>
+            <i class="material-icons w3-xxxlarge" onclick="g_videoController.pauseVideo(2)">pause</i>
+            <i class="material-icons w3-xxxlarge" onclick="g_videoController.playVideo(2)">play_arrow</i>
+            <i class="material-icons w3-xxxlarge" onclick="g_videoController.stopVideo(2)">stop</i>
         </div>
     </div>
     <!-- Mov Adder -->
@@ -182,8 +193,9 @@
                     var playerCode = $(this).attr('data-player-code');
                     g_videoController.destroyPlayer(playerCode);
                     var videoID = $(curVideoObject).attr('data-mov-id');
+                    var elemId = $(this).find('.video_player').attr('id');
                     
-                    setVideoPlayer('main_video_player', videoID, playerCode);
+                    setVideoPlayer(elemId, videoID, playerCode);
                 }
             }
         });
