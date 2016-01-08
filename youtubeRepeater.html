@@ -183,14 +183,14 @@
                     g_videoController.destroyPlayer(playerCode);
                     var videoID = $(curVideoObject).attr('data-mov-id');
                     
-                    setVideoPlayer(videoID, playerCode);
+                    setVideoPlayer('main_video_player', videoID, playerCode);
                 }
             }
         });
     }
 
-    function setVideoPlayer(videoID, playerCode) {
-        var player = new YT.Player('main_video_player', {
+    function setVideoPlayer(id, videoID, playerCode) {
+        var player = new YT.Player(id, {
             videoId: videoID,
             events: {
                 'onStateChange': g_videoController.onPlayerStateChange
