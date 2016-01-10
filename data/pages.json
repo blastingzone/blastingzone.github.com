@@ -762,6 +762,20 @@
       "desc": "서버사이드 서비스를 제공해 줌",
       "tag": [ "Web", "App" ],
       "rank": 1
+    },
+    {
+      "title": "Firejune",
+      "url": "http://firejune.com/",
+      "desc": "Javascript 소식 / 튜토리얼 등을 접할 수 있음",
+      "tag": [ "Web", "Javascript" ],
+      "rank": 3
+    },
+    {
+      "title": "A.J. 님 블로그",
+      "url": "http://andrwj.com/blog/",
+      "desc": "Javascript 관련 정보를 블로깅 하는 분입니다",
+      "tag": [ "Web", "Javascript" ],
+      "rank": 3
     }
   ]
 }
