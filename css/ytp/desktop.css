@@ -1,4 +1,19 @@
-﻿#main_player_container {
+﻿
+/* Player Toggle Btns */
+.player_list_container{
+    padding: 1vw;
+}
+
+.player_display_toggle {
+    width: 10vw;
+    height: 10vw;
+    display: inline-block;
+
+    border : 0.1vw dashed #808080;
+}
+
+/* Player */
+#main_player_container {
     background: url("../../img/ytrpt/water-815271_1920.jpg");
 }
 
@@ -23,6 +38,7 @@
      opacity: 0.5;
 }
 
+/* Play List */
 .play_list_container {
     margin-top: 5vw;
     padding: 1vw;
