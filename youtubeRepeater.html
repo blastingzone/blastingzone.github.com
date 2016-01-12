@@ -35,9 +35,10 @@
     <!-- Player List -->
     <div class="w3-container w3-card-4 player_list_container">
         <div class="player_display_toggle" data-player-code="1"></div>
+        <div class="player_display_toggle" data-player-code="2"></div>
     </div>
     <!-- Main Player -->
-    <div id="main_player_container" class="w3-container">
+    <div id="main_player_container" class="w3-container player_container" data-player-code="1">
         <div class="video_container w3-card-4 video_droppable" data-player-code="1">
             <div id="main_video_player" class="video_player"></div>
         </div>
@@ -51,7 +52,7 @@
         </div>
     </div>
     <!-- Main Player 2 -->
-    <div id="main_player_container" class="w3-container">
+    <div id="main_player_container" class="w3-container player_container" data-player-code="2">
         <div class="video_container w3-card-4 video_droppable" data-player-code="2">
             <div id="main_video_player_2" class="video_player"></div>
         </div>
@@ -152,6 +153,7 @@
         initialLoadYoutubeAPI();
         initialVideoListSortable();
         initialVideoListDraggable();
+        initPlayerListToggleEvent();
     });
 
     function getEmbedYoutubeUrl(url) {
@@ -225,22 +227,31 @@
     }
 
     function addNewVideo() {
-        var url_input = $('#youtube_url');
-        var url = url_input.val();
+        var inputUrl = $('#youtube_url');
+        var url = inputUrl.val();
 
         if (url == null || url == undefined || url == "") {
             return;
         }
 
-        video_id = getEmbedYoutubeUrl(url);
+        videoID = getEmbedYoutubeUrl(url);
 
-        var videoObj = createVideoObject(video_id);
+        var videoObj = createVideoObject(videoID);
         $('.play_list_container').append(videoObj);
 
-        url_input.val(""); // empty input
+        inputUrl.val(""); // empty input
     }
 
-    function createVideoObject(video_id) {
-        return '<div class="play_list_mov" data-mov-id=' + video_id + '><img class="w3-circle" src="http://img.youtube.com/vi/' + video_id + '/0.jpg" /></div>';
+    function createVideoObject(videoID) {
+        return '<div class="play_list_mov" data-mov-id=' + videoID + '><img class="w3-circle" src="http://img.youtube.com/vi/' + video_id + '/0.jpg" /></div>';
+    }
+
+    // player controller list
+    function initPlayerListToggleEvent() {
+        $('.player_list_container').on('click', '.player_display_toggle', function () {
+            console.debug("CALL");
+            var targetPlayerId = $(this).attr('data-player-code');
+            $('.player_container[data-player-code=' + targetPlayerId + ']').toggle();
+        })
     }
 </script>
