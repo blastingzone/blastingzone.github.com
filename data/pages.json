@@ -776,6 +776,13 @@
       "desc": "Javascript 관련 정보를 블로깅 하는 분입니다",
       "tag": [ "Web", "Javascript" ],
       "rank": 3
+    },
+    {
+      "title": "JavaScript Garden",
+      "url": "http://bonsaiden.github.io/JavaScript-Garden/",
+      "desc": "Javascript의 필수적으로 짚고 넘어가야할 특징 소개",
+      "tag": [ "Web", "Javascript" ],
+      "rank": 3
     }
   ]
 }
