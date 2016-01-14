@@ -34,11 +34,16 @@
     </header>
     <!-- Player List -->
     <div class="w3-container w3-card-4 player_list_container">
-        <div class="player_display_toggle" data-player-code="1"></div>
-        <div class="player_display_toggle" data-player-code="2"></div>
+        <div class="player_display_toggle" data-player-code="1">
+            <img class="player_cover" src="" />
+        </div>
+        <div class="player_display_toggle" data-player-code="2">
+            <img class="player_cover" src="" />
+        </div>
+        <div class="player_add_btn"></div>
     </div>
     <!-- Main Player -->
-    <div id="main_player_container" class="w3-container player_container" data-player-code="1">
+    <div class="w3-container player_container" data-player-code="1">
         <div class="video_container w3-card-4 video_droppable" data-player-code="1">
             <div id="main_video_player" class="video_player"></div>
         </div>
@@ -52,7 +57,7 @@
         </div>
     </div>
     <!-- Main Player 2 -->
-    <div id="main_player_container" class="w3-container player_container" data-player-code="2">
+    <div class="w3-container player_container" data-player-code="2">
         <div class="video_container w3-card-4 video_droppable" data-player-code="2">
             <div id="main_video_player_2" class="video_player"></div>
         </div>
@@ -198,6 +203,9 @@
                     var elemId = $(this).find('.video_player').attr('id');
                     
                     setVideoPlayer(elemId, videoID, playerCode);
+                    // player toggler img update
+                    var selector = ".player_display_toggle[data-player-code=" + playerCode + "]";
+                    $(selector).find('img').attr('src', getYoutubeThumbnailByID(videoID));
                 }
             }
         });
@@ -243,15 +251,18 @@
     }
 
     function createVideoObject(videoID) {
-        return '<div class="play_list_mov" data-mov-id=' + videoID + '><img class="w3-circle" src="http://img.youtube.com/vi/' + videoID + '/0.jpg" /></div>';
+        return '<div class="play_list_mov" data-mov-id=' + videoID + '><img class="w3-circle" src="' + getYoutubeThumbnailByID(videoID) + '" /></div>';
     }
 
     // player controller list
     function initPlayerListToggleEvent() {
         $('.player_list_container').on('click', '.player_display_toggle', function () {
-            console.debug("CALL");
             var targetPlayerId = $(this).attr('data-player-code');
             $('.player_container[data-player-code=' + targetPlayerId + ']').toggle();
         })
+    }
+
+    function getYoutubeThumbnailByID(videoID) {
+        return "http://img.youtube.com/vi/" + videoID + "/0.jpg";
     }
 </script>
