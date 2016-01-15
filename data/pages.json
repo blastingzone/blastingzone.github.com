@@ -783,6 +783,13 @@
       "desc": "Javascript의 필수적으로 짚고 넘어가야할 특징 소개",
       "tag": [ "Web", "Javascript" ],
       "rank": 3
+    },
+    {
+      "title": "네이버 데이터랩",
+      "url": "http://datalab.naver.com/",
+      "desc": "네이버의 검색 정보를 조회할 수 있다",
+      "tag": [ "Data" ],
+      "rank": 1
     }
   ]
 }
