@@ -13,6 +13,14 @@
     border : 0.1vw dashed #808080;
 }
 
+.center {
+    text-align:center;
+}
+
+.player_add_btn i{
+    line-height:10vw;
+}
+
 .player_cover {
     position: relative;
     top: -50%;
