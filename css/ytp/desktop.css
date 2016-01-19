@@ -5,11 +5,12 @@
 }
 
 .player_display_toggle, .player_add_btn {
+    float: left;
     width: 10vw;
     height: 10vw;
     display: inline-block;
+    margin-right: 0.5vw;
     overflow:hidden;
-
     border : 0.1vw dashed #808080;
 }
 

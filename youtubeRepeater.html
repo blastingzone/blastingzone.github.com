@@ -40,32 +40,34 @@
         <div class="player_display_toggle" data-player-code="2">
             <img class="player_cover" src="" />
         </div>
-        <div class="player_add_btn center">
+        <div class="player_add_btn center" onclick="addNewPlayerElement()">
             <i class="material-icons w3-xxxlarge">add</i>
         </div>
     </div>
-    <!-- Main Player -->
-    <div class="w3-container player_container" data-player-code="1">
-        <div class="video_container w3-card-4 video_droppable" data-player-code="1">
-            <div id="main_video_player" class="video_player"></div>
+    <div class="player_container_list">
+        <!-- Main Player -->
+        <div class="w3-container player_container" data-player-code="1">
+            <div class="video_container w3-card-4 video_droppable" data-player-code="1">
+                <div id="main_video_player" class="video_player"></div>
+            </div>
+            <!-- Video Controller -->
+            <div class="main_video_controller">
+                <i class="material-icons w3-xxxlarge" onclick="g_videoController.pauseVideo(1)">pause</i>
+                <i class="material-icons w3-xxxlarge" onclick="g_videoController.playVideo(1)">play_arrow</i>
+                <i class="material-icons w3-xxxlarge" onclick="g_videoController.stopVideo(1)">stop</i>
+            </div>
         </div>
-        <!-- Video Controller -->
-        <div class="main_video_controller">
-            <i class="material-icons w3-xxxlarge" onclick="g_videoController.pauseVideo(1)">pause</i>
-            <i class="material-icons w3-xxxlarge" onclick="g_videoController.playVideo(1)">play_arrow</i>
-            <i class="material-icons w3-xxxlarge" onclick="g_videoController.stopVideo(1)">stop</i>
-        </div>
-    </div>
-    <!-- Main Player 2 -->
-    <div class="w3-container player_container" data-player-code="2">
-        <div class="video_container w3-card-4 video_droppable" data-player-code="2">
-            <div id="main_video_player_2" class="video_player"></div>
-        </div>
-        <!-- Video Controller -->
-        <div class="main_video_controller">
-            <i class="material-icons w3-xxxlarge" onclick="g_videoController.pauseVideo(2)">pause</i>
-            <i class="material-icons w3-xxxlarge" onclick="g_videoController.playVideo(2)">play_arrow</i>
-            <i class="material-icons w3-xxxlarge" onclick="g_videoController.stopVideo(2)">stop</i>
+        <!-- Main Player 2 -->
+        <div class="w3-container player_container" data-player-code="2">
+            <div class="video_container w3-card-4 video_droppable" data-player-code="2">
+                <div id="main_video_player_2" class="video_player"></div>
+            </div>
+            <!-- Video Controller -->
+            <div class="main_video_controller">
+                <i class="material-icons w3-xxxlarge" onclick="g_videoController.pauseVideo(2)">pause</i>
+                <i class="material-icons w3-xxxlarge" onclick="g_videoController.playVideo(2)">play_arrow</i>
+                <i class="material-icons w3-xxxlarge" onclick="g_videoController.stopVideo(2)">stop</i>
+            </div>
         </div>
     </div>
     <!-- Mov Adder -->
@@ -155,7 +157,7 @@
     $(document).ready(function () {
         initialLoadYoutubeAPI();
         initialVideoListSortable();
-        initialVideoListDraggable();
+        initialVideoListDroppable();
         initPlayerListToggleEvent();
     });
 
@@ -187,23 +189,19 @@
         $('.play_list_container').disableSelection();
     }
 
-    function initialVideoListDraggable() {
-        $('.video_droppable').droppable({
+    function initialVideoListDroppable() {
+        setTargetVideoObjectDroppable('.video_droppable');
+    }
+
+    function setTargetVideoObjectDroppable(selector) {
+        $(selector).droppable({
             accept: ".play_list_mov",
             drop: function (event, ui) {
                 console.debug(ui);
                 var curVideoObject = ui.helper[0];
                 // drop video object
                 if ($(curVideoObject).hasClass('play_list_mov')) {
-                    var playerCode = $(this).attr('data-player-code');
-                    g_videoController.destroyPlayer(playerCode);
-                    var videoID = $(curVideoObject).attr('data-mov-id');
-                    var elemId = $(this).find('.video_player').attr('id');
-                    
-                    setVideoPlayer(elemId, videoID, playerCode);
-                    // player toggler img update
-                    var selector = ".player_display_toggle[data-player-code=" + playerCode + "]";
-                    $(selector).find('img').attr('src', getYoutubeThumbnailByID(videoID));
+                    createPlayerByVideoObject(this, curVideoObject);
                 }
             }
         });
@@ -228,7 +226,7 @@
 
         // YouTube player after the API code downloads.
         function onYouTubePlayerAPIReady() {
-
+            console.log("Load YT API OK");
         }
     }
 
@@ -262,5 +260,60 @@
 
     function getYoutubeThumbnailByID(videoID) {
         return "http://img.youtube.com/vi/" + videoID + "/0.jpg";
+    }
+
+    function createPlayerByVideoObject(player, videoObj) {
+        var playerCode = $(player).attr('data-player-code');
+        //To Do : Smart re-allocate player
+        g_videoController.destroyPlayer(playerCode);
+
+        var videoID = $(videoObj).attr('data-mov-id');
+        var elemId = $(player).find('.video_player').attr('id');
+
+        setVideoPlayer(elemId, videoID, playerCode);
+        // player toggler img update
+        var selector = ".player_display_toggle[data-player-code=" + playerCode + "]";
+        $(selector).find('img').attr('src', getYoutubeThumbnailByID(videoID));
+    }
+
+    function addNewPlayerElement() {
+        var playerCode = new Date().getTime();
+        var playerID = 'main_video_player' + playerCode;
+
+        // create Video
+        var container = $('<div>')
+            .addClass('w3-container player_container')
+            .attr('data-player-code', playerCode).appendTo('.player_container_list');
+        var playerContainer = $('<div>')
+            .addClass('video_container w3-card-4 video_droppable')
+            .attr('data-player-code', playerCode).appendTo(container);
+        var player = $('<div>')
+            .addClass('video_player')
+            .attr('id', playerID).appendTo(playerContainer);
+        var controller = $('<div>')
+            .addClass('main_video_controller').appendTo(container);
+        var pause = $('<i>')
+            .addClass('material-icons w3-xxxlarge')
+            .text('pause')
+            .attr('onclick','g_videoController.pauseVideo(' + playerCode + ')').appendTo(controller);
+        var play = $('<i>')
+            .addClass('material-icons w3-xxxlarge')
+            .text('play_arrow')
+            .attr('onclick', 'g_videoController.playVideo(' + playerCode + ')').appendTo(controller);
+        var stop = $('<i>')
+            .addClass('material-icons w3-xxxlarge')
+            .text('stop')
+            .attr('onclick', 'g_videoController.stopVideo(' + playerCode + ')').appendTo(controller);
+
+        // set droppable event
+        setTargetVideoObjectDroppable('.video_droppable[data-player-code='+ playerCode +']');
+
+        // create video toggler
+        var toggler = $('<div>')
+            .addClass('player_display_toggle')
+            .attr('data-player-code', playerCode).insertBefore('.player_add_btn');
+
+        var togglerImg = $('<img>')
+            .addClass('player_cover').appendTo(toggler);
     }
 </script>
