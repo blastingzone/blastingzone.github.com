@@ -12,7 +12,21 @@
     margin-right: 0.5vw;
     overflow:hidden;
     border : 0.1vw dashed #808080;
+
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
 }
+
+    .player_display_toggle.opened {
+        -moz-transform: rotate(5deg);
+        -ms-transform: rotate(5deg);
+        -o-transform: rotate(5deg);
+        -webkit-transform: rotate(5deg);
+        transform: rotate(5deg);
+        border: 0.1vw solid #303030;
+    }
 
 .center {
     text-align:center;

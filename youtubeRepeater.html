@@ -255,6 +255,7 @@
         $('.player_list_container').on('click', '.player_display_toggle', function () {
             var targetPlayerId = $(this).attr('data-player-code');
             $('.player_container[data-player-code=' + targetPlayerId + ']').toggle();
+            $(this).toggleClass('opened');
         })
     }
 
