@@ -8,6 +8,8 @@
     <script src="./lib/jquery-1.11.3.min.js"></script>
     <!-- jQuery UI -->
     <script src="./lib/jquery-ui.js"></script>
+    <!-- jQuery UI Touch Hack -->
+    <script src="./lib/jquery.ui.touch-punch.min.js"></script>
     <!-- w3.css -->
     <link rel="stylesheet" href="./lib/w3.css">
     <link rel="stylesheet" id="theme_css" href="./lib/w3-theme-dark-grey.css">
@@ -35,10 +37,10 @@
     <!-- Player List -->
     <div class="w3-container w3-card-4 player_list_container">
         <div class="player_display_toggle" data-player-code="1">
-            <img class="player_cover" src="" />
+            <img class="player_cover gray" src="" />
         </div>
         <div class="player_display_toggle" data-player-code="2">
-            <img class="player_cover" src="" />
+            <img class="player_cover gray" src="" />
         </div>
         <div class="player_add_btn center" onclick="addNewPlayerElement()">
             <i class="material-icons w3-xxxlarge">add</i>
@@ -52,9 +54,9 @@
             </div>
             <!-- Video Controller -->
             <div class="main_video_controller">
-                <i class="material-icons w3-xxxlarge" onclick="g_videoController.pauseVideo(1)">pause</i>
-                <i class="material-icons w3-xxxlarge" onclick="g_videoController.playVideo(1)">play_arrow</i>
-                <i class="material-icons w3-xxxlarge" onclick="g_videoController.stopVideo(1)">stop</i>
+                <i class="material-icons w3-xxxlarge" onclick="pauseVideo(1)">pause</i>
+                <i class="material-icons w3-xxxlarge" onclick="playVideo(1)">play_arrow</i>
+                <i class="material-icons w3-xxxlarge" onclick="stopVideo(1)">stop</i>
             </div>
         </div>
         <!-- Main Player 2 -->
@@ -64,9 +66,9 @@
             </div>
             <!-- Video Controller -->
             <div class="main_video_controller">
-                <i class="material-icons w3-xxxlarge" onclick="g_videoController.pauseVideo(2)">pause</i>
-                <i class="material-icons w3-xxxlarge" onclick="g_videoController.playVideo(2)">play_arrow</i>
-                <i class="material-icons w3-xxxlarge" onclick="g_videoController.stopVideo(2)">stop</i>
+                <i class="material-icons w3-xxxlarge" onclick="pauseVideo(2)">pause</i>
+                <i class="material-icons w3-xxxlarge" onclick="playVideo(2)">play_arrow</i>
+                <i class="material-icons w3-xxxlarge" onclick="stopVideo(2)">stop</i>
             </div>
         </div>
     </div>
@@ -214,7 +216,6 @@
                 'onStateChange': g_videoController.onPlayerStateChange
             }
         });
-        console.log(videoID);
         g_videoController.setPlayer(player, playerCode);
     }
 
@@ -296,15 +297,15 @@
         var pause = $('<i>')
             .addClass('material-icons w3-xxxlarge')
             .text('pause')
-            .attr('onclick','g_videoController.pauseVideo(' + playerCode + ')').appendTo(controller);
+            .attr('onclick','pauseVideo(' + playerCode + ')').appendTo(controller);
         var play = $('<i>')
             .addClass('material-icons w3-xxxlarge')
             .text('play_arrow')
-            .attr('onclick', 'g_videoController.playVideo(' + playerCode + ')').appendTo(controller);
+            .attr('onclick', 'playVideo(' + playerCode + ')').appendTo(controller);
         var stop = $('<i>')
             .addClass('material-icons w3-xxxlarge')
             .text('stop')
-            .attr('onclick', 'g_videoController.stopVideo(' + playerCode + ')').appendTo(controller);
+            .attr('onclick', 'stopVideo(' + playerCode + ')').appendTo(controller);
 
         // set droppable event
         setTargetVideoObjectDroppable('.video_droppable[data-player-code='+ playerCode +']');
@@ -315,6 +316,23 @@
             .attr('data-player-code', playerCode).insertBefore('.player_add_btn');
 
         var togglerImg = $('<img>')
-            .addClass('player_cover').appendTo(toggler);
+            .addClass('player_cover gray').appendTo(toggler);
     }
+
+    // video controller & UI control functions
+    function playVideo(playerCode) {
+        g_videoController.playVideo(playerCode);
+        var cover = $('.player_display_toggle[data-player-code=' + playerCode + "]").find('img').removeClass('gray');;
+    }
+
+    function stopVideo(playerCode) {
+        g_videoController.stopVideo(playerCode);
+        var cover = $('.player_display_toggle[data-player-code=' + playerCode + "]").find('img').addClass('gray');;
+    }
+
+    function pauseVideo(playerCode) {
+        g_videoController.pauseVideo(playerCode);
+        var cover = $('.player_display_toggle[data-player-code=' + playerCode + "]").find('img').addClass('gray');;
+    }
+
 </script>

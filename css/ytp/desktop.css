@@ -43,8 +43,8 @@
     width: 200%;
     height: 200%;
 
-    -webkit-filter: blur(3px);
-    filter: blur(3px);
+    -webkit-filter: blur(3px) grayscale(50%);
+    filter: blur(3px) grayscale(50%);
 
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
@@ -57,9 +57,14 @@
         top:0;
         left:0;
 
-        -webkit-filter: blur(0);
-        filter: blur(0);
+        -webkit-filter: blur(0) grayscale(50%);
+        filter: blur(0) grayscale(50%);
     }
+
+.player_cover.gray {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
 
 /* Player */
 .player_container {
@@ -85,7 +90,7 @@
 .video_player {
     width: 100%;
     height: 100%;
-     opacity: 0.5;
+    opacity: 0.5;
 }
 
 /* Play List */
