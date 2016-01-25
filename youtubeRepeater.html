@@ -147,6 +147,12 @@
             case YT.PlayerState.ENDED: // End Play -> Auto Replay
                 event.target.playVideo();
                 break;
+            case YT.PlayerState.PLAYING:
+                removeVideoToggleListGrayScale($('#' + event.target.f.id).parent().attr('data-player-code'));
+                break;
+            case YT.PlayerState.PAUSED:
+                addVideoToggleListGrayscale($('#' + event.target.f.id).parent().attr('data-player-code'));
+                break;
             default:
                 break;
         }
@@ -322,17 +328,25 @@
     // video controller & UI control functions
     function playVideo(playerCode) {
         g_videoController.playVideo(playerCode);
-        var cover = $('.player_display_toggle[data-player-code=' + playerCode + "]").find('img').removeClass('gray');;
+        removeVideoToggleListGrayScale(playerCode);
     }
 
     function stopVideo(playerCode) {
         g_videoController.stopVideo(playerCode);
-        var cover = $('.player_display_toggle[data-player-code=' + playerCode + "]").find('img').addClass('gray');;
+        addVideoToggleListGrayscale(playerCode);
     }
 
     function pauseVideo(playerCode) {
         g_videoController.pauseVideo(playerCode);
-        var cover = $('.player_display_toggle[data-player-code=' + playerCode + "]").find('img').addClass('gray');;
+        addVideoToggleListGrayscale(playerCode);
+    }
+
+    function addVideoToggleListGrayscale(playerCode) {
+        $('.player_display_toggle[data-player-code=' + playerCode + "]").find('img').addClass('gray');
+    }
+
+    function removeVideoToggleListGrayScale(playerCode) {
+        $('.player_display_toggle[data-player-code=' + playerCode + "]").find('img').removeClass('gray');
     }
 
 </script>
