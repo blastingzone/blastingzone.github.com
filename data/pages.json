@@ -818,6 +818,13 @@
       "desc": "2D webGL 라이브러리",
       "tag": [ "Javascript", "WebGL", "Library" ],
       "rank": "2"
+    },
+    {
+      "title": "awwwards",
+      "url": "http://www.awwwards.com/",
+      "desc": "디자인이 훌륭한 website 소개",
+      "tag": [ "HTML", "Javascript", "CSS", "Design", "Web" ],
+      "rank": "2"
     }
   ]
 }
