@@ -825,6 +825,13 @@
       "desc": "디자인이 훌륭한 website 소개",
       "tag": [ "HTML", "Javascript", "CSS", "Design", "Web" ],
       "rank": "2"
+    },
+    {
+      "title": "packet pub",
+      "url": "https://www.packtpub.com",
+      "desc": "CS 관련 서적 출판사. 가끔 무료책 공개도 한다",
+      "tag": [ "Book" ],
+      "rank": "2"
     }
   ]
 }
