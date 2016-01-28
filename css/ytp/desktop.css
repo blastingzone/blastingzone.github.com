@@ -6,8 +6,10 @@
 
 .player_display_toggle, .player_add_btn {
     float: left;
-    width: 10vw;
-    height: 10vw;
+    width: 8vw;
+    min-width: 120px;
+    height: 8vw;
+    min-height: 120px;
     display: inline-block;
     margin-right: 0.5vw;
     overflow:hidden;
@@ -32,8 +34,15 @@
     text-align:center;
 }
 
+.player_add_btn:before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+
 .player_add_btn i{
-    line-height:10vw;
+    vertical-align: middle;
 }
 
 .player_cover {
@@ -82,8 +91,10 @@
 }
 
 .video_container {
-    width: 36vw;
-    height: 36vw;
+    width: 28em;
+    min-width: 240px;
+    height: 28em;
+    min-height: 240px;
     margin: 0 auto 0 auto;
 }
 
@@ -100,8 +111,10 @@
 }
 
 .play_list_mov {
-    width: 10vw;
-    height: 10vw;
+    width: 8vw;
+    min-width: 120px;
+    height: 8vw;
+    min-height: 120px;
     display: inline-block;
     -webkit-transition: border-radius 0.5s ease;
     -moz-transition: border-radius 0.5s ease;

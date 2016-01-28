@@ -1,30 +1,134 @@
-﻿.video_container {
-    width: 72vw;
-    height: 72vw;
+﻿
+/* Player Toggle Btns */
+.player_list_container{
+    padding: 1vw;
+}
+
+.player_display_toggle, .player_add_btn {
+    float: left;
+    width: 12vw;
+    min-width: 80px;
+    height: 12vw;
+    min-height: 80px;
+    display: inline-block;
+    margin-right: 0.5vw;
+    overflow:hidden;
+    border : 0.1vw dashed #808080;
+
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+    .player_display_toggle.opened {
+        -moz-transform: rotate(5deg);
+        -ms-transform: rotate(5deg);
+        -o-transform: rotate(5deg);
+        -webkit-transform: rotate(5deg);
+        transform: rotate(5deg);
+        border: 0.1vw solid #303030;
+    }
+
+.center {
+    text-align:center;
+}
+
+.player_add_btn:before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+
+.player_add_btn i{
+    vertical-align: middle;
+}
+
+.player_cover {
+    position: relative;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+
+    -webkit-filter: blur(3px) grayscale(50%);
+    filter: blur(3px) grayscale(50%);
+
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+    .player_cover:hover{
+        width:100%;
+        height:100%;
+        top:0;
+        left:0;
+
+        -webkit-filter: blur(0) grayscale(50%);
+        filter: blur(0) grayscale(50%);
+    }
+
+.player_cover.gray {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+
+/* Player */
+.player_container {
+    display:none;
+    background: url("../../img/ytrpt/water-815271_1920.jpg");
+}
+
+.main_video_controller {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.25);
+    background: -webkit-linear-gradient(left,rgba(255,0,0,0),rgba(255,255,255,0.6),rgba(255,0,0,0)); /*Safari 5.1-6*/
+    background: -o-linear-gradient(right,rgba(255,0,0,0),rgba(255,255,255,0.6),rgba(255,0,0,0)); /*Opera 11.1-12*/
+    background: -moz-linear-gradient(right,rgba(255,0,0,0),rgba(255,255,255,0.6),rgba(255,0,0,0)); /*Fx 3.6-15*/
+    background: linear-gradient(to right, rgba(255,0,0,0), rgba(255,255,255,0.6),rgba(255,0,0,0)); /*Standard*/
+}
+
+.video_container {
+    width: 18em;
+    min-width: 180px;
+    height: 18em;
+    min-height: 180px;
+    margin: 0 auto 0 auto;
 }
 
 .video_player {
     width: 100%;
     height: 100%;
+    opacity: 0.5;
 }
 
+/* Play List */
 .play_list_container {
-    margin-top: 10vw;
+    margin-top: 5vw;
     padding: 1vw;
 }
 
 .play_list_mov {
-    width: 20vw;
-    height: 20vw;
+    width: 12vw;
+    min-width: 80px;
+    height: 12vw;
+    min-height: 80px;
     display: inline-block;
-    background-color: brown;
+    -webkit-transition: border-radius 0.5s ease;
+    -moz-transition: border-radius 0.5s ease;
+    -o-transition: border-radius 0.5s ease;
+    transition: border-radius 0.5s ease;
+    border: 0.1vw solid black;
 }
 
     .play_list_mov:hover {
-
+        border-radius: 50%;
     }
 
     .play_list_mov img {
         width: 100%;
         height: 100%;
+        border: 0.1vw solid black;
     }
