@@ -832,6 +832,14 @@
       "desc": "CS 관련 서적 출판사. 가끔 무료책 공개도 한다",
       "tag": [ "Book" ],
       "rank": "2"
+    },
+    {
+      "title": "nexus mod",
+      "url": "http://www.nexusmods.com/",
+      "desc": "게임 MOD 관련 정보를 공유하는 사이트",
+      "tag": [ "Game" ],
+      "rank": "2"
+      
     }
   ]
 }
