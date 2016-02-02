@@ -172,22 +172,39 @@
     function getEmbedYoutubeUrl(url) {
         var embedKeyword = 'embed/';
         var originalKeyword = '/watch?v=';
-        var listKeyword = '&list';
+        var listKeyword = '&list=';
+        var indexKeyword = '&index=';
 
         if (url.search(embedKeyword) !== -1) {
             // 1. embed url일 경우
-            return url.slice(url.lastIndexOf(embedKeyword) + embedKeyword.length);
+            return {
+                type: 'video',
+                code: url.slice(url.lastIndexOf(embedKeyword) + embedKeyword.length)
+            };
         } else {
             // 2. 생짜 url일 경우
             if (url.search(listKeyword) !== -1) {
                 // 2-1. 생짜 url인데 플레이리스트가 같이 있을 경우
-                // 플레이 리스트를 살리는 케이스 (YT Player에서는 사용 불가)
-                //return url.slice(url.lastIndexOf(originalKeyword) + originalKeyword.length).replace('&', '?');
-                // 플레이 리스트를 제거하는 케이스
-                return url.slice(url.lastIndexOf(originalKeyword) + originalKeyword.length, url.indexOf('&'));
+                if (confirm('Add Video List?')) {
+                    // 플레이 리스트를 살리는 케이스 (YT Player에서는 사용 불가)
+                    return {
+                        type: 'list',
+                        code: url.slice(url.lastIndexOf(originalKeyword) + originalKeyword.length, url.lastIndexOf(listKeyword)),
+                        listCode: url.slice(url.lastIndexOf(listKeyword) + listKeyword.length, url.lastIndexOf(indexKeyword))
+                    }
+                } else {
+                    // 플레이 리스트를 제거하는 케이스
+                    return {
+                        type: 'video',
+                        code: url.slice(url.lastIndexOf(originalKeyword) + originalKeyword.length, url.indexOf('&'))
+                    };
+                }
             } else {
                 // 2-2. 생짜 url이고 플레이리스트가 없는 경우
-                return url.slice(url.lastIndexOf(originalKeyword) + originalKeyword.length);
+                return {
+                    type: 'video',
+                    code: url.slice(url.lastIndexOf(originalKeyword) + originalKeyword.length)
+                };
             }
         }
     }
@@ -266,13 +283,26 @@
 
         videoID = getEmbedYoutubeUrl(url);
 
-        var videoObj = createVideoObject(videoID);
-        $('.play_list_container').append(videoObj);
+        switch (videoID.type) {
+            case 'video':
+                var videoObj = createVideoObject(videoID.code);
+                $('.play_list_container').append(videoObj);
+                break;
+            case 'list':
+                var videoObj = createVideoObject(videoID.code);
+                break;
+            default:
+                break;
+        }
 
         inputUrl.val(""); // empty input
     }
 
     function createVideoObject(videoID) {
+        return '<div class="play_list_mov" data-mov-id=' + videoID + '><img class="w3-circle" src="' + getYoutubeThumbnailByID(videoID) + '" /></div>';
+    }
+
+    function createVideoListObject(videoID) {
         return '<div class="play_list_mov" data-mov-id=' + videoID + '><img class="w3-circle" src="' + getYoutubeThumbnailByID(videoID) + '" /></div>';
     }
 
