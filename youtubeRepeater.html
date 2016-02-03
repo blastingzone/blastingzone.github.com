@@ -145,7 +145,23 @@
         console.debug(event);
         switch (event.data) {
             case YT.PlayerState.ENDED: // End Play -> Auto Replay
-                event.target.playVideo();
+                var playerCount = Object.keys(g_videoController.playerList).length;
+                if (playerCount <= 1) {
+                    event.target.playVideo();
+                    return;
+                }
+
+                var nextIndex = Object.keys(g_videoController.playerList).filter(function(key) {
+                    return g_videoController.playerList[key] == event.target;
+                })
+                nextIndex = Number(nextIndex) + 1;
+
+                if (playerCount < nextIndex) {
+                    nextIndex = 1;
+                }
+
+                g_videoController.playerList[nextIndex].playVideo();
+
                 break;
             case YT.PlayerState.PLAYING:
                 removeVideoToggleListGrayScale($('#' + event.target.f.id).parent().attr('data-player-code'));
