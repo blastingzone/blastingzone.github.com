@@ -28,14 +28,27 @@
             .main_video_controller i:active {
                 color: #000000;
             }
+        .entire_plist_loop_group i{
+            vertical-align : middle;
+        }
     </style>
 </head>
 <body>
     <header class="w3-container w3-theme-d2">
-        <span class="w3-xxlarge">Y O U T U B E R E P E A T E R</span>
+        <h1>Y O U T U B E R E P E A T E R</h1>
     </header>
     <!-- Player List -->
-    <div class="w3-container w3-card-4 player_list_container">
+    <header class="w3-container w3-theme-d4">
+        <h3>PLAYER LIST</h3>
+        <!-- Player Loop Toggle -->
+        <!-- Loop : 노래가 끝나면 다음 플레이어의 노래를 재생 -->
+        <!-- Not Loop : 노래가 끝나면 해당 노래를 다시 재생 -->
+        <div class="entire_plist_loop_group">
+            <button id="entire_plist_loop" class="w3-btn w3-theme-d5 w3-wide">Not Loop List</button>
+            <i class="material-icons">not_interested</i>
+        </div>
+    </header>
+    <div class="w3-container w3-card player_list_container">
         <div class="player_display_toggle" data-player-code="1">
             <img class="player_cover gray" src="" />
         </div>
@@ -72,14 +85,11 @@
             </div>
         </div>
     </div>
-    <!-- Mov Adder -->
-    <div class="w3-container">
-        <label for="youtube_url">Youtube URL</label>
-        <input id="youtube_url" name="youtube_url" class="w3-input" type="text" value="" placeholder="Add Youtube URL" />
-        <button class="w3-btn w3-slim" onclick="addNewVideo()">Add New Video</button>
-    </div>
     <!-- Mov List -->
-    <div class="w3-container w3-card-4 play_list_container">
+    <header class="w3-container w3-theme-l3">
+        <h3>VIDEO LIST</h3>
+    </header>
+    <div class="w3-container w3-card play_list_container">
         <div class="play_list_mov" data-mov-id="4GZUQFcht78">
             <img class="w3-circle" src="http://img.youtube.com/vi/4GZUQFcht78/1.jpg" />
         </div>
@@ -89,6 +99,15 @@
         <div class="play_list_mov" data-mov-id="ci-L4ns4om8">
             <img class="w3-circle" src="http://img.youtube.com/vi/ci-L4ns4om8/1.jpg" />
         </div>
+    </div>
+    <!-- Mov Adder -->
+    <header class="w3-container w3-theme-d1">
+        <h3>ADD URL</h3>
+    </header>
+    <div class="w3-container">
+        <label for="youtube_url">Youtube URL</label>
+        <input id="youtube_url" name="youtube_url" class="w3-input" type="text" value="" placeholder="Add Youtube URL" />
+        <button class="w3-btn w3-slim" onclick="addNewVideo()">Add New Video</button>
     </div>
 </body>
 </html>
@@ -145,23 +164,28 @@
         console.debug(event);
         switch (event.data) {
             case YT.PlayerState.ENDED: // End Play -> Auto Replay
-                var playerCount = Object.keys(g_videoController.playerList).length;
-                if (playerCount <= 1) {
-                    event.target.playVideo();
-                    return;
-                }
+                    // if loop on
+                    if($('#entire_plist_loop').text() === ENUM.loopStr){
+                        var playerCount = Object.keys(g_videoController.playerList).length;
+                        if (playerCount <= 1) {
+                            event.target.playVideo();
+                            return;
+                        }
 
-                var nextIndex = Object.keys(g_videoController.playerList).filter(function(key) {
-                    return g_videoController.playerList[key] == event.target;
-                });
-                nextIndex = Number(nextIndex) + 1;
+                        var nextIndex = Object.keys(g_videoController.playerList).filter(function(key) {
+                            return g_videoController.playerList[key] == event.target;
+                        });
+                        nextIndex = Number(nextIndex) + 1;
 
-                if (playerCount < nextIndex) {
-                    nextIndex = 1;
-                }
+                        if (playerCount < nextIndex) {
+                            nextIndex = 1;
+                        }
 
-                g_videoController.playerList[nextIndex].playVideo();
+                        g_videoController.playerList[nextIndex].playVideo();
 
+                    } else {
+                        event.target.playVideo();
+                    }
                 break;
             case YT.PlayerState.PLAYING:
                 removeVideoToggleListGrayScale($('#' + event.target.f.id).parent().attr('data-player-code'));
@@ -175,6 +199,9 @@
     };
     ////////////////////////////////////////////////////////////////
 
+    //Global Enum List
+    var ENUM = {};
+
     var g_videoController = new VideoController();
 
     // Main
@@ -183,6 +210,7 @@
         initialVideoListSortable();
         initialVideoListDroppable();
         initPlayerListToggleEvent();
+        initToggleLoopPlayerListEvent();
     });
 
     function getEmbedYoutubeUrl(url) {
@@ -412,6 +440,22 @@
 
     function removeVideoToggleListGrayScale(playerCode) {
         $('.player_display_toggle[data-player-code=' + playerCode + "]").find('img').removeClass('gray');
+    }
+
+    // click player list loop button
+    function initToggleLoopPlayerListEvent(){
+        // register strings
+        ENUM.notLoopStr = "Not Loop List";
+        ENUM.loopStr = "Loop List";
+        $('#entire_plist_loop').click(function(){
+            if ($(this).text() === ENUM.notLoopStr){
+                $(this).text(ENUM.loopStr);
+                $(this).next().text('loop');
+            } else {
+                $(this).text(ENUM.notLoopStr);
+                $(this).next().text('not_interested');
+            }
+        });
     }
 
 </script>
