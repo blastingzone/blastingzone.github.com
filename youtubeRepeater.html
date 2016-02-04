@@ -104,16 +104,16 @@
     }
     VideoController.prototype.setPlayer = function (player, playerCode) {
         this.playerList[playerCode] = player;
-    }
+    };
     VideoController.prototype.getPlayer = function (playerCode) {
         return this.playerList[playerCode];
-    }
+    };
     VideoController.prototype.destroyPlayer = function (playerCode) {
         var targetPlayer = this.playerList[playerCode];
         if (targetPlayer !== undefined && targetPlayer !== null) {
             targetPlayer.destroy();
         }
-    }
+    };
     VideoController.prototype.destroyPlayerAll = function () {
         if (this.playerList !== undefined && this.playerList !== null) {
             for (var idx in this.playerList) {
@@ -122,25 +122,25 @@
         } else {
             this.playerList = null;
         }
-    }
+    };
     VideoController.prototype.playVideo = function (playerCode) {
         var targetPlayer = this.playerList[playerCode];
         if (targetPlayer !== undefined && targetPlayer !== null) {
             targetPlayer.playVideo();
         }
-    }
+    };
     VideoController.prototype.stopVideo = function (playerCode) {
         var targetPlayer = this.playerList[playerCode];
         if (targetPlayer !== undefined && targetPlayer !== null) {
             targetPlayer.stopVideo();
         }
-    }
+    };
     VideoController.prototype.pauseVideo = function (playerCode) {
         var targetPlayer = this.playerList[playerCode];
         if (targetPlayer !== undefined && targetPlayer !== null) {
             targetPlayer.pauseVideo();
         }
-    }
+    };
     VideoController.prototype.onPlayerStateChange = function (event) {
         console.debug(event);
         switch (event.data) {
@@ -153,7 +153,7 @@
 
                 var nextIndex = Object.keys(g_videoController.playerList).filter(function(key) {
                     return g_videoController.playerList[key] == event.target;
-                })
+                });
                 nextIndex = Number(nextIndex) + 1;
 
                 if (playerCount < nextIndex) {
@@ -172,7 +172,7 @@
             default:
                 break;
         }
-    }
+    };
     ////////////////////////////////////////////////////////////////
 
     var g_videoController = new VideoController();
