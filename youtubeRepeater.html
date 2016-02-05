@@ -99,6 +99,9 @@
         <div class="play_list_mov" data-mov-id="ci-L4ns4om8">
             <img class="w3-circle" src="http://img.youtube.com/vi/ci-L4ns4om8/1.jpg" />
         </div>
+        <div class="play_list_video_list" data-list-id="PLR5H739-h-GzuBv0TCwW9QbbLqeuIlVbS" data-mov-id="fDRYfx8uqPQ">
+            <img class="w3-circle" src="http://img.youtube.com/vi/fDRYfx8uqPQ/1.jpg" />
+        </div>
     </div>
     <!-- Mov Adder -->
     <header class="w3-container w3-theme-d1">
@@ -161,7 +164,6 @@
         }
     };
     VideoController.prototype.onPlayerStateChange = function (event) {
-        console.debug(event);
         switch (event.data) {
             case YT.PlayerState.ENDED: // End Play -> Auto Replay
                     // if loop on
@@ -184,7 +186,14 @@
                         g_videoController.playerList[nextIndex].playVideo();
 
                     } else {
-                        event.target.playVideo();
+                        if(event.target.getPlaylistIndex() == -1) {
+                            // case 1 : video or video list (not end)
+                            event.target.playVideo();
+                        } else if (event.target.getPlaylist().length - 1 == event.target.getPlaylistIndex()){
+                            // case 2 : video list last song
+                            // go to first song
+                            event.target.playVideoAt(0);
+                        }
                     }
                 break;
             case YT.PlayerState.PLAYING:
@@ -262,15 +271,18 @@
         setTargetVideoObjectDroppable('.video_droppable');
     }
 
+    // drop video object to player
     function setTargetVideoObjectDroppable(selector) {
         $(selector).droppable({
-            accept: ".play_list_mov",
+            accept: ".play_list_mov,.play_list_video_list",
             drop: function (event, ui) {
                 console.debug(ui);
                 var curVideoObject = ui.helper[0];
                 // drop video object
                 if ($(curVideoObject).hasClass('play_list_mov')) {
                     createPlayerByVideoObject(this, curVideoObject);
+                } else if($(curVideoObject).hasClass('play_list_video_list')) {
+                    createPlayerByVideoListObject(this, curVideoObject);
                 }
             }
         });
@@ -281,14 +293,19 @@
     }
 
     function setVideoListPlayer(id, videoListID, playerCode) {
-        var player = new YT.Player(id, {
-            loadPlaylist: {
+        // 희한하게 이 loadPlayerlist 옵션을 YT 플레이어 생성시에 주면 API 동작이 안 된다.
+        var loadAfterCreate = function() {
+            player.loadPlaylist({
                 listType: 'playlist',
                 list: videoListID,
                 index: 0,
-                suggestedQuality:'hd1080'
-            },
+                suggestedQuality:'auto'
+            });
+        };
+
+        var player = new YT.Player(id, {
             events: {
+                'onReady': loadAfterCreate,
                 'onStateChange': g_videoController.onPlayerStateChange
             }
         });
@@ -333,7 +350,8 @@
                 $('.play_list_container').append(videoObj);
                 break;
             case 'list':
-                var videoObj = createVideoObject(videoID.code);
+                var videoObj = createVideoListObject(videoID.code, videoID.listCode);
+                $('.play_list_container').append(videoObj);
                 break;
             default:
                 break;
@@ -346,8 +364,8 @@
         return '<div class="play_list_mov" data-mov-id=' + videoID + '><img class="w3-circle" src="' + getYoutubeThumbnailByID(videoID) + '" /></div>';
     }
 
-    function createVideoListObject(videoID) {
-        return '<div class="play_list_mov" data-mov-id=' + videoID + '><img class="w3-circle" src="' + getYoutubeThumbnailByID(videoID) + '" /></div>';
+    function createVideoListObject(videoID, listID) {
+        return '<div class="play_list_video_list" data-list-id=' + listID + ' data-mov-id=' + videoID + '><img class="w3-circle" src="' + getYoutubeThumbnailByID(videoID) + '" /></div>';
     }
 
     // player controller list
@@ -369,9 +387,25 @@
         g_videoController.destroyPlayer(playerCode);
 
         var videoID = $(videoObj).attr('data-mov-id');
-        var elemId = $(player).find('.video_player').attr('id');
+        var elemID = $(player).find('.video_player').attr('id');
 
-        setVideoPlayer(elemId, videoID, playerCode);
+        setVideoPlayer(elemID, videoID, playerCode);
+        // player toggler img update
+        var selector = ".player_display_toggle[data-player-code=" + playerCode + "]";
+        $(selector).find('img').attr('src', getYoutubeThumbnailByID(videoID));
+    }
+
+    function createPlayerByVideoListObject(player, videoObj) {
+        var playerCode = $(player).attr('data-player-code');
+        //To Do : Smart re-allocate player
+        g_videoController.destroyPlayer(playerCode);
+
+        var videoID = $(videoObj).attr('data-mov-id');
+        var listID = $(videoObj).attr('data-list-id');
+        var elemID = $(player).find('.video_player').attr('id');
+
+        setVideoListPlayer(elemID, listID, playerCode);
+
         // player toggler img update
         var selector = ".player_display_toggle[data-player-code=" + playerCode + "]";
         $(selector).find('img').attr('src', getYoutubeThumbnailByID(videoID));
