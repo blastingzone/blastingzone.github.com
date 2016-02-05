@@ -243,7 +243,7 @@
                     return {
                         type: 'list',
                         code: url.slice(url.lastIndexOf(originalKeyword) + originalKeyword.length, url.lastIndexOf(listKeyword)),
-                        listCode: url.slice(url.lastIndexOf(listKeyword) + listKeyword.length, url.lastIndexOf(indexKeyword))
+                        listCode: url.slice(url.lastIndexOf(listKeyword) + listKeyword.length, url.lastIndexOf(indexKeyword) !== -1 ? url.lastIndexOf(indexKeyword) : url.length )
                     }
                 } else {
                     // 플레이 리스트를 제거하는 케이스
