@@ -90,6 +90,17 @@
     background: linear-gradient(to right, rgba(255,0,0,0), rgba(255,255,255,0.6),rgba(255,0,0,0)); /*Standard*/
 }
 
+.main_video_controller i {
+    cursor: pointer;
+    color: #808080;
+}
+.main_video_controller i:active {
+    color: #000000;
+}
+.entire_plist_loop_group i{
+    vertical-align : middle;
+}
+
 .video_container {
     width: 18em;
     min-width: 180px;
