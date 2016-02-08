@@ -108,7 +108,7 @@
     // Ref :: https://developers.google.com/youtube/player_parameters?hl=ko
 
     ////////////////////////////////////////////////////////////////
-    // VIdeoController Class
+    // VideoController Class
     ////////////////////////////////////////////////////////////////
     function VideoController() {
         console.log("Create Video Controller");
@@ -279,7 +279,14 @@
     }
 
     function setVideoPlayerListDroppable() {
+        $('.player_display_toggle').droppable({
+           accept:".play_list_mov,.play_list_video_list",
+            drop: function(event, ui){
+                var curVideoObject = ui.helper[0];
 
+                console.debug(ui);
+            }
+        });
     }
 
     function setVideoListPlayer(id, videoListID, playerCode) {
