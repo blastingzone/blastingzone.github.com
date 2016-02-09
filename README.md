@@ -1,7 +1,7 @@
 # blastingzone.github.com
 HomePage
 
-LINK : blastingzone.github.io
+LINK : [blastingzone.github.io](http://blastingzone.github.io/)
 
 ## Hello World!
 I am studying web-front.  
