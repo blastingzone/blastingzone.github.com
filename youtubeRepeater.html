@@ -205,11 +205,12 @@
 
     // Main
     $(document).ready(function () {
-        initialLoadYoutubeAPI();
-        initialVideoListSortable();
-        initialVideoListDroppable();
+        initLoadYoutubeAPI();
+        initVideoListSortable();
+        initVideoListDroppable();
         initPlayerListToggleEvent();
         initToggleLoopPlayerListEvent();
+        initVideoPlayerTogglerListDroppable();
     });
 
     function getEmbedYoutubeUrl(url) {
@@ -252,12 +253,12 @@
         }
     }
 
-    function initialVideoListSortable() {
+    function initVideoListSortable() {
         $('.play_list_container').sortable();
         $('.play_list_container').disableSelection();
     }
 
-    function initialVideoListDroppable() {
+    function initVideoListDroppable() {
         setTargetVideoObjectDroppable('.video_droppable');
     }
 
@@ -278,13 +279,19 @@
         });
     }
 
-    function setVideoPlayerListDroppable() {
+    function initVideoPlayerTogglerListDroppable() {
         $('.player_display_toggle').droppable({
            accept:".play_list_mov,.play_list_video_list",
             drop: function(event, ui){
                 var curVideoObject = ui.helper[0];
-
-                console.debug(ui);
+                var playerCode = $(this).attr('data-player-code');
+                var targetPlayer = $('.video_droppable[data-player-code="'+ playerCode +'"]');
+                
+                if ($(curVideoObject).hasClass('play_list_mov')) {
+                    createPlayerByVideoObject(targetPlayer, curVideoObject);
+                } else if($(curVideoObject).hasClass('play_list_video_list')) {
+                    createPlayerByVideoListObject(targetPlayer, curVideoObject);
+                }
             }
         });
     }
@@ -319,7 +326,7 @@
         g_videoController.setPlayer(player, playerCode);
     }
 
-    function initialLoadYoutubeAPI() {
+    function initLoadYoutubeAPI() {
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/player_api";
         var firstScriptTag = document.getElementsByTagName('script')[0];
