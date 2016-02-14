@@ -503,4 +503,24 @@
         });
     }
 
+    function getVideoObjectPlayList(){
+        var playList = [];
+        $('.play_list_container').children().each(function(){
+            var dataObj = {};
+            if( $(this).hasClass('play_list_mov') ) {
+                dataObj.videoID = $(this).attr('data-mov-id');
+                dataObj.type = 'video';
+
+            } else if ( $(this).hasClass('play_list_video_list') ) {
+                dataObj.videoID = $(this).attr('data-mov-id');
+                dataObj.listID = $(this).attr('data-list-id');
+                dataObj.type = 'list';
+
+            }
+            playList.push(dataObj);
+        });
+
+        return playList;
+    }
+
 </script>
