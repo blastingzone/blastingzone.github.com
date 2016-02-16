@@ -61,9 +61,10 @@
         });
 
         function createList(jsonData) {
-            html = "";
+            "use strict";
+            var html = "";
             var count = 0;
-            for (idx in jsonData.pages) {
+            for (let idx in jsonData.pages) {
                 // get page info
                 var elem = jsonData.pages[idx];
                 // get page rank
@@ -72,15 +73,8 @@
                 var tag = elem['tag'];
                 var tag_html = "";
                 // set tag icons
-                for (tag_idx in tag) {
-                    var page_cur_tag = tag[tag_idx];
-
-                    if (jsonData.tags[page_cur_tag]) {
-                        tag_html += "<i class='" + jsonData.tags[page_cur_tag] + " font_size_24'></i>";
-                        tag_html += "<span class='tag_description'>" + page_cur_tag + "</span>";
-                    } else {
-                        tag_html += "[" + page_cur_tag + "]";
-                    }
+                for (let tag_idx in tag) {
+                    tag_html += "[" + tag[tag_idx] + "]";
                 }
 
                 if (count % 3 == 0) {
