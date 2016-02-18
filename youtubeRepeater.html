@@ -520,7 +520,30 @@
             playList.push(dataObj);
         });
 
-        return playList;
+        return JSON.stringify(playList);
+    }
+
+    function setVideoObjectPlayListByJson(jsonData, isEmptyBefore){
+        if(isEmptyBefore === true){ delAllPlayList(); }
+
+        jsonData = JSON.parse(jsonData);
+        console.debug(jsonData);
+        var videoListTarget = $('.play_list_container');
+        for(var idx in jsonData){
+            var curObj = jsonData[idx];
+            switch(curObj.type){
+                case "video":
+                    videoListTarget.append( createVideoObject(curObj.videoID) );
+                    break;
+                case "list":
+                    videoListTarget.append( createVideoListObject(curObj.videoID, curObj.listID) );
+                    break;
+            }
+        }
+    }
+
+    function delAllPlayList(){
+        $('.play_list_container').empty();
     }
 
 </script>
