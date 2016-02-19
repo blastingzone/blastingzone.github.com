@@ -79,6 +79,9 @@
     <!-- Mov List -->
     <header class="w3-container w3-theme-l3">
         <h3>VIDEO LIST</h3>
+        <div>
+            <button id="remove_all_video" class="w3-btn w3-theme-l5 w3-wide">Remove All</button>
+        </div>
     </header>
     <div class="w3-container w3-card play_list_container">
         <div class="play_list_mov" data-mov-id="4GZUQFcht78">
@@ -211,6 +214,10 @@
         initPlayerListToggleEvent();
         initToggleLoopPlayerListEvent();
         initVideoPlayerTogglerListDroppable();
+
+        $('#remove_all_video').click(function(){
+            delAllPlayList();
+        });
     });
 
     function getEmbedYoutubeUrl(url) {
