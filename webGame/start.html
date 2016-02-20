@@ -1,10 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial scale=1 maximum-scale=1.0, user-scalable=no"/>
+    <script src="./lib/createjs-2015.11.26.combined.js"></script>
     <title></title>
+    <style>
+        #canvas{
+            margin: 0;
+            border: solid black 1px;
+        }
+        body{
+            margin: 0;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-
+<canvas id="canvas" width="800" height="600"></canvas>
 </body>
+<script>
+    var initWidth = 800;
+    var initHeight = 600;
+    var gameStage;
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // Main
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    window.onload = function(){
+        loadAsset();
+        initCanvas();
+        activateTouch();
+        console.log("Load Game");
+    };
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // init functions
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    function initCanvas(){
+        gameStage = new createjs.Stage('canvas');
+        createjs.Ticker.framerate = 30; // set 30fps
+        createjs.Ticker.addEventListener('tick', function(e){
+            if(!e.paused){
+                globalUpdate();
+                gameStage.update();
+            }
+        });
+
+        resizeCanvas();
+    }
+
+    function activateTouch(){
+        if(createjs.Touch.isSupported()){
+            createjs.Touch.enable(gameStage);
+        }
+    }
+
+    window.addEventListener('resize', function(e){
+        resizeCanvas();
+    });
+
+    function resizeCanvas(){
+        scale = Math.min(window.innerWidth/initWidth, window.innerHeight/initHeight);
+
+        scrWidth = window.innerWidth;
+        scrHeight = window.innerHeight;
+        gameStage.canvas.width = initWidth * scale;
+        gameStage.canvas.height = initHeight * scale;
+
+        gameStage.scale = scale;
+    }
+
+    function loadAsset(){
+        loadImageAsset();
+    }
+
+    function loadImageAsset(){
+
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // update functions
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // game update root
+    function globalUpdate(){
+
+    }
+
+    function testAddAsset(){
+        var warrior = new createjs.Bitmap('image/warrior.png');
+        warrior.x = 100;
+        warrior.y = 40;
+        warrior.addEventListener('click', function(){ console.log('click warrior'); });
+        gameStage.addChild(warrior);
+    }
+</script>
 </html>
