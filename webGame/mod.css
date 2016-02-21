@@ -1,0 +1,10 @@
+body{
+    margin: 0;
+    text-align:center;
+}
+#canvas{
+    border: solid black 1px;
+}
+#canvasWrapper{
+    position:absolute;
+}

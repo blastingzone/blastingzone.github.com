@@ -1,27 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial scale=1 maximum-scale=1.0, user-scalable=no"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1.0, user-scalable=no"/>
     <script src="./lib/createjs-2015.11.26.combined.js"></script>
+    <link rel="stylesheet" href="mod.css"/>
     <title></title>
-    <style>
-        #canvas{
-            margin: 0;
-            border: solid black 1px;
-        }
-        body{
-            margin: 0;
-            text-align: center;
-        }
-    </style>
 </head>
 <body>
-<canvas id="canvas" width="800" height="600"></canvas>
+<div id="canvasWrapper">
+    <canvas id="canvas" width="800" height="600"></canvas>
+</div>
 </body>
 <script>
-    var initWidth = 800;
-    var initHeight = 600;
+    const initWidth = 800;
+    const initHeight = 600;
     var gameStage;
+    var assetImageQueue;
+    var assetSoundQueue;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // Main
@@ -30,7 +25,7 @@
         loadAsset();
         initCanvas();
         activateTouch();
-        console.log("Load Game");
+        console.log('Load Game');
     };
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -60,22 +55,46 @@
     });
 
     function resizeCanvas(){
-        scale = Math.min(window.innerWidth/initWidth, window.innerHeight/initHeight);
+        var scaleX = window.innerWidth/initWidth;
+        var scaleY = window.innerHeight/initHeight;
 
-        scrWidth = window.innerWidth;
-        scrHeight = window.innerHeight;
-        gameStage.canvas.width = initWidth * scale;
-        gameStage.canvas.height = initHeight * scale;
+        var scale = Math.min(scaleX, scaleY);
+        gameStage.canvas.setAttribute('style', '-webkit-transform:scale(' + scale + ')');
+        gameStage.canvas.setAttribute('style', 'transform:scale(' + scale + ')');
 
-        gameStage.scale = scale;
+        var wrapper = document.getElementById('canvasWrapper');
+        wrapper.style.top = (scale - 1) * initHeight / 2 + 'px';
+        wrapper.style.left = (scale - 1) * initWidth / 2 + 'px';
     }
+
 
     function loadAsset(){
         loadImageAsset();
-    }
+        loadSoundAsset();
 
-    function loadImageAsset(){
+        function loadImageAsset(){
+            assetImageQueue = new createjs.LoadQueue();
+            assetImageQueue.addEventListener('complete', onLoadImageAssetComplete);
+            assetImageQueue.loadManifest([
+                {id:'warrior', src:'image/warrior.png'},
+                {id:'mage', src:'image/mage.png'},
+                {id:'archer', src:'image/archer.png'},
+                {id:'bard', src:'image/bard.png'}
+            ]);
+        }
 
+        function onLoadImageAssetComplete(){
+            console.log('Load Image Complete');
+        }
+
+        function loadSoundAsset(){
+            assetSoundQueue = new createjs.LoadQueue();
+            assetSoundQueue.addEventListener('complete', onLoadSoundAssetComplete);
+        }
+
+        function onLoadSoundAssetComplete(){
+            console.log('Load Sound Complete');
+        }
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -87,11 +106,12 @@
     }
 
     function testAddAsset(){
-        var warrior = new createjs.Bitmap('image/warrior.png');
+        var warrior = new createjs.Bitmap(assetImageQueue.getResult('warrior'));
         warrior.x = 100;
         warrior.y = 40;
         warrior.addEventListener('click', function(){ console.log('click warrior'); });
         gameStage.addChild(warrior);
     }
+
 </script>
 </html>
