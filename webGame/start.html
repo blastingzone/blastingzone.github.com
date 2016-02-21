@@ -15,8 +15,9 @@
     const initWidth = 800;
     const initHeight = 600;
     var gameStage;
-    var assetImageQueue;
-    var assetSoundQueue;
+    var assetQueue;
+
+    var stateManager;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // Main
@@ -73,28 +74,41 @@
         loadSoundAsset();
 
         function loadImageAsset(){
-            assetImageQueue = new createjs.LoadQueue();
-            assetImageQueue.addEventListener('complete', onLoadImageAssetComplete);
-            assetImageQueue.loadManifest([
+            if(assetQueue == undefined){
+                assetQueue = new createjs.LoadQueue();
+            }
+            assetQueue.addEventListener('complete', onLoadImageAssetComplete);
+            assetQueue.loadManifest([
                 {id:'warrior', src:'image/warrior.png'},
                 {id:'mage', src:'image/mage.png'},
                 {id:'archer', src:'image/archer.png'},
-                {id:'bard', src:'image/bard.png'}
+                {id:'bard', src:'image/bard.png'},
+                {id:'background', src:'image/background.png'}
             ]);
         }
 
         function onLoadImageAssetComplete(){
             console.log('Load Image Complete');
+            runTitleScene();
         }
 
         function loadSoundAsset(){
-            assetSoundQueue = new createjs.LoadQueue();
-            assetSoundQueue.addEventListener('complete', onLoadSoundAssetComplete);
+            if(assetQueue == undefined){
+                assetQueue = new createjs.LoadQueue();
+            }
+            assetQueue.installPlugin(createjs.Sound);
+            assetQueue.addEventListener('complete', onLoadSoundAssetComplete);
         }
 
         function onLoadSoundAssetComplete(){
             console.log('Load Sound Complete');
         }
+    }
+
+    function runTitleScene(){
+        var bg = new createjs.Bitmap(assetQueue.getResult('background'));
+        bg.x = bg.y = 0;
+        gameStage.addChild(bg);
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -106,7 +120,7 @@
     }
 
     function testAddAsset(){
-        var warrior = new createjs.Bitmap(assetImageQueue.getResult('warrior'));
+        var warrior = new createjs.Bitmap(assetQueue.getResult('warrior'));
         warrior.x = 100;
         warrior.y = 40;
         warrior.addEventListener('click', function(){ console.log('click warrior'); });
