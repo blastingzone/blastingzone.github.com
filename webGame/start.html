@@ -11,6 +11,8 @@
     <canvas id="canvas" width="800" height="600"></canvas>
 </div>
 </body>
+
+<script src="./js/constKeyboardEventCode.js"></script>
 <script>
     const initWidth = 800;
     const initHeight = 600;
@@ -111,16 +113,29 @@
         gameStage.addChild(bg);
     }
 
-    const ARROW_KEY_UP = 38;
-    const ARROW_KEY_DOWN = 40;
-    const ARROW_KEY_LEFT = 37;
-    const ARROW_KEY_RIGHT = 39;
-
     function addKeyboardEvent(){
         window.onkeydown = keyDownHandler;
 
         function keyDownHandler(e){
             console.debug(e);
+
+            switch(e.keyCode) {
+                case ARROW_KEY_UP:
+                    console.log("UP");
+                    break;
+                case ARROW_KEY_DOWN:
+                    console.log("DOWN");
+                    break;
+                case ARROW_KEY_LEFT:
+                    console.log("LEFT");
+                    break;
+                case ARROW_KEY_RIGHT:
+                    console.log("RIGHT");
+                    break;
+                default:
+                    console.log(e.keyCode);
+                    break;
+            }
         }
     }
 
