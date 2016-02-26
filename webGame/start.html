@@ -28,6 +28,7 @@
         loadAsset();
         initCanvas();
         activateTouch();
+        addKeyboardEvent();
         console.log('Load Game');
     };
 
@@ -69,7 +70,6 @@
         wrapper.style.top = (scale - 1) * initHeight / 2 + 'px';
         wrapper.style.left = (scale - 1) * initWidth / 2 + 'px';
     }
-
 
     function loadAsset(){
         loadImageAsset();
@@ -120,17 +120,27 @@
             console.debug(e);
 
             switch(e.keyCode) {
+                case W_KEY:
                 case ARROW_KEY_UP:
                     console.log("UP");
                     break;
+                case S_KEY:
                 case ARROW_KEY_DOWN:
                     console.log("DOWN");
                     break;
+                case A_KEY:
                 case ARROW_KEY_LEFT:
                     console.log("LEFT");
                     break;
+                case D_KEY:
                 case ARROW_KEY_RIGHT:
                     console.log("RIGHT");
+                    break;
+                case SPACE_KEY:
+                    console.log("SPACE");
+                    break;
+                case ENTER_KEY:
+                    console.log("ENTER");
                     break;
                 default:
                     console.log(e.keyCode);
