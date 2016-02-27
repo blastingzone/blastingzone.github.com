@@ -14,12 +14,10 @@
 <!-- key code data -->
 <script src="./js/constKeyboardEventCode.js"></script>
 <!-- game class -->
+<script src="./js/config.js"></script>
+<script src="./js/gameManager.js"></script>
 <script src="./js/inputManager.js"></script>
 <script>
-    const initWidth = 800;
-    const initHeight = 600;
-    var gameStage;
-    var assetQueue;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // Main
@@ -36,12 +34,12 @@
     // init functions
     ////////////////////////////////////////////////////////////////////////////////////////////////
     function initCanvas(){
-        gameStage = new createjs.Stage('canvas');
-        createjs.Ticker.framerate = 30; // set 30fps
+        gameManager.gameStage = new createjs.Stage('canvas');
+        createjs.Ticker.framerate = frameRate; // set 30fps
         createjs.Ticker.addEventListener('tick', function(e){
             if(!e.paused){
                 globalUpdate();
-                gameStage.update();
+                gameManager.gameStage.update();
             }
         });
 
@@ -50,7 +48,7 @@
 
     function activateTouch(){
         if(createjs.Touch.isSupported()){
-            createjs.Touch.enable(gameStage);
+            createjs.Touch.enable(gameManager.gameStage);
         }
     }
 
@@ -63,8 +61,8 @@
         var scaleY = window.innerHeight/initHeight;
 
         var scale = Math.min(scaleX, scaleY);
-        gameStage.canvas.setAttribute('style', '-webkit-transform:scale(' + scale + ')');
-        gameStage.canvas.setAttribute('style', 'transform:scale(' + scale + ')');
+        gameManager.gameStage.canvas.setAttribute('style', '-webkit-transform:scale(' + scale + ')');
+        gameManager.gameStage.canvas.setAttribute('style', 'transform:scale(' + scale + ')');
 
         var wrapper = document.getElementById('canvasWrapper');
         wrapper.style.top = (scale - 1) * initHeight / 2 + 'px';
@@ -76,11 +74,11 @@
         loadSoundAsset();
 
         function loadImageAsset(){
-            if(assetQueue == undefined){
-                assetQueue = new createjs.LoadQueue();
+            if(gameManager.assetQueue == undefined){
+                gameManager.assetQueue = new createjs.LoadQueue();
             }
-            assetQueue.addEventListener('complete', onLoadImageAssetComplete);
-            assetQueue.loadManifest([
+            gameManager.assetQueue.addEventListener('complete', onLoadImageAssetComplete);
+            gameManager.assetQueue.loadManifest([
                 {id:'warrior', src:'image/warrior.png'},
                 {id:'mage', src:'image/mage.png'},
                 {id:'archer', src:'image/archer.png'},
@@ -95,11 +93,11 @@
         }
 
         function loadSoundAsset(){
-            if(assetQueue == undefined){
-                assetQueue = new createjs.LoadQueue();
+            if(gameManager.assetQueue == undefined){
+                gameManager.assetQueue = new createjs.LoadQueue();
             }
-            assetQueue.installPlugin(createjs.Sound);
-            assetQueue.addEventListener('complete', onLoadSoundAssetComplete);
+            gameManager.assetQueue.installPlugin(createjs.Sound);
+            gameManager.assetQueue.addEventListener('complete', onLoadSoundAssetComplete);
         }
 
         function onLoadSoundAssetComplete(){
@@ -108,9 +106,18 @@
     }
 
     function runTitleScene(){
-        var bg = new createjs.Bitmap(assetQueue.getResult('background'));
+        var bg = new createjs.Bitmap(gameManager.assetQueue.getResult('background'));
         bg.x = bg.y = 0;
-        gameStage.addChild(bg);
+        gameManager.gameStage.addChild(bg);
+
+        var title = new createjs.Text("C o o k   f o r   H e r o", "40px Arial", "#ffaa33");
+        title.align = "center";
+        title.textBaseline = "middle";
+        title.x = initWidth / 2;
+        title.y = initHeight / 4;
+        title.alpha = 0;
+        gameManager.gameStage.addChild(title);
+        createjs.Tween.get(title).wait(500).to({x : initWidth/2.5, alpha : 1}, 1000, createjs.Ease.quadOut);
     }
 
     function addKeyboardEvent(){
@@ -158,11 +165,11 @@
     }
 
     function testAddAsset(){
-        var warrior = new createjs.Bitmap(assetQueue.getResult('warrior'));
+        var warrior = new createjs.Bitmap(gameManager.assetQueue.getResult('warrior'));
         warrior.x = 100;
         warrior.y = 40;
         warrior.addEventListener('click', function(){ console.log('click warrior'); });
-        gameStage.addChild(warrior);
+        gameManager.gameStage.addChild(warrior);
     }
 
 </script>
