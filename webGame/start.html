@@ -110,14 +110,58 @@
         bg.x = bg.y = 0;
         gameManager.gameStage.addChild(bg);
 
-        var title = new createjs.Text("C o o k   f o r   H e r o", "40px Arial", "#ffaa33");
-        title.align = "center";
-        title.textBaseline = "middle";
-        title.x = initWidth / 2;
-        title.y = initHeight / 4;
-        title.alpha = 0;
-        gameManager.gameStage.addChild(title);
-        createjs.Tween.get(title).wait(500).to({x : initWidth/2.5, alpha : 1}, 1000, createjs.Ease.quadOut);
+        callMenu();
+
+        function callMenu() {
+            var title = new createjs.Text("C o o k   f o r   H e r o", "40px Arial", "#ffaa33");
+            title.align = "center";
+            title.textBaseline = "middle";
+            title.x = initWidth / 2;
+            title.y = initHeight / 4;
+            title.alpha = 0;
+            gameManager.gameStage.addChild(title);
+            createjs.Tween.get(title).wait(500).to({x : initWidth/2.5, alpha : 1}, 1000, createjs.Ease.quadOut);
+
+            var start = new createjs.Text("START", "25px Arial", "#ee9922");
+            start.align="right";
+            start.textBaseline = "middle";
+            start.x = initWidth - 100;
+            start.y = title.y + 100;
+            start.alpha = 0;
+            gameManager.gameStage.addChild(start);
+            createjs.Tween.get(start).wait(900).to({x : initWidth/1.5, alpha : 1}, 1000, createjs.Ease.quadOut).call(function(){
+                start.addEventListener('click',function(){
+                    console.log("Game Start! Someday...");
+                });
+            });
+
+
+            var help = new createjs.Text("HELP", "25px Arial", "#ee9922");
+            help.align="right";
+            help.textBaseline = "middle";
+            help.x = initWidth - 100;
+            help.y = title.y + 170;
+            help.alpha = 0;
+            gameManager.gameStage.addChild(help);
+            createjs.Tween.get(help).wait(1400).to({x : initWidth/1.5, alpha : 1}, 1000, createjs.Ease.quadOut).call( function(){
+                help.addEventListener('click',function(){
+                    console.log("Help");
+                });
+            });
+
+            var credit = new createjs.Text("CREDIT", "25px Arial", "#ee9922");
+            credit.align="right";
+            credit.textBaseline = "middle";
+            credit.x = initWidth - 100;
+            credit.y = title.y + 240;
+            credit.alpha = 0;
+            gameManager.gameStage.addChild(credit);
+            createjs.Tween.get(credit).wait(1700).to({x : initWidth/1.5, alpha : 1}, 1000, createjs.Ease.quadOut).call( function(){
+                credit.addEventListener('click',function(){
+                    console.log("Credit");
+                });
+            });
+        }
     }
 
     function addKeyboardEvent(){
