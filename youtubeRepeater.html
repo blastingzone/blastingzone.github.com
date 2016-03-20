@@ -187,10 +187,10 @@
                     }
                 break;
             case YT.PlayerState.PLAYING:
-                removeVideoToggleListGrayScale($('#' + event.target.f.id).parent().attr('data-player-code'));
+                removeVideoToggleListGrayScale($('#' + event.target.l.id).parent().attr('data-player-code'));
                 break;
             case YT.PlayerState.PAUSED:
-                addVideoToggleListGrayscale($('#' + event.target.f.id).parent().attr('data-player-code'));
+                addVideoToggleListGrayscale($('#' + event.target.l.id).parent().attr('data-player-code'));
                 break;
             default:
                 break;
@@ -328,9 +328,14 @@
     }
 
     function setVideoPlayer(id, videoID, playerCode) {
+        var loadAfterCreate = function() {
+            player.playVideo();
+        };
+
         var player = new YT.Player(id, {
             videoId: videoID,
             events: {
+                'onReady': loadAfterCreate,
                 'onStateChange': g_videoController.onPlayerStateChange
             }
         });
