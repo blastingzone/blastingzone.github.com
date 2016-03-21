@@ -847,6 +847,13 @@
 "desc": "js 라이브러리",
 "tag":["Javascript"],
 "rank":"2"
+},
+{
+"title":"machine learning mastery",
+"url":"http://machinelearningmastery.com/",
+"desc":"머신러닝 전문 학습",
+"tag":["Comuter Science","Algorithm","Study"],
+"rank":2
 }
 ]
 }
