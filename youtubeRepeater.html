@@ -391,9 +391,22 @@
     // player controller list
     function initPlayerListToggleEvent() {
         $('.player_list_container').on('click', '.player_display_toggle', function () {
-            var targetPlayerId = $(this).attr('data-player-code');
-            $('.player_container[data-player-code=' + targetPlayerId + ']').toggle();
-            $(this).toggleClass('opened');
+
+            if ($(this).hasClass('opened')) {
+                // video container 와 video toggler를 우선 모두 닫는다
+                $('.player_container').hide();
+                $('.player_display_toggle').removeClass('opened');
+            } else {
+                // video container 와 video toggler를 우선 모두 닫는다
+                $('.player_container').hide();
+                $('.player_display_toggle').removeClass('opened');
+
+
+                var targetPlayerId = $(this).attr('data-player-code');
+
+                $('.player_container[data-player-code=' + targetPlayerId + ']').show();
+                $(this).addClass('opened');
+            }
         })
     }
 
