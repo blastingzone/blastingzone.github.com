@@ -854,6 +854,13 @@
 "desc":"머신러닝 전문 학습",
 "tag":["Comuter Science","Algorithm","Study"],
 "rank":2
+},
+{
+"title":"sketchfab",
+"url":"https://sketchfab.com/",
+"desc":"3D 모델 작업물 커뮤니티",
+"tag":["Graphics", "3D"],
+"rank":2
 }
 ]
 }
