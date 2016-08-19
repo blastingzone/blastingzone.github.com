@@ -861,6 +861,13 @@
 "desc":"3D 모델 작업물 커뮤니티",
 "tag":["Graphics", "3D"],
 "rank":2
+},
+{
+"title":"CG dev articles",
+"url":"http://www.haroldserrano.com/articles/",
+"desc":"게임 그래픽 관련 블로그",
+"tag":["Game", "Pattern","Graphics", "3D"],
+"rank":2
 }
 ]
 }
