@@ -1,11 +1,9 @@
 ﻿var jsonData = {
 "tags":
 {
-"Web": "fa fa-home",
-"Standard": "fa fa-certificate",
-"HTML": "fa fa-html5",
-"CSS": "fa fa-css3",
-"Reference": "fa fa-balance-scale"
+"Web": "w3-text-sand w3-khaki",
+"Game": "w3-text-sand w3-blue-grey",
+"Design": "w3-text-sand w3-indigo",
 },
 "pages": [
 {
@@ -802,7 +800,7 @@
 "title": "codingame",
 "url": "https://www.codingame.com",
 "desc": "게임코딩 배우기",
-"tag": [ "Learnging", "Game" ],
+"tag": [ "Learning", "Game" ],
 "rank": 3
 },
 {

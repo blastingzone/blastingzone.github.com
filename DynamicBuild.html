@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 
     <!-- Custom css -->
-    <link rel="stylesheet" href="./css/mod.css" />
+    <link rel="stylesheet" href="./css/DynamicBuild.css" />
 
 
     <script type="text/javascript" language="javascript" src="./data/pages.json"></script>
@@ -27,14 +27,14 @@
     <header class="w3-container w3-theme-d2">
         <h1>:: Dynamic Jump Site ::</h1>
     </header>
-    <div id="contents" class="w3-theme-l4">
+    <div id="contents" class="w3-theme-l3 js-container--main">
 
     </div>
     <!-- Footer -->
-    <div class="w3-container w3-theme-d4" style="margin-top:4em;">
+    <div class="w3-container w3-theme-d4">
         <header>
             <h4>Jump Site :: My Favorite Web Pages</h4>
-            <span>2015. 10. 26. updated</span>
+            <span>2016. 09. 02. updated</span>
         </header>
         <!-- color changer -->
         <div class="w3-container">
@@ -56,7 +56,6 @@
     </div>
     <script>
         $(document).ready(function () {
-            console.debug(jsonData);
             createList(jsonData);
         });
 
@@ -74,25 +73,25 @@
                 var tag_html = "";
                 // set tag icons
                 for (let tag_idx in tag) {
-                    tag_html += "[" + tag[tag_idx] + "]";
+                    tag_html += "<span class='w3-btn " + jsonData.tags[ tag[tag_idx] ] + " '>";
+                    tag_html += tag[tag_idx] + "</span>";
                 }
 
                 if (count % 3 == 0) {
                     html += "<div class='w3-row'>";
                 }
-                html += "<div class='w3-third w3-container w3-theme-l4'>";
-                html += "<header><a href='" + elem.url + "' target='_blank;'><h2>";
+                html += "<div class='w3-container js-card-box'>";
+                html += "<div class='w3-card-2 w3-theme-l4'>";
+                html += "<header class='w3-container w3-theme-d1'><a href='" + elem.url + "' target='_blank;'><h2>";
                 html += elem.title
                 html += "</h2></a></header>";
                 html += tag_html;
-                html += "<div>";
-                html += elem.url;
-                html += "</div>";
                 if (elem.desc) {
-                    html += "<div>";
+                    html += "<div class='w3-container'>";
                     html += elem.desc;
                     html += "</div>";
                 }
+                html += "</div>";
                 html += "</div>";
                 if (count % 3 == 2) {
                     html += "</div>";
