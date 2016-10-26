@@ -866,6 +866,20 @@
 "desc":"게임 그래픽 관련 블로그",
 "tag":["Game", "Pattern","Graphics", "3D"],
 "rank":2
+},
+{
+"title":"홍정모 교수님 블로그",
+"url":"http://blog.naver.com/atelierjpro/",
+"desc":"머신러닝 튜토리얼이 상세한 곳",
+"tag":["Computer Science", "Algorithm","Study"],
+"rank":3
+},
+{
+"title":"모두를 위한 머신러닝/딥러닝 강의",
+"url":"https://hunkim.github.io/ml/",
+"desc":"머신러닝 강의 정리가 잘 되어있는 곳",
+"tag":["Computer Science", "Algorithm","Study"],
+"rank":3
 }
 ]
 }
