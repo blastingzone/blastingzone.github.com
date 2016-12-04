@@ -880,6 +880,13 @@
 "desc":"머신러닝 강의 정리가 잘 되어있는 곳",
 "tag":["Computer Science", "Algorithm","Study"],
 "rank":3
+},
+{
+"title":"kenney",
+"url":"http://kenney.nl/",
+"desc":"게임 에셋 판매",
+"tag":["Game"],
+"rank":2
 }
 ]
 }
