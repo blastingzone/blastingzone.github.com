@@ -887,6 +887,13 @@
 "desc":"게임 에셋 판매",
 "tag":["Game"],
 "rank":2
+},
+{
+"title":"vfxlearning",
+"url":"http://www.vfxlearning.com/",
+"desc":"vfx 강의 페이지",
+"tag":["Game", "Graphics"],
+"rank":2
 }
 ]
 }
