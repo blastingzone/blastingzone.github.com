@@ -472,38 +472,7 @@
         </div>
     </div>
 
-    <script>
-        $(document).ready(function () {
-            print_abstergo();
-            console.info('%c Beware. %c A b s t e r g o %c i s %c Watching You.', 'color:red; font-size:4em;', 'color:blue', 'color:#555', 'color:#888; font-size:2em; font-weight:bold;');
-
-            $('a').attr({ 'target': '_blank' });
-
-            $('.theme-change-btn').click(function () {
-                var href = $(this).attr('data-href');
-                $('#theme_css').attr({ 'href': href });
-            });
-        });
-
-        function print_abstergo() {
-            console.log('                    D                ');
-            console.log('                   DDD               ');
-            console.log('                  DDDDD              ');
-            console.log('                 DDDDDDD             ');
-            console.log('                DDDDDDD              ');
-            console.log('               DDDDDDD               ');
-            console.log('              DDDDDDD                ');
-            console.log('             DDDDDDD     D           ');
-            console.log('            DDDDDDD     DDD          ');
-            console.log('           DDDDDDD     DDDDD         ');
-            console.log('          DDDDDDD     DDDDDDD        ');
-            console.log('                       DDDDDDD       ');
-            console.log('    DDDDDDDDDDDDDDDD    DDDDDDD      ');
-            console.log('   DDDDDDDDDDDDDDDDDD    DDDDDDD     ');
-            console.log('  DDDDDDDDDDDDDDDDDDDD    DDDDDDD    ');
-            console.log('                            DDDDDDD  ');
-            console.log('                             DDDDDDD ');
-        }
-    </script>
+    <!-- google analytics -->
+    <script src="./lib/googleAnalytics/ga.js"></script>
 </body>
 </html>

@@ -94,60 +94,61 @@
         <input id="youtube_url" name="youtube_url" class="w3-input" type="text" value="" placeholder="Add Youtube URL" />
         <button class="w3-btn w3-slim" onclick="addNewVideo()">Add New Video</button>
     </div>
-</body>
-</html>
-<script type="text/javascript">
-    // Ref :: https://developers.google.com/youtube/player_parameters?hl=ko
+    <!-- google analytics -->
+    <script src="./lib/googleAnalytics/ga.js"></script>
+    <!-- youtube repeater -->
+    <script type="text/javascript">
+        // Ref :: https://developers.google.com/youtube/player_parameters?hl=ko
 
-    ////////////////////////////////////////////////////////////////
-    // VideoController Class
-    ////////////////////////////////////////////////////////////////
-    function VideoController() {
-        console.log("Create Video Controller");
-        this.playerList = {};
-    }
-    VideoController.prototype.setPlayer = function (player, playerCode) {
-        this.playerList[playerCode] = player;
-    };
-    VideoController.prototype.getPlayer = function (playerCode) {
-        return this.playerList[playerCode];
-    };
-    VideoController.prototype.destroyPlayer = function (playerCode) {
-        var targetPlayer = this.playerList[playerCode];
-        if (targetPlayer !== undefined && targetPlayer !== null) {
-            targetPlayer.destroy();
+        ////////////////////////////////////////////////////////////////
+        // VideoController Class
+        ////////////////////////////////////////////////////////////////
+        function VideoController() {
+            console.log("Create Video Controller");
+            this.playerList = {};
         }
-    };
-    VideoController.prototype.destroyPlayerAll = function () {
-        if (this.playerList !== undefined && this.playerList !== null) {
-            for (var idx in this.playerList) {
-                playerList[idx].destroy();
+        VideoController.prototype.setPlayer = function (player, playerCode) {
+            this.playerList[playerCode] = player;
+        };
+        VideoController.prototype.getPlayer = function (playerCode) {
+            return this.playerList[playerCode];
+        };
+        VideoController.prototype.destroyPlayer = function (playerCode) {
+            var targetPlayer = this.playerList[playerCode];
+            if (targetPlayer !== undefined && targetPlayer !== null) {
+                targetPlayer.destroy();
             }
-        } else {
-            this.playerList = null;
-        }
-    };
-    VideoController.prototype.playVideo = function (playerCode) {
-        var targetPlayer = this.playerList[playerCode];
-        if (targetPlayer !== undefined && targetPlayer !== null) {
-            targetPlayer.playVideo();
-        }
-    };
-    VideoController.prototype.stopVideo = function (playerCode) {
-        var targetPlayer = this.playerList[playerCode];
-        if (targetPlayer !== undefined && targetPlayer !== null) {
-            targetPlayer.stopVideo();
-        }
-    };
-    VideoController.prototype.pauseVideo = function (playerCode) {
-        var targetPlayer = this.playerList[playerCode];
-        if (targetPlayer !== undefined && targetPlayer !== null) {
-            targetPlayer.pauseVideo();
-        }
-    };
-    VideoController.prototype.onPlayerStateChange = function (event) {
-        switch (event.data) {
-            case YT.PlayerState.ENDED: // End Play -> Auto Replay
+        };
+        VideoController.prototype.destroyPlayerAll = function () {
+            if (this.playerList !== undefined && this.playerList !== null) {
+                for (var idx in this.playerList) {
+                    playerList[idx].destroy();
+                }
+            } else {
+                this.playerList = null;
+            }
+        };
+        VideoController.prototype.playVideo = function (playerCode) {
+            var targetPlayer = this.playerList[playerCode];
+            if (targetPlayer !== undefined && targetPlayer !== null) {
+                targetPlayer.playVideo();
+            }
+        };
+        VideoController.prototype.stopVideo = function (playerCode) {
+            var targetPlayer = this.playerList[playerCode];
+            if (targetPlayer !== undefined && targetPlayer !== null) {
+                targetPlayer.stopVideo();
+            }
+        };
+        VideoController.prototype.pauseVideo = function (playerCode) {
+            var targetPlayer = this.playerList[playerCode];
+            if (targetPlayer !== undefined && targetPlayer !== null) {
+                targetPlayer.pauseVideo();
+            }
+        };
+        VideoController.prototype.onPlayerStateChange = function (event) {
+            switch (event.data) {
+                case YT.PlayerState.ENDED: // End Play -> Auto Replay
                     // if loop on
                     if($('#entire_plist_loop').text() === ENUM.loopStr){
                         var playerCount = Object.keys(g_videoController.playerList).length;
@@ -177,394 +178,396 @@
                             event.target.playVideoAt(0);
                         }
                     }
-                break;
-            case YT.PlayerState.PLAYING:
-                removeVideoToggleListGrayScale($('#' + event.target.l.id).parent().attr('data-player-code'));
-                break;
-            case YT.PlayerState.PAUSED:
-                addVideoToggleListGrayscale($('#' + event.target.l.id).parent().attr('data-player-code'));
-                break;
-            default:
-                break;
-        }
-    };
-    ////////////////////////////////////////////////////////////////
+                    break;
+                case YT.PlayerState.PLAYING:
+                    removeVideoToggleListGrayScale($('#' + event.target.l.id).parent().attr('data-player-code'));
+                    break;
+                case YT.PlayerState.PAUSED:
+                    addVideoToggleListGrayscale($('#' + event.target.l.id).parent().attr('data-player-code'));
+                    break;
+                default:
+                    break;
+            }
+        };
+        ////////////////////////////////////////////////////////////////
 
-    //Global Enum List
-    var ENUM = {};
+        //Global Enum List
+        var ENUM = {};
 
-    var g_videoController = new VideoController();
+        var g_videoController = new VideoController();
 
-    // Main
-    $(document).ready(function () {
-        initLoadYoutubeAPI();
-        initVideoListSortable();
-        initVideoListDroppable();
-        initPlayerListToggleEvent();
-        initToggleLoopPlayerListEvent();
-        initVideoPlayerTogglerListDroppable();
+        // Main
+        $(document).ready(function () {
+            initLoadYoutubeAPI();
+            initVideoListSortable();
+            initVideoListDroppable();
+            initPlayerListToggleEvent();
+            initToggleLoopPlayerListEvent();
+            initVideoPlayerTogglerListDroppable();
 
-        $('#remove_all_video').click(function(){
-            delAllPlayList();
+            $('#remove_all_video').click(function(){
+                delAllPlayList();
+            });
         });
-    });
 
-    // @TO DO
-    // CASE 1 : youtu.be
-    // CASE 2 : originalKeyword + videoId + &key=val ...  pattern
-    function getEmbedYoutubeUrl(url) {
-        var embedKeyword = 'embed/';
-        var originalKeyword = '/watch?v=';
-        var listKeyword = '&list=';
-        var indexKeyword = '&index=';
+        // @TO DO
+        // CASE 1 : youtu.be
+        // CASE 2 : originalKeyword + videoId + &key=val ...  pattern
+        function getEmbedYoutubeUrl(url) {
+            var embedKeyword = 'embed/';
+            var originalKeyword = '/watch?v=';
+            var listKeyword = '&list=';
+            var indexKeyword = '&index=';
 
-        if (url.search(embedKeyword) !== -1) {
-            // 1. embed url일 경우
-            return {
-                type: 'video',
-                code: url.slice(url.lastIndexOf(embedKeyword) + embedKeyword.length)
-            };
-        } else {
-            // 2. 생짜 url일 경우
-            if (url.search(listKeyword) !== -1) {
-                // 2-1. 생짜 url인데 플레이리스트가 같이 있을 경우
-                if (confirm('Add Video List?')) {
-                    // 플레이 리스트를 살리는 케이스 (YT Player에서는 사용 불가)
-                    return {
-                        type: 'list',
-                        code: url.slice(url.lastIndexOf(originalKeyword) + originalKeyword.length, url.lastIndexOf(listKeyword)),
-                        listCode: url.slice(url.lastIndexOf(listKeyword) + listKeyword.length, url.lastIndexOf(indexKeyword) !== -1 ? url.lastIndexOf(indexKeyword) : url.length )
-                    }
-                } else {
-                    // 플레이 리스트를 제거하는 케이스
-                    return {
-                        type: 'video',
-                        code: url.slice(url.lastIndexOf(originalKeyword) + originalKeyword.length, url.indexOf('&'))
-                    };
-                }
-            } else {
-                // 2-2. 생짜 url이고 플레이리스트가 없는 경우
+            if (url.search(embedKeyword) !== -1) {
+                // 1. embed url일 경우
                 return {
                     type: 'video',
-                    code: url.slice(url.lastIndexOf(originalKeyword) + originalKeyword.length)
+                    code: url.slice(url.lastIndexOf(embedKeyword) + embedKeyword.length)
                 };
+            } else {
+                // 2. 생짜 url일 경우
+                if (url.search(listKeyword) !== -1) {
+                    // 2-1. 생짜 url인데 플레이리스트가 같이 있을 경우
+                    if (confirm('Add Video List?')) {
+                        // 플레이 리스트를 살리는 케이스 (YT Player에서는 사용 불가)
+                        return {
+                            type: 'list',
+                            code: url.slice(url.lastIndexOf(originalKeyword) + originalKeyword.length, url.lastIndexOf(listKeyword)),
+                            listCode: url.slice(url.lastIndexOf(listKeyword) + listKeyword.length, url.lastIndexOf(indexKeyword) !== -1 ? url.lastIndexOf(indexKeyword) : url.length )
+                        }
+                    } else {
+                        // 플레이 리스트를 제거하는 케이스
+                        return {
+                            type: 'video',
+                            code: url.slice(url.lastIndexOf(originalKeyword) + originalKeyword.length, url.indexOf('&'))
+                        };
+                    }
+                } else {
+                    // 2-2. 생짜 url이고 플레이리스트가 없는 경우
+                    return {
+                        type: 'video',
+                        code: url.slice(url.lastIndexOf(originalKeyword) + originalKeyword.length)
+                    };
+                }
             }
         }
-    }
 
-    function initVideoListSortable() {
-        $('.play_list_container').sortable();
-        $('.play_list_container').disableSelection();
-    }
+        function initVideoListSortable() {
+            $('.play_list_container').sortable();
+            $('.play_list_container').disableSelection();
+        }
 
-    function initVideoListDroppable() {
-        setTargetVideoObjectDroppable('.video_droppable');
-    }
+        function initVideoListDroppable() {
+            setTargetVideoObjectDroppable('.video_droppable');
+        }
 
-    // drop video object to player
-    function setTargetVideoObjectDroppable(selector) {
-        $(selector).droppable({
-            accept: ".play_list_mov,.play_list_video_list",
-            drop: function (event, ui) {
-                console.debug(ui);
-                var curVideoObject = ui.helper[0];
-                // drop video object
-                if ($(curVideoObject).hasClass('play_list_mov')) {
-                    createPlayerByVideoObject(this, curVideoObject);
-                } else if($(curVideoObject).hasClass('play_list_video_list')) {
-                    createPlayerByVideoListObject(this, curVideoObject);
+        // drop video object to player
+        function setTargetVideoObjectDroppable(selector) {
+            $(selector).droppable({
+                accept: ".play_list_mov,.play_list_video_list",
+                drop: function (event, ui) {
+                    console.debug(ui);
+                    var curVideoObject = ui.helper[0];
+                    // drop video object
+                    if ($(curVideoObject).hasClass('play_list_mov')) {
+                        createPlayerByVideoObject(this, curVideoObject);
+                    } else if($(curVideoObject).hasClass('play_list_video_list')) {
+                        createPlayerByVideoListObject(this, curVideoObject);
+                    }
                 }
-            }
-        });
-    }
-
-    function initVideoPlayerTogglerListDroppable() {
-        setVideoPlayerTogglerListDroppable('.player_display_toggle');
-    }
-
-    function setVideoPlayerTogglerListDroppable(selector){
-        $(selector).droppable({
-            accept:".play_list_mov,.play_list_video_list",
-            drop: function(event, ui){
-                var curVideoObject = ui.helper[0];
-                var playerCode = $(this).attr('data-player-code');
-                var targetPlayer = $('.video_droppable[data-player-code="'+ playerCode +'"]');
-
-                if ($(curVideoObject).hasClass('play_list_mov')) {
-                    createPlayerByVideoObject(targetPlayer, curVideoObject);
-                } else if($(curVideoObject).hasClass('play_list_video_list')) {
-                    createPlayerByVideoListObject(targetPlayer, curVideoObject);
-                }
-            }
-        });
-    }
-
-    function setVideoListPlayer(id, videoListID, playerCode) {
-        // 희한하게 이 loadPlayerlist 옵션을 YT 플레이어 생성시에 주면 API 동작이 안 된다.
-        var loadAfterCreate = function() {
-            player.loadPlaylist({
-                listType: 'playlist',
-                list: videoListID,
-                index: 0,
-                suggestedQuality:'auto'
             });
-        };
-
-        var player = new YT.Player(id, {
-            events: {
-                'onReady': loadAfterCreate,
-                'onStateChange': g_videoController.onPlayerStateChange
-            }
-        });
-        g_videoController.setPlayer(player, playerCode);
-    }
-
-    function setVideoPlayer(id, videoID, playerCode) {
-        var loadAfterCreate = function() {
-            player.playVideo();
-        };
-
-        var player = new YT.Player(id, {
-            videoId: videoID,
-            events: {
-                'onReady': loadAfterCreate,
-                'onStateChange': g_videoController.onPlayerStateChange
-            }
-        });
-        g_videoController.setPlayer(player, playerCode);
-    }
-
-    function initLoadYoutubeAPI() {
-        var tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/player_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-        // YouTube player after the API code downloads.
-        function onYouTubePlayerAPIReady() {
-            console.log("Load YT API OK");
-        }
-    }
-
-    function addNewVideo() {
-        var inputUrl = $('#youtube_url');
-        var url = inputUrl.val();
-
-        if (url == null || url == undefined || url == "") {
-            return;
         }
 
-        videoID = getEmbedYoutubeUrl(url);
-
-        switch (videoID.type) {
-            case 'video':
-                var videoObj = createVideoObject(videoID.code);
-                $('.play_list_container').append(videoObj);
-                break;
-            case 'list':
-                var videoObj = createVideoListObject(videoID.code, videoID.listCode);
-                $('.play_list_container').append(videoObj);
-                break;
-            default:
-                break;
+        function initVideoPlayerTogglerListDroppable() {
+            setVideoPlayerTogglerListDroppable('.player_display_toggle');
         }
 
-        inputUrl.val(""); // empty input
-    }
+        function setVideoPlayerTogglerListDroppable(selector){
+            $(selector).droppable({
+                accept:".play_list_mov,.play_list_video_list",
+                drop: function(event, ui){
+                    var curVideoObject = ui.helper[0];
+                    var playerCode = $(this).attr('data-player-code');
+                    var targetPlayer = $('.video_droppable[data-player-code="'+ playerCode +'"]');
 
-    function createVideoObject(videoID) {
-        return '<div class="play_list_mov" data-mov-id=' + videoID + '><img class="w3-circle" src="' + getYoutubeThumbnailByID(videoID) + '" /></div>';
-    }
+                    if ($(curVideoObject).hasClass('play_list_mov')) {
+                        createPlayerByVideoObject(targetPlayer, curVideoObject);
+                    } else if($(curVideoObject).hasClass('play_list_video_list')) {
+                        createPlayerByVideoListObject(targetPlayer, curVideoObject);
+                    }
+                }
+            });
+        }
 
-    function createVideoListObject(videoID, listID) {
-        return '<div class="play_list_video_list" data-list-id=' + listID + ' data-mov-id=' + videoID + '><img class="w3-circle" src="' + getYoutubeThumbnailByID(videoID) + '" /></div>';
-    }
+        function setVideoListPlayer(id, videoListID, playerCode) {
+            // 희한하게 이 loadPlayerlist 옵션을 YT 플레이어 생성시에 주면 API 동작이 안 된다.
+            var loadAfterCreate = function() {
+                player.loadPlaylist({
+                    listType: 'playlist',
+                    list: videoListID,
+                    index: 0,
+                    suggestedQuality:'auto'
+                });
+            };
 
-    // player controller list
-    function initPlayerListToggleEvent() {
-        $('.player_list_container').on('click', '.player_display_toggle', function () {
+            var player = new YT.Player(id, {
+                events: {
+                    'onReady': loadAfterCreate,
+                    'onStateChange': g_videoController.onPlayerStateChange
+                }
+            });
+            g_videoController.setPlayer(player, playerCode);
+        }
 
-            if ($(this).hasClass('opened')) {
-                // video container 와 video toggler를 우선 모두 닫는다
-                $('.player_container').hide();
-                $('.player_display_toggle').removeClass('opened');
-            } else {
-                // video container 와 video toggler를 우선 모두 닫는다
-                $('.player_container').hide();
-                $('.player_display_toggle').removeClass('opened');
+        function setVideoPlayer(id, videoID, playerCode) {
+            var loadAfterCreate = function() {
+                player.playVideo();
+            };
 
+            var player = new YT.Player(id, {
+                videoId: videoID,
+                events: {
+                    'onReady': loadAfterCreate,
+                    'onStateChange': g_videoController.onPlayerStateChange
+                }
+            });
+            g_videoController.setPlayer(player, playerCode);
+        }
 
-                var targetPlayerId = $(this).attr('data-player-code');
+        function initLoadYoutubeAPI() {
+            var tag = document.createElement('script');
+            tag.src = "https://www.youtube.com/player_api";
+            var firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-                $('.player_container[data-player-code=' + targetPlayerId + ']').show();
-                $(this).addClass('opened');
+            // YouTube player after the API code downloads.
+            function onYouTubePlayerAPIReady() {
+                console.log("Load YT API OK");
             }
-        })
-    }
+        }
 
-    function getYoutubeThumbnailByID(videoID) {
-        return "http://img.youtube.com/vi/" + videoID + "/0.jpg";
-    }
+        function addNewVideo() {
+            var inputUrl = $('#youtube_url');
+            var url = inputUrl.val();
 
-    function createPlayerByVideoObject(player, videoObj) {
-        var playerCode = $(player).attr('data-player-code');
-        //To Do : Smart re-allocate player
-        g_videoController.destroyPlayer(playerCode);
-
-        var videoID = $(videoObj).attr('data-mov-id');
-        var elemID = $(player).find('.video_player').attr('id');
-
-        setVideoPlayer(elemID, videoID, playerCode);
-        // player toggler img update
-        var selector = ".player_display_toggle[data-player-code=" + playerCode + "]";
-        $(selector).find('img').attr('src', getYoutubeThumbnailByID(videoID));
-    }
-
-    function createPlayerByVideoListObject(player, videoObj) {
-        var playerCode = $(player).attr('data-player-code');
-        //To Do : Smart re-allocate player
-        g_videoController.destroyPlayer(playerCode);
-
-        var videoID = $(videoObj).attr('data-mov-id');
-        var listID = $(videoObj).attr('data-list-id');
-        var elemID = $(player).find('.video_player').attr('id');
-
-        setVideoListPlayer(elemID, listID, playerCode);
-
-        // player toggler img update
-        var selector = ".player_display_toggle[data-player-code=" + playerCode + "]";
-        $(selector).find('img').attr('src', getYoutubeThumbnailByID(videoID));
-    }
-
-    function addNewPlayerElement() {
-        var playerCode = new Date().getTime();
-        var playerID = 'main_video_player' + playerCode;
-
-        // create Video
-        var container = $('<div>')
-            .addClass('w3-container player_container')
-            .attr('data-player-code', playerCode).appendTo('.player_container_list');
-        var playerContainer = $('<div>')
-            .addClass('video_container w3-card-4 video_droppable')
-            .attr('data-player-code', playerCode).appendTo(container);
-        var player = $('<div>')
-            .addClass('video_player')
-            .attr('id', playerID).appendTo(playerContainer);
-        var controller = $('<div>')
-            .addClass('main_video_controller').appendTo(container);
-        var pause = $('<i>')
-            .addClass('material-icons w3-xxxlarge')
-            .text('pause')
-            .attr('onclick','pauseVideo(' + playerCode + ')').appendTo(controller);
-        var play = $('<i>')
-            .addClass('material-icons w3-xxxlarge')
-            .text('play_arrow')
-            .attr('onclick', 'playVideo(' + playerCode + ')').appendTo(controller);
-        var stop = $('<i>')
-            .addClass('material-icons w3-xxxlarge')
-            .text('stop')
-            .attr('onclick', 'stopVideo(' + playerCode + ')').appendTo(controller);
-
-        // set droppable event
-        setTargetVideoObjectDroppable('.video_droppable[data-player-code='+ playerCode +']');
-
-        // create video toggler
-        var toggler = $('<div>')
-            .addClass('player_display_toggle')
-            .attr('data-player-code', playerCode).insertBefore('.player_add_btn');
-
-        var togglerImg = $('<img>')
-            .addClass('player_cover gray').appendTo(toggler);
-
-        // set player toggler droppable event
-        setVideoPlayerTogglerListDroppable('.player_display_toggle[data-player-code='+ playerCode +']');
-    }
-
-    // video controller & UI control functions
-    function playVideo(playerCode) {
-        g_videoController.playVideo(playerCode);
-        removeVideoToggleListGrayScale(playerCode);
-    }
-
-    function stopVideo(playerCode) {
-        g_videoController.stopVideo(playerCode);
-        addVideoToggleListGrayscale(playerCode);
-    }
-
-    function pauseVideo(playerCode) {
-        g_videoController.pauseVideo(playerCode);
-        addVideoToggleListGrayscale(playerCode);
-    }
-
-    function addVideoToggleListGrayscale(playerCode) {
-        $('.player_display_toggle[data-player-code=' + playerCode + "]").find('img').addClass('gray');
-    }
-
-    function removeVideoToggleListGrayScale(playerCode) {
-        $('.player_display_toggle[data-player-code=' + playerCode + "]").find('img').removeClass('gray');
-    }
-
-    // click player list loop button
-    function initToggleLoopPlayerListEvent(){
-        // register strings
-        ENUM.notLoopStr = "Not Loop List";
-        ENUM.loopStr = "Loop List";
-        $('#entire_plist_loop').click(function(){
-            if ($(this).text() === ENUM.notLoopStr){
-                $(this).text(ENUM.loopStr);
-                $(this).next().text('loop');
-            } else {
-                $(this).text(ENUM.notLoopStr);
-                $(this).next().text('not_interested');
+            if (url == null || url == undefined || url == "") {
+                return;
             }
-        });
-    }
 
-    function getVideoObjectPlayList(){
-        var playList = [];
-        $('.play_list_container').children().each(function(){
-            var dataObj = {};
-            if( $(this).hasClass('play_list_mov') ) {
-                dataObj.videoID = $(this).attr('data-mov-id');
-                dataObj.type = 'video';
+            videoID = getEmbedYoutubeUrl(url);
 
-            } else if ( $(this).hasClass('play_list_video_list') ) {
-                dataObj.videoID = $(this).attr('data-mov-id');
-                dataObj.listID = $(this).attr('data-list-id');
-                dataObj.type = 'list';
-
-            }
-            playList.push(dataObj);
-        });
-
-        return JSON.stringify(playList);
-    }
-
-    function setVideoObjectPlayListByJson(jsonData, isEmptyBefore){
-        if(isEmptyBefore === true){ delAllPlayList(); }
-
-        jsonData = JSON.parse(jsonData);
-        console.debug(jsonData);
-        var videoListTarget = $('.play_list_container');
-        for(var idx in jsonData){
-            var curObj = jsonData[idx];
-            switch(curObj.type){
-                case "video":
-                    videoListTarget.append( createVideoObject(curObj.videoID) );
+            switch (videoID.type) {
+                case 'video':
+                    var videoObj = createVideoObject(videoID.code);
+                    $('.play_list_container').append(videoObj);
                     break;
-                case "list":
-                    videoListTarget.append( createVideoListObject(curObj.videoID, curObj.listID) );
+                case 'list':
+                    var videoObj = createVideoListObject(videoID.code, videoID.listCode);
+                    $('.play_list_container').append(videoObj);
+                    break;
+                default:
                     break;
             }
+
+            inputUrl.val(""); // empty input
         }
-    }
 
-    function playVideoObjectByJson(jsonData){
+        function createVideoObject(videoID) {
+            return '<div class="play_list_mov" data-mov-id=' + videoID + '><img class="w3-circle" src="' + getYoutubeThumbnailByID(videoID) + '" /></div>';
+        }
 
-    }
+        function createVideoListObject(videoID, listID) {
+            return '<div class="play_list_video_list" data-list-id=' + listID + ' data-mov-id=' + videoID + '><img class="w3-circle" src="' + getYoutubeThumbnailByID(videoID) + '" /></div>';
+        }
 
-    function delAllPlayList(){
-        $('.play_list_container').empty();
-    }
+        // player controller list
+        function initPlayerListToggleEvent() {
+            $('.player_list_container').on('click', '.player_display_toggle', function () {
 
-</script>
+                if ($(this).hasClass('opened')) {
+                    // video container 와 video toggler를 우선 모두 닫는다
+                    $('.player_container').hide();
+                    $('.player_display_toggle').removeClass('opened');
+                } else {
+                    // video container 와 video toggler를 우선 모두 닫는다
+                    $('.player_container').hide();
+                    $('.player_display_toggle').removeClass('opened');
+
+
+                    var targetPlayerId = $(this).attr('data-player-code');
+
+                    $('.player_container[data-player-code=' + targetPlayerId + ']').show();
+                    $(this).addClass('opened');
+                }
+            })
+        }
+
+        function getYoutubeThumbnailByID(videoID) {
+            return "http://img.youtube.com/vi/" + videoID + "/0.jpg";
+        }
+
+        function createPlayerByVideoObject(player, videoObj) {
+            var playerCode = $(player).attr('data-player-code');
+            //To Do : Smart re-allocate player
+            g_videoController.destroyPlayer(playerCode);
+
+            var videoID = $(videoObj).attr('data-mov-id');
+            var elemID = $(player).find('.video_player').attr('id');
+
+            setVideoPlayer(elemID, videoID, playerCode);
+            // player toggler img update
+            var selector = ".player_display_toggle[data-player-code=" + playerCode + "]";
+            $(selector).find('img').attr('src', getYoutubeThumbnailByID(videoID));
+        }
+
+        function createPlayerByVideoListObject(player, videoObj) {
+            var playerCode = $(player).attr('data-player-code');
+            //To Do : Smart re-allocate player
+            g_videoController.destroyPlayer(playerCode);
+
+            var videoID = $(videoObj).attr('data-mov-id');
+            var listID = $(videoObj).attr('data-list-id');
+            var elemID = $(player).find('.video_player').attr('id');
+
+            setVideoListPlayer(elemID, listID, playerCode);
+
+            // player toggler img update
+            var selector = ".player_display_toggle[data-player-code=" + playerCode + "]";
+            $(selector).find('img').attr('src', getYoutubeThumbnailByID(videoID));
+        }
+
+        function addNewPlayerElement() {
+            var playerCode = new Date().getTime();
+            var playerID = 'main_video_player' + playerCode;
+
+            // create Video
+            var container = $('<div>')
+                    .addClass('w3-container player_container')
+                    .attr('data-player-code', playerCode).appendTo('.player_container_list');
+            var playerContainer = $('<div>')
+                    .addClass('video_container w3-card-4 video_droppable')
+                    .attr('data-player-code', playerCode).appendTo(container);
+            var player = $('<div>')
+                    .addClass('video_player')
+                    .attr('id', playerID).appendTo(playerContainer);
+            var controller = $('<div>')
+                    .addClass('main_video_controller').appendTo(container);
+            var pause = $('<i>')
+                    .addClass('material-icons w3-xxxlarge')
+                    .text('pause')
+                    .attr('onclick','pauseVideo(' + playerCode + ')').appendTo(controller);
+            var play = $('<i>')
+                    .addClass('material-icons w3-xxxlarge')
+                    .text('play_arrow')
+                    .attr('onclick', 'playVideo(' + playerCode + ')').appendTo(controller);
+            var stop = $('<i>')
+                    .addClass('material-icons w3-xxxlarge')
+                    .text('stop')
+                    .attr('onclick', 'stopVideo(' + playerCode + ')').appendTo(controller);
+
+            // set droppable event
+            setTargetVideoObjectDroppable('.video_droppable[data-player-code='+ playerCode +']');
+
+            // create video toggler
+            var toggler = $('<div>')
+                    .addClass('player_display_toggle')
+                    .attr('data-player-code', playerCode).insertBefore('.player_add_btn');
+
+            var togglerImg = $('<img>')
+                    .addClass('player_cover gray').appendTo(toggler);
+
+            // set player toggler droppable event
+            setVideoPlayerTogglerListDroppable('.player_display_toggle[data-player-code='+ playerCode +']');
+        }
+
+        // video controller & UI control functions
+        function playVideo(playerCode) {
+            g_videoController.playVideo(playerCode);
+            removeVideoToggleListGrayScale(playerCode);
+        }
+
+        function stopVideo(playerCode) {
+            g_videoController.stopVideo(playerCode);
+            addVideoToggleListGrayscale(playerCode);
+        }
+
+        function pauseVideo(playerCode) {
+            g_videoController.pauseVideo(playerCode);
+            addVideoToggleListGrayscale(playerCode);
+        }
+
+        function addVideoToggleListGrayscale(playerCode) {
+            $('.player_display_toggle[data-player-code=' + playerCode + "]").find('img').addClass('gray');
+        }
+
+        function removeVideoToggleListGrayScale(playerCode) {
+            $('.player_display_toggle[data-player-code=' + playerCode + "]").find('img').removeClass('gray');
+        }
+
+        // click player list loop button
+        function initToggleLoopPlayerListEvent(){
+            // register strings
+            ENUM.notLoopStr = "Not Loop List";
+            ENUM.loopStr = "Loop List";
+            $('#entire_plist_loop').click(function(){
+                if ($(this).text() === ENUM.notLoopStr){
+                    $(this).text(ENUM.loopStr);
+                    $(this).next().text('loop');
+                } else {
+                    $(this).text(ENUM.notLoopStr);
+                    $(this).next().text('not_interested');
+                }
+            });
+        }
+
+        function getVideoObjectPlayList(){
+            var playList = [];
+            $('.play_list_container').children().each(function(){
+                var dataObj = {};
+                if( $(this).hasClass('play_list_mov') ) {
+                    dataObj.videoID = $(this).attr('data-mov-id');
+                    dataObj.type = 'video';
+
+                } else if ( $(this).hasClass('play_list_video_list') ) {
+                    dataObj.videoID = $(this).attr('data-mov-id');
+                    dataObj.listID = $(this).attr('data-list-id');
+                    dataObj.type = 'list';
+
+                }
+                playList.push(dataObj);
+            });
+
+            return JSON.stringify(playList);
+        }
+
+        function setVideoObjectPlayListByJson(jsonData, isEmptyBefore){
+            if(isEmptyBefore === true){ delAllPlayList(); }
+
+            jsonData = JSON.parse(jsonData);
+            console.debug(jsonData);
+            var videoListTarget = $('.play_list_container');
+            for(var idx in jsonData){
+                var curObj = jsonData[idx];
+                switch(curObj.type){
+                    case "video":
+                        videoListTarget.append( createVideoObject(curObj.videoID) );
+                        break;
+                    case "list":
+                        videoListTarget.append( createVideoListObject(curObj.videoID, curObj.listID) );
+                        break;
+                }
+            }
+        }
+
+        function playVideoObjectByJson(jsonData){
+
+        }
+
+        function delAllPlayList(){
+            $('.play_list_container').empty();
+        }
+
+    </script>
+</body>
+</html>
