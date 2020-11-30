@@ -214,12 +214,11 @@
         // CASE 1 : youtu.be
         // CASE 2 : originalKeyword + videoId + &key=val ...  pattern
         function getEmbedYoutubeUrl(url) {
-            var siteHomeUrl = 'https://www.youtube.com';
             var embedKeyword = 'embed/';
             var originalKeyword = '/watch?v=';
             var listKeyword = '&list=';
             var indexKeyword = '&index=';
-            var splitedKeyword = "youtu.be/"
+            var splitedKeyword = 'youtu.be/'
 
             if (url.search(embedKeyword) !== -1) {
                 // 1. embed url일 경우
@@ -231,7 +230,7 @@
                 // to do case 1
                 return {
                     type: 'video',
-                    code: siteHomeUrl + originalKeyword + url.slice(url.lastIndexOf(splitedKeyword)+splitedKeyword.length)
+                    code: url.slice(url.lastIndexOf(splitedKeyword)+splitedKeyword.length)
                 };
             } else {
                 // 2. 생짜 url일 경우
